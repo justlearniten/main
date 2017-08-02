@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - mainweb</title>
+    <title>@ViewData["Title"]</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -28,26 +28,44 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">mainweb</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"><img src="~/images/banner.png" /></a>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse navbar-right">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">О нас</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Свяжитесь с нами</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </nav>
-    <div class="container body-content">
-        @RenderBody()
+    <div class="container body-content panel-group">
+        <br/>
+        <div class="row">
+            <div class="col-md-2 panel panel-default" >
+                <h2>Форум</h2>
+                <lш>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna lectus, iaculis blandit sodales in, rutrum feugiat eros. Donec erat tortor, rhoncus non aliquam ac, lobortis vitae sapien. Phasellus id purus nisi. Aenean ut mi nibh. Pellentesque neque tortor, blandit nec maximus sed, tempor non elit. Cras eleifend ligula tempus justo laoreet elementum. Sed vel hendrerit quam. Quisque enim velit, facilisis et quam ut, tincidunt sagittis ex. Sed a congue elit. Cras molestie pellentesque dictum.
+                </lш>
+            </div>
+            <div class="col-md-7">
+                @RenderBody()
+            </div>
+            <div class="col-md-3 panel panel-default">
+                <div class="panel-header">Уроки</div>
+                <ol>
+                    <li><a href="https://go.microsoft.com/fwlink/?LinkId=518008">Действительный залог</a></li>
+                    <li><a href="https://go.microsoft.com/fwlink/?LinkId=699320">Глагол to be</a></li>
+                    <li><a href="https://go.microsoft.com/fwlink/?LinkId=398602">Вопросительная форма</a></li>
+                </ol>
+            </div>
+
+        </div>
         <hr />
         <footer>
-            <p>&copy; 2017 - mainweb</p>
+            <p align="center">Copyright &copy; 2017 - Just Learn It</p>
         </footer>
     </div>
-
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
