@@ -26,7 +26,10 @@ namespace mainweb.Controllers
 
             return View();
         }
-
+        public IActionResult Reference()
+        {
+            return View();
+        }
         public IActionResult Error()
         {
             return View();

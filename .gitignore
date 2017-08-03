@@ -3,3 +3,9 @@
 ################################################################################
 
 /.vs
+/mainweb/.vs
+/mainweb/.vs
+/SecurityItems
+/SecurityItems
+/mainweb/mainweb/Properties/PublishProfiles/CustomProfile.pubxml.user
+/mainweb/mainweb/bin/Release/netcoreapp1.1
