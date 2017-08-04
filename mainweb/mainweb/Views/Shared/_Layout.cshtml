@@ -41,24 +41,27 @@
         </div>
     </nav>
     <div class="container body-content panel-group">
-        <br/>
+        <br />
         <div class="row">
-            <div class="col-md-2 panel panel-default" >
-                <h2>Форум</h2>
-                <lш>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna lectus, iaculis blandit sodales in, rutrum feugiat eros. Donec erat tortor, rhoncus non aliquam ac, lobortis vitae sapien. Phasellus id purus nisi. Aenean ut mi nibh. Pellentesque neque tortor, blandit nec maximus sed, tempor non elit. Cras eleifend ligula tempus justo laoreet elementum. Sed vel hendrerit quam. Quisque enim velit, facilisis et quam ut, tincidunt sagittis ex. Sed a congue elit. Cras molestie pellentesque dictum.
-                </lш>
+            <div class="col-md-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading"><h3 class="panel-title">Форум</h3></div>
+                    <div class="panel-body">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent magna lectus, iaculis blandit sodales in, rutrum feugiat eros. Donec erat tortor, rhoncus non aliquam ac, lobortis vitae sapien. Phasellus id purus nisi. Aenean ut mi nibh. Pellentesque neque tortor, blandit nec maximus sed, tempor non elit. Cras eleifend ligula tempus justo laoreet elementum. Sed vel hendrerit quam. Quisque enim velit, facilisis et quam ut, tincidunt sagittis ex. Sed a congue elit. Cras molestie pellentesque dictum.
+                    </div>
+                </div>
             </div>
             <div class="col-md-7">
                 @RenderBody()
             </div>
-            <div class="col-md-3 panel panel-default">
-                <div class="panel-header">Уроки</div>
-                <ol>
-                    <li><a href="https://go.microsoft.com/fwlink/?LinkId=518008">Действительный залог</a></li>
-                    <li><a href="https://go.microsoft.com/fwlink/?LinkId=699320">Глагол to be</a></li>
-                    <li><a href="https://go.microsoft.com/fwlink/?LinkId=398602">Вопросительная форма</a></li>
-                </ol>
+            <div class="col-md-3">
+                <div class="panel panel-info">
+                    <div class="panel-heading"><h3 class="panel-title">Уроки</h3></div>
+                    <div class="panel-body">
+                      @* @await Html.PartialAsync("../Lesson/_LessonListPartial")*@
+                        @await Component.InvokeAsync("LessonListComponent")
+                    </div>
+                </div>
             </div>
 
         </div>

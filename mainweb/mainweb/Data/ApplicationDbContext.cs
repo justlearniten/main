@@ -10,6 +10,8 @@ namespace mainweb.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Lesson> Lessons { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

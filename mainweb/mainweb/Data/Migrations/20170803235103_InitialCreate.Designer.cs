@@ -8,9 +8,10 @@ using mainweb.Data;
 namespace mainweb.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170803235103_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -71,7 +72,7 @@ namespace mainweb.Data.Migrations
                     b.Property<int>("LessonId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("FilePath");
+                    b.Property<string>("LinkFilePath");
 
                     b.Property<string>("Title");
 
