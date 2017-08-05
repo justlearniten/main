@@ -14,3 +14,4 @@
 /mainweb/mainweb/obj/mainweb.csproj.codegeneration.targets
 /mainweb/mainweb/obj/mainweb.csproj.EntityFrameworkCore.targets
 /mainweb/mainweb/bin/Debug/netcoreapp1.1
+/mainweb/mainweb/bin

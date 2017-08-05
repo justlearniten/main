@@ -1,0 +1,12 @@
+﻿1. Could not connect/ping EC2 instance while  Remote destop works
+	Disable firewall on the machine
+
+2. Project did not publish
+	Configure .Net Core modules, the in the application pool of IIS enable "Load Profile"
+
+3. Migration did not work
+	 add 
+	 <UseMsDeployExe>True</UseMsDeployExe>
+    <AllowUntrustedCertificate>true</AllowUntrustedCertificate>  
+	<Password>***********</Password>
+	in CusstomProfile.pubxml 

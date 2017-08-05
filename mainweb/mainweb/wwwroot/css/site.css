@@ -1,8 +1,35 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    
 }
 
+body, .panel {
+    background-color: #d9e288;
+}
+
+.panel-menu > .panel-heading,
+.panel-menu > .panel-heading > .panel-title, 
+.navbar-inverse,
+.navbar-inverse .navbar-nav > li > a {
+    background-color: #027159;
+    color: #939f27;
+    font-weight: bold;
+    text-align:center;
+    font-size:14px;
+}
+.navbar-inverse .navbar-nav > li > a:hover {
+     color: black;
+}
+.btn-menu {
+    background-color: #027159;
+    color: #939f27;
+    font-weight: bold;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    white-space: normal !important;
+}
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -41,6 +68,16 @@ textarea {
     width: 100%;
 }
 
+/*for collapsable panels*/
+.clickable {
+    cursor: pointer;
+}
+
+.panel-heading span {
+    margin-top: -20px;
+    font-size: 15px;
+}
+/***************************8*/
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */
