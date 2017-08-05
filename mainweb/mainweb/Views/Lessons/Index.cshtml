@@ -1,49 +1,29 @@
-@model IEnumerable<mainweb.Models.Lesson>
-
+﻿@model IEnumerable<mainweb.Models.Lesson>
 @{
-    Layout = null;
+    ViewData["Title"] = "Уроки";
+}
+@{
+    var i = 1;
+}
+@{
+    if (Model.Count() > 1)
+    {
+        @foreach (var item in Model)
+        {
+            <p>@*List lessons*@
+                @i.
+                @{ i++;}
+                <a asp-route-id="@item.LessonId">@Html.DisplayFor(modelItem => item.Title)</a>
+            </p>
+
+        }
+    }
+    else
+    {
+        @*Include the static file*@
+        @Html.Raw(File.ReadAllText("wwwroot/lessons/" + Model.First().FilePath))
+
+    }
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FilePath)
-                </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FilePath)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.LessonId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.LessonId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.LessonId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-</body>
-</html>

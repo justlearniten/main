@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
+    <title>Just Learn It - @ViewData["Title"]</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -63,7 +63,7 @@
             </div>
             <div class="col-md-2">
 
-                <button type="button" class="btn btn-menu">Уроки</button>
+                <a  asp-controller="Lessons" asp-action="Index" asp-route-id="" class="btn btn-menu" >Уроки</a>
                 <button type="button" class="btn btn-menu">Упражнения</button>
                 <button type="button" class="btn btn-menu">Справочник</button>
                 @* @await Html.PartialAsync("../Lesson/_LessonListPartial")*@

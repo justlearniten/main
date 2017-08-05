@@ -20,9 +20,20 @@ namespace mainweb.Controllers
         }
 
         // GET: Lessons
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            return View(await _context.Lessons.ToListAsync());
+            if (id == null)
+            {
+
+                return View(await _context.Lessons.ToListAsync());
+            }
+            var lesson = await _context.Lessons
+               .SingleOrDefaultAsync(m => m.LessonId == id);
+            if (lesson == null)
+            {
+                return NotFound();
+            }
+            return View(new Lesson[] { lesson });
         }
 
         // GET: Lessons/Details/5
