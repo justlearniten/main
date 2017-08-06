@@ -11,6 +11,10 @@
   <PropertyGroup>
     <UserSecretsId>aspnet-mainweb-fea977c3-0d4b-4515-be06-2b4977c211ad</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot/lessons\~%24esson1.htm" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier" Version="2.4.337" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />

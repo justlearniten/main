@@ -1,24 +1,10 @@
-@model mainweb.Models.Lesson
-
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
-
+﻿@model mainweb.Models.Lesson
+<script src="~/ckeditor/ckeditor.js"></script>
+<script src="~/ckeditor/styles.js"></script>
 <form asp-action="Edit">
     <div class="form-horizontal">
-        <h4>Lesson</h4>
-        <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="LessonId" />
+        <input type="hidden" asp-for="LessonId" />
         <div class="form-group">
             <label asp-for="Title" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -27,11 +13,26 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="FilePath" class="col-md-2 control-label"></label>
+            @*<label asp-for="FilePath" class="col-md-2 control-label"></label>*@
             <div class="col-md-10">
-                <input asp-for="FilePath" class="form-control" />
+                <input type="hidden"  asp-for="FilePath" class="form-control" />
                 <span asp-validation-for="FilePath" class="text-danger"></span>
             </div>
+        </div>
+        @***************************************************************************@
+        @*CKEditor*@
+        <div class="form-group">
+            <textarea name="lessonContent" id="lessonContent" rows="10" cols="80">
+                @*Include the static file*@
+                @*@Html.Raw(File.ReadAllText("wwwroot/lessons/" + Model.FilePath))*@
+sample txt
+        </textarea>
+        <script>
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+            CKEDITOR.replace('lessonContent');
+        </script>
+        @******************************************************************************@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -42,8 +43,6 @@
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" asp-route-id="">Назад к списку</a>
 </div>
 
-</body>
-</html>

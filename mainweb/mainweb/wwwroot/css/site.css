@@ -30,6 +30,10 @@ body, .panel {
     margin-top: 10px;
     white-space: normal !important;
 }
+.dblunderline {
+    text-decoration: underline;
+    border-bottom: 1px solid #000;
+}
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -85,3 +89,4 @@ textarea {
         display: none;
     }
 }
+

@@ -58,9 +58,21 @@ CKEDITOR.stylesSet.add( 'default', [
 	{ name: 'Subscript',		element: 'sub' },
 	{ name: 'Superscript',		element: 'sup' },
 	*/
+    /*******************************************************/
+    /* custom styles                                       */
 
+    {
+        name: 'Double Underline Red',
+        element: 'span',
+        styles: {
+            'text-decoration': 'underline',
+            'text-decoration-color': '#ff0000 !important',
+            'border-bottom': '1px solid #ff0000'
+        }
+    },
+    /*******************************************************/
 	{ name: 'Marker',			element: 'span', attributes: { 'class': 'marker' } },
-
+    
 	{ name: 'Big',				element: 'big' },
 	{ name: 'Small',			element: 'small' },
 	{ name: 'Typewriter',		element: 'tt' },
