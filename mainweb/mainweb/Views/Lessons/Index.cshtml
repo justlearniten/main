@@ -8,23 +8,27 @@
 @{
     if (Model.Count() > 1)
     {
-        @foreach (var item in Model)
-        {
-            <p>@*List lessons*@
-                @i.
-                @{ i++;}
-                <a asp-route-id="@item.LessonId">@Html.DisplayFor(modelItem => item.Title)</a>
-                <a asp-action="Edit" asp-route-id="@item.LessonId">Редактировать</a>
-            </p>
-
-        }
+        <table style="border:hidden">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @*List lessons*@
+                        @i.
+                        @{ i++;}
+                        <a asp-route-id="@item.LessonId">@Html.DisplayFor(modelItem => item.Title)</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-default col-md-offset-2" asp-action="Edit" asp-route-id="@item.LessonId">Редактировать</a>
+                    </td>
+                </tr>
+             }
+        </table>
+        <p><a asp-action="Create" class="btn btn-default">Добавить</a></p>
     }
     else
     {
         @*Include the static file*@
         @Html.Raw(File.ReadAllText("wwwroot/lessons/" + Model.First().FilePath))
-
     }
 }
-
-

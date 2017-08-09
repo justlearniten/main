@@ -1,4 +1,4 @@
-﻿@model mainweb.Models.Lesson
+﻿@model mainweb.Models.LessonEditViewModel
 <script src="~/ckeditor/ckeditor.js"></script>
 <script src="~/ckeditor/styles.js"></script>
 <form asp-action="Edit">
@@ -7,25 +7,20 @@
         <input type="hidden" asp-for="LessonId" />
         <div class="form-group">
             <label asp-for="Title" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Title" class="form-control" />
+            <div>
+                <input asp-for="Title" class="form-control col-md-8" />
                 <span asp-validation-for="Title" class="text-danger"></span>
+                <input type="submit" value="Save" class="btn btn-default col-md-1 col-md-offset-1" />
             </div>
+            
         </div>
-        <div class="form-group">
-            @*<label asp-for="FilePath" class="col-md-2 control-label"></label>*@
-            <div class="col-md-10">
-                <input type="hidden"  asp-for="FilePath" class="form-control" />
-                <span asp-validation-for="FilePath" class="text-danger"></span>
-            </div>
-        </div>
+        
         @***************************************************************************@
         @*CKEditor*@
         <div class="form-group">
-            <textarea name="lessonContent" id="lessonContent" rows="10" cols="80">
+            <textarea name="Content" id="lessonContent" rows="10" cols="80">
                 @*Include the static file*@
-                @*@Html.Raw(File.ReadAllText("wwwroot/lessons/" + Model.FilePath))*@
-sample txt
+                @Html.Raw(Model.Content)
         </textarea>
         <script>
         // Replace the <textarea id="editor1"> with a CKEditor
@@ -34,11 +29,7 @@ sample txt
         </script>
         @******************************************************************************@
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+        
     </div>
 </form>
 

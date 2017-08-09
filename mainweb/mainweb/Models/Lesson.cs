@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,6 +13,7 @@ namespace mainweb.Models
     {
         public int LessonId { get; set; }
         [Display(Name = "Заголовок")]
+        [Required]
         public String Title { get; set; }
         [Display(Name = "Название файла")]
         public String FilePath { get; set; }

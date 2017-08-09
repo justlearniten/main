@@ -1,8 +1,4 @@
-@model mainweb.Models.Lesson
-
-@{
-    Layout = null;
-}
+﻿@model mainweb.Models.Lesson
 
 <!DOCTYPE html>
 
@@ -15,7 +11,7 @@
 
 <form asp-action="Create">
     <div class="form-horizontal">
-        <h4>Lesson</h4>
+        <h4>Создание нового урока</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
@@ -25,24 +21,14 @@
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
         </div>
+
         <div class="form-group">
-            <label asp-for="FilePath" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="FilePath" class="form-control" />
-                <span asp-validation-for="FilePath" class="text-danger"></span>
+            <div class="col-md-offset-2 col-md-2">
+                <input type="submit" value="Создать" class="btn btn-default" />
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="col-md-2">
+                <a class="btn btn-default" asp-action="Index" asp-route-id="">Отмена</a>
             </div>
         </div>
     </div>
 </form>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-</body>
-</html>

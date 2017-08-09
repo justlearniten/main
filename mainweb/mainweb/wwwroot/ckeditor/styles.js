@@ -33,10 +33,10 @@ CKEDITOR.stylesSet.add( 'default', [
 	{ name: 'Address',			element: 'address' },
 	*/
 
-	{ name: 'Italic Title',		element: 'h2', styles: { 'font-style': 'italic' } },
-	{ name: 'Subtitle',			element: 'h3', styles: { 'color': '#aaa', 'font-style': 'italic' } },
-	{
-		name: 'Special Container',
+    { name: 'Заголовок', element: 'h2', styles: { 'font-weight': 'bold', 'color':'#008080' } },
+    { name: 'Подзаголовок', element: 'h3', styles: { 'font-weight': 'bold' } },
+    {
+		name: 'Спец.блок',
 		element: 'div',
 		styles: {
 			padding: '5px 10px',
@@ -50,19 +50,33 @@ CKEDITOR.stylesSet.add( 'default', [
 	// These are core styles available as toolbar buttons. You may opt enabling
 	// some of them in the Styles drop-down list, removing them from the toolbar.
 	// (This requires the "stylescombo" plugin.)
-	/*
-	{ name: 'Strong',			element: 'strong', overrides: 'b' },
-	{ name: 'Emphasis',			element: 'em'	, overrides: 'i' },
-	{ name: 'Underline',		element: 'u' },
-	{ name: 'Strikethrough',	element: 'strike' },
-	{ name: 'Subscript',		element: 'sub' },
-	{ name: 'Superscript',		element: 'sup' },
-	*/
-    /*******************************************************/
-    /* custom styles                                       */
+	
+	//{ name: 'Strong',			element: 'strong', overrides: 'b' },
+	//{ name: 'Emphasis',			element: 'em'	, overrides: 'i' },
+	//{ name: 'Underline',		element: 'u' },
+	//{ name: 'Strikethrough',	element: 'strike' },
+	//{ name: 'Subscript',		element: 'sub' },
+	//{ name: 'Superscript',		element: 'sup' },
 
     {
-        name: 'Double Underline Red',
+        name: 'Красное подчеркивание',
+        element: 'span',
+        styles: {
+            'text-decoration': 'underline',
+            'text-decoration-color': '#ff0000 !important'
+        }
+    },
+    {
+        name: 'Черное подчеркивание',
+        element: 'span',
+        styles: {
+            'text-decoration': 'underline',
+            'text-decoration-color': '#000 !important'
+        }
+    },
+
+    {
+        name: 'Двойное красное подчеркивание',
         element: 'span',
         styles: {
             'text-decoration': 'underline',
@@ -70,9 +84,19 @@ CKEDITOR.stylesSet.add( 'default', [
             'border-bottom': '1px solid #ff0000'
         }
     },
+    {
+        name: 'Двойное черное подчеркивание',
+        element: 'span',
+        styles: {
+            'text-decoration': 'underline',
+            'text-decoration-color': '#000 !important',
+            'border-bottom': '1px solid #000'
+        }
+    },
     /*******************************************************/
-	{ name: 'Marker',			element: 'span', attributes: { 'class': 'marker' } },
-    
+    //{ name: 'Спец. цвет', element: 'span', styles: {'color': '#008080' } },
+    //{ name: 'Marker', element: 'span', attributes: { 'class': 'marker' } },
+    /*
 	{ name: 'Big',				element: 'big' },
 	{ name: 'Small',			element: 'small' },
 	{ name: 'Typewriter',		element: 'tt' },
@@ -90,21 +114,18 @@ CKEDITOR.stylesSet.add( 'default', [
 
 	{ name: 'Language: RTL',	element: 'span', attributes: { 'dir': 'rtl' } },
 	{ name: 'Language: LTR',	element: 'span', attributes: { 'dir': 'ltr' } },
-
+    */
 	/* Object styles */
-
-	{
+    {
 		name: 'Styled Image (left)',
 		element: 'img',
 		attributes: { 'class': 'left' }
 	},
-
 	{
 		name: 'Styled Image (right)',
 		element: 'img',
 		attributes: { 'class': 'right' }
 	},
-
 	{
 		name: 'Compact Table',
 		element: 'table',
@@ -119,7 +140,7 @@ CKEDITOR.stylesSet.add( 'default', [
 		}
 	},
 
-	{ name: 'Borderless Table',		element: 'table',	styles: { 'border-style': 'hidden', 'background-color': '#E6E6FA' } },
+    { name: 'Borderless Table', element: 'table', styles: { 'border-style': 'hidden', 'background-color': '#E6E6FA' } },
 	{ name: 'Square Bulleted List',	element: 'ul',		styles: { 'list-style-type': 'square' } },
 
 	/* Widget styles */
