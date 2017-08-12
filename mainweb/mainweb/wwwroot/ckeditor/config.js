@@ -35,5 +35,8 @@ CKEDITOR.editorConfig = function( config ) {
     config.removeDialogTabs = 'image:advanced;link:advanced';
 
     //plugins
-    config.extraPlugins = 'justify,button,panel,panelbutton,floatpanel,colorbutton';
+    config.extraPlugins = 'justify,button,panel,panelbutton,floatpanel,colorbutton,train';
+    config.contentsCss = '/css/lessons.css';
+
+    config.allowedContent = true;
 };

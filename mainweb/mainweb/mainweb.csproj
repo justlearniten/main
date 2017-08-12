@@ -15,6 +15,16 @@
   <ItemGroup>
     <Content Remove="wwwroot/lessons\~%24esson1.htm" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="wwwroot\ckeditor\plugins\table\dialogs\train.js" />
+    <Content Include="wwwroot\ckeditor\plugins\table\dialogs\traint.js" />
+    <Content Include="wwwroot\ckeditor\plugins\train\dialogs\train.js" />
+    <Content Include="wwwroot\ckeditor\plugins\train\dialogs\traint.js" />
+    <Content Include="wwwroot\ckeditor\plugins\train\icons\train.png" />
+    <Content Include="wwwroot\css\lessons.css" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier" Version="2.4.337" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
@@ -40,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Lesson\" />
+    <Folder Include="wwwroot\lessons\" />
   </ItemGroup>
 
 </Project>

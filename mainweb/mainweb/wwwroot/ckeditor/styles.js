@@ -33,19 +33,10 @@ CKEDITOR.stylesSet.add( 'default', [
 	{ name: 'Address',			element: 'address' },
 	*/
 
-    { name: 'Заголовок', element: 'h2', styles: { 'font-weight': 'bold', 'color':'#008080' } },
-    { name: 'Подзаголовок', element: 'h3', styles: { 'font-weight': 'bold' } },
-    {
-		name: 'Спец.блок',
-		element: 'div',
-		styles: {
-			padding: '5px 10px',
-			background: '#eee',
-			border: '1px solid #ccc'
-		}
-	},
-
-	/* Inline styles */
+    { name: 'Заголовок',    element: 'h2', attributes: { 'class': 'lesson-title' }  },
+    { name: 'Подзаголовок', element: 'h3', attributes: { 'class': 'lesson-subtitle' } },
+    { name: 'Спец.блок', element: 'div', attributes: { 'class': 'special-div' } },
+    /* Inline styles */
 
 	// These are core styles available as toolbar buttons. You may opt enabling
 	// some of them in the Styles drop-down list, removing them from the toolbar.
@@ -58,41 +49,10 @@ CKEDITOR.stylesSet.add( 'default', [
 	//{ name: 'Subscript',		element: 'sub' },
 	//{ name: 'Superscript',		element: 'sup' },
 
-    {
-        name: 'Красное подчеркивание',
-        element: 'span',
-        styles: {
-            'text-decoration': 'underline',
-            'text-decoration-color': '#ff0000 !important'
-        }
-    },
-    {
-        name: 'Черное подчеркивание',
-        element: 'span',
-        styles: {
-            'text-decoration': 'underline',
-            'text-decoration-color': '#000 !important'
-        }
-    },
-
-    {
-        name: 'Двойное красное подчеркивание',
-        element: 'span',
-        styles: {
-            'text-decoration': 'underline',
-            'text-decoration-color': '#ff0000 !important',
-            'border-bottom': '1px solid #ff0000'
-        }
-    },
-    {
-        name: 'Двойное черное подчеркивание',
-        element: 'span',
-        styles: {
-            'text-decoration': 'underline',
-            'text-decoration-color': '#000 !important',
-            'border-bottom': '1px solid #000'
-        }
-    },
+    { name: 'Красное подчеркивание', element: 'span', attributes: { 'class': 'red-underline' }},
+    { name: 'Черное подчеркивание', element: 'span', attributes: {'class':'black-underline'}},
+    { name: 'Двойное красное подчеркивание', element: 'span', attributes: { 'class': 'red-double-underline' } },
+    { name: 'Двойное черное подчеркивание', element: 'span', attributes: { 'class': 'black-double-underline' } },
     /*******************************************************/
     //{ name: 'Спец. цвет', element: 'span', styles: {'color': '#008080' } },
     //{ name: 'Marker', element: 'span', attributes: { 'class': 'marker' } },

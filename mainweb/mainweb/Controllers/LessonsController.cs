@@ -28,7 +28,7 @@ namespace mainweb.Controllers
         }
         private string CreateRandomFileName(string extension)
         {
-            string uniqueStr = Guid.NewGuid().ToString("N").ToUpper();
+            string uniqueStr = "jl" + Guid.NewGuid().ToString("N").ToUpper();
             return uniqueStr + extension;
         }
         // GET: Lessons

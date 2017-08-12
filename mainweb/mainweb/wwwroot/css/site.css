@@ -81,6 +81,7 @@ textarea {
     margin-top: -20px;
     font-size: 15px;
 }
+
 /***************************8*/
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
