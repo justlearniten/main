@@ -36,6 +36,7 @@ CKEDITOR.stylesSet.add( 'default', [
     { name: 'Заголовок',    element: 'h2', attributes: { 'class': 'lesson-title' }  },
     { name: 'Подзаголовок', element: 'h3', attributes: { 'class': 'lesson-subtitle' } },
     { name: 'Спец.блок', element: 'div', attributes: { 'class': 'special-div' } },
+    { name: 'Стикер', element: 'div', attributes: { 'class': 'note' } },
     /* Inline styles */
 
 	// These are core styles available as toolbar buttons. You may opt enabling

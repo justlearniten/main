@@ -24,6 +24,7 @@
     <Content Include="wwwroot\ckeditor\plugins\train\dialogs\traint.js" />
     <Content Include="wwwroot\ckeditor\plugins\train\icons\train.png" />
     <Content Include="wwwroot\css\lessons.css" />
+    <Content Include="wwwroot\lessons\jlDA0AE6CF9F9341749D21314BD6143BE4.html" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier" Version="2.4.337" />
@@ -50,7 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Lesson\" />
-    <Folder Include="wwwroot\lessons\" />
   </ItemGroup>
 
 </Project>
