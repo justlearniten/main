@@ -1,0 +1,24 @@
+﻿@model IEnumerable<mainweb.Models.Excercise>
+@{
+    ViewData["Title"] = "Упражнения";
+}
+<table  style="border:hidden">
+
+@{
+    var i = 1;
+    foreach (var item in Model) {
+        <tr>
+            <td>
+                @i.
+                @{ i++;}
+                <a asp-route-id="@item.ExcerciseId">@Html.DisplayFor(modelItem => item.ExcerciseName)</a>
+            </td>
+            <td>
+                <a class="btn btn-default col-md-offset-2" asp-action="Edit" asp-route-id="@item.ExcerciseId">Редактировать</a>
+            </td>
+        </tr>
+    }
+}
+</table>
+<p><a asp-action="Create" class="btn btn-default">Добавить</a></p>
+

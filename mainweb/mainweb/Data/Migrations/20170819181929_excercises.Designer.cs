@@ -8,9 +8,10 @@ using mainweb.Data;
 namespace mainweb.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170819181929_excercises")]
+    partial class excercises
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -90,6 +91,8 @@ namespace mainweb.Data.Migrations
 
                     b.Property<string>("ExcerciseName")
                         .IsRequired();
+
+                    b.Property<int>("Points");
 
                     b.HasKey("ExcerciseId");
 
@@ -240,14 +243,14 @@ namespace mainweb.Data.Migrations
             modelBuilder.Entity("mainweb.Models.CorrectResponse", b =>
                 {
                     b.HasOne("mainweb.Models.ExcerciseItem")
-                        .WithMany("CorrectResponses")
+                        .WithMany("Answers")
                         .HasForeignKey("ExcerciseItemId");
                 });
 
             modelBuilder.Entity("mainweb.Models.ExcerciseItem", b =>
                 {
                     b.HasOne("mainweb.Models.Excercise")
-                        .WithMany("ExcerciseItems")
+                        .WithMany("Items")
                         .HasForeignKey("ExcerciseId");
                 });
 

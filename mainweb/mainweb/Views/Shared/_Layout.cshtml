@@ -65,8 +65,8 @@
             </div>
             <div class="col-md-2">
 
-                <a  asp-controller="Lessons" asp-action="Index" asp-route-id="" class="btn btn-menu" >Уроки</a>
-                <button type="button" class="btn btn-menu">Упражнения</button>
+                <a asp-controller="Lessons" asp-action="Index" asp-route-id="" class="btn btn-menu" >Уроки</a>
+                <a asp-controller="Excercises" asp-action="Index" asp-route-id="" class="btn btn-menu">Упражнения</a>
                 <button type="button" class="btn btn-menu">Справочник</button>
                 @* @await Html.PartialAsync("../Lesson/_LessonListPartial")*@
                 @*  @await Component.InvokeAsync("LessonListComponent")*@

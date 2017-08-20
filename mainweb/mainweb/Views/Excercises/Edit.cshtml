@@ -1,0 +1,23 @@
+﻿@model mainweb.Models.Excercise
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="ExcerciseId" />
+        <div class="form-group">
+            <label asp-for="ExcerciseName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ExcerciseName" class="form-control col-md-8" />
+                <span asp-validation-for="ExcerciseName" class="text-danger"></span>
+                <input type="submit" value="Save" class="btn btn-default col-md-1 col-md-offset-1" />
+            </div>
+        </div>
+       
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index" asp-route-id="">Назад к списку</a>
+</div>
+
+
