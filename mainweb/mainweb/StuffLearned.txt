@@ -10,3 +10,8 @@
     <AllowUntrustedCertificate>true</AllowUntrustedCertificate>  
 	<Password>***********</Password>
 	in CusstomProfile.pubxml 
+
+
+	add-migration
+	update-database
+4. https://reactjs.net/getting-started/aspnetcore.html

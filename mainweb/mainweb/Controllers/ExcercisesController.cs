@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using mainweb.Data;
 using mainweb.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace mainweb.Controllers
 {
@@ -60,8 +61,12 @@ namespace mainweb.Controllers
             {
                
                 _context.Add(excercise);
+                ExcerciseItem ei = new ExcerciseItem() { Question = "" };
+                CorrectResponse cr = new CorrectResponse() { Answer = "" };
+                ei.CorrectResponses = new CorrectResponse[] { cr };
+                excercise.ExcerciseItems = new ExcerciseItem[] { ei };
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit",new { id = excercise.ExcerciseId });
             }
             return View(excercise);
         }
@@ -75,30 +80,34 @@ namespace mainweb.Controllers
             }
 
             var excercise = await _context.Excercise.SingleOrDefaultAsync(m => m.ExcerciseId == id);
+            
+                
             if (excercise == null)
             {
                 return NotFound();
             }
-            return View(excercise);
+            return View(new ExcerciseEditViewModel(excercise, _context));
         }
 
         // POST: Excercises/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ExcerciseId,ExcerciseName")] Excercise excercise)
+        [Authorize]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [FromBody] ExcerciseEditViewModel excerciseVM)
         {
-            if (id != excercise.ExcerciseId)
+            if (id != excerciseVM.ExcerciseId)
             {
                 return NotFound();
             }
-
+            Excercise excercise = excerciseVM.ToExcercise;
             if (ModelState.IsValid)
             {
                 try
                 {
-                    excercise.ExcerciseName = Utils.CleanUp(excercise.ExcerciseName);
+                    // excercise.ExcerciseName = Utils.CleanUp(excercise.ExcerciseName);
+                   
                     _context.Update(excercise);
                     await _context.SaveChangesAsync();
                 }
@@ -113,11 +122,92 @@ namespace mainweb.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Index");
+                return Json(excerciseVM);
             }
-            return View(excercise);
+            return NotFound();
         }
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> AddExcerciseItem([FromBody] int excersizeId)
+        {
+            var excercise = await _context.Excercise
+                //.Include(e => e.ExcerciseItems)
+                //.ThenInclude(ei=>ei.CorrectResponses)
+                .SingleOrDefaultAsync(m => m.ExcerciseId == excersizeId);
+                
+            if (excercise == null)
+            {
+                return NotFound();
+            }
+            ExcerciseItem newItem = new ExcerciseItem() { Question = "" };
+            _context.Entry(excercise).Collection(e => e.ExcerciseItems).Load();
+            excercise.ExcerciseItems.Add(newItem);
 
+            await _context.SaveChangesAsync();
+            newItem.CorrectResponses =new CorrectResponse[0];
+            return Json(newItem);
+        }
+       
+        public class AddAnswerModel {public int excerciseId; public int excerciseItemId; };
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> AddAnswer([FromBody] AddAnswerModel model)
+        {
+            Excercise e = await _context.Excercise.SingleOrDefaultAsync(ee => ee.ExcerciseId == model.excerciseId);
+            if (e == null)
+                return NotFound();
+            _context.Entry(e).Collection(ee => ee.ExcerciseItems).Load();
+            ExcerciseItem ei = e.ExcerciseItems.Where(ei2 => ei2.ExcerciseItemId == model.excerciseItemId).FirstOrDefault();
+            if (ei == null)
+                return NotFound();
+            _context.Entry(ei).Collection(ei3 => ei3.CorrectResponses).Load();
+            CorrectResponse cr = new CorrectResponse() { Answer = "" };
+            ei.CorrectResponses.Add(cr);
+            _context.SaveChanges();
+
+            return Json(cr);
+        }
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> DeleteItem([FromBody] AddAnswerModel model)
+        {
+            Excercise e = await _context.Excercise.SingleOrDefaultAsync(ee => ee.ExcerciseId == model.excerciseId);
+            if (e == null)
+                return NotFound();
+            _context.Entry(e).Collection(ee => ee.ExcerciseItems).Load();
+            ExcerciseItem ei = e.ExcerciseItems.Where(ei2 => ei2.ExcerciseItemId == model.excerciseItemId).FirstOrDefault();
+            if (ei == null)
+                return NotFound();
+            e.ExcerciseItems.Remove(ei);
+            
+            _context.SaveChanges();
+
+            return Ok();
+        }
+        public class DeleteAnswerModel { public int excerciseId; public int excerciseItemId; public int correctResponseId; };
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> DeleteAnswer([FromBody] DeleteAnswerModel model)
+        {
+            Excercise e = await _context.Excercise
+                .Include(ee2=>ee2.ExcerciseItems)
+                .ThenInclude(d=>d.CorrectResponses)
+                .SingleOrDefaultAsync(ee => ee.ExcerciseId == model.excerciseId);
+            if (e == null)
+                return NotFound();
+            _context.Entry(e).Collection(ee => ee.ExcerciseItems).Load();
+            ExcerciseItem ei = e.ExcerciseItems.Where(ei2 => ei2.ExcerciseItemId == model.excerciseItemId).FirstOrDefault();
+            if (ei == null)
+                return NotFound();
+            //_context.Entry(ei).Collection(ei3 => ei3.CorrectResponses).Load();
+            CorrectResponse cr2Delete = ei.CorrectResponses.Where(cr => cr.CorrectResponseId == model.correctResponseId).FirstOrDefault();
+            if (cr2Delete == null)
+                return NotFound();
+            ei.CorrectResponses.Remove(cr2Delete);
+            _context.SaveChanges();
+
+            return Json(e.ExcerciseItems);
+        }
         // GET: Excercises/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

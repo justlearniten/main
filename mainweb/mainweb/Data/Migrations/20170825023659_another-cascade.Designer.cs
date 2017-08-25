@@ -8,9 +8,10 @@ using mainweb.Data;
 namespace mainweb.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170825023659_another-cascade")]
+    partial class anothercascade
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -76,9 +77,13 @@ namespace mainweb.Data.Migrations
 
                     b.Property<int?>("ExcerciseItemId");
 
+                    b.Property<int?>("ExcerciseItemId1");
+
                     b.HasKey("CorrectResponseId");
 
                     b.HasIndex("ExcerciseItemId");
+
+                    b.HasIndex("ExcerciseItemId1");
 
                     b.ToTable("CorrectResponse");
                 });
@@ -103,12 +108,16 @@ namespace mainweb.Data.Migrations
 
                     b.Property<int?>("ExcerciseId");
 
+                    b.Property<int?>("ExcerciseId1");
+
                     b.Property<string>("Question")
                         .IsRequired();
 
                     b.HasKey("ExcerciseItemId");
 
                     b.HasIndex("ExcerciseId");
+
+                    b.HasIndex("ExcerciseId1");
 
                     b.ToTable("ExcerciseItem");
                 });
@@ -240,6 +249,11 @@ namespace mainweb.Data.Migrations
                     b.HasOne("mainweb.Models.ExcerciseItem")
                         .WithMany("CorrectResponses")
                         .HasForeignKey("ExcerciseItemId");
+
+                    b.HasOne("mainweb.Models.ExcerciseItem")
+                        .WithMany()
+                        .HasForeignKey("ExcerciseItemId1")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("mainweb.Models.ExcerciseItem", b =>
@@ -247,6 +261,11 @@ namespace mainweb.Data.Migrations
                     b.HasOne("mainweb.Models.Excercise")
                         .WithMany("ExcerciseItems")
                         .HasForeignKey("ExcerciseId");
+
+                    b.HasOne("mainweb.Models.Excercise")
+                        .WithMany()
+                        .HasForeignKey("ExcerciseId1")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

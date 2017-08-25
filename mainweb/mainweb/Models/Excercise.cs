@@ -20,12 +20,9 @@ namespace mainweb.Models
         [Required]
         public string Question { get; set; }
         public virtual ICollection<CorrectResponse> CorrectResponses { get; set; }
-        [Display(Name ="Баллы за правильный ответ")]
-        [Required]
-        public int Points { get; set; }
         public ExcerciseItem()
         {
-            Points = 1;
+          
         }
     }
     public class Excercise

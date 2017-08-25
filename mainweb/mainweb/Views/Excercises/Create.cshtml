@@ -1,21 +1,11 @@
-@model mainweb.Models.Excercise
-
+﻿@model mainweb.Models.Excercise
 @{
-    Layout = null;
+    ViewData["Title"] = "Новый упражнение";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
-<body>
 
 <form asp-action="Create">
     <div class="form-horizontal">
-        <h4>Excercise</h4>
+        <h4>Создание нового упражнения</h4>
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
@@ -26,16 +16,15 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="col-md-offset-2 col-md-2">
+                <input type="submit" value="Создать" class="btn btn-default" />
+            </div>
+            <div class="col-md-2">
+                <a class="btn btn-default" asp-action="Index" asp-route-id="">Отмена</a>
             </div>
         </div>
     </div>
 </form>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
-</body>
-</html>
+
