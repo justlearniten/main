@@ -1,33 +1,18 @@
-@model mainweb.Models.Excercise
-
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
+﻿@model mainweb.Models.Excercise
 
 <div>
-    <h4>Excercise</h4>
+    <h4>@Html.DisplayFor(model => model.ExcerciseName)</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ExcerciseName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ExcerciseName)
-        </dd>
-    </dl>
+    @{
+        var i = 0;
+        foreach (var item in Model.ExcerciseItems)
+        {
+            i++;
+            <p>@i.@item.Question</p>
+        }
+    }
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ExcerciseId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Назад к списку</a>
 </div>
-</body>
-</html>
+

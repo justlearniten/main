@@ -14,6 +14,8 @@ using mainweb.Models;
 using mainweb.Services;
 using Microsoft.AspNetCore.Http;
 using React.AspNet;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace mainweb
 {
@@ -84,7 +86,9 @@ namespace mainweb
                 // See http://reactjs.net/ for more information. Example:
                 config
                     .AddScript("~/lib/remarkable.min.js")
-                    .AddScript("~js/react/excercises.jsx");
+                    .AddScript("~/lib/react-bootstrap/react-bootstrap.js")
+                    .AddScript("~/js/react/excercises.jsx")
+                    .AddScript("~/js/react/confirm.jsx"); ;
 
                 // If you use an external build too (for example, Babel, Webpack,
                 // Browserify or Gulp), you can improve performance by disabling
@@ -94,6 +98,7 @@ namespace mainweb
                 //    .SetLoadBabel(false)
                 //    .AddScriptWithoutTransform("~/Scripts/bundle.server.js");
             });
+
             app.UseStaticFiles();
 
             app.UseIdentity();

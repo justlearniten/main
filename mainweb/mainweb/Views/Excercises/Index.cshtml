@@ -11,7 +11,15 @@
             <td>
                 @i.
                 @{ i++;}
-                <a asp-route-id="@item.ExcerciseId">@Html.DisplayFor(modelItem => item.ExcerciseName)</a>
+                
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a href="javascript:showExcercise(@item.ExcerciseId)">@item.ExcerciseName</a>
+                }
+                else
+                {   
+                    <a asp-route-id="@item.ExcerciseId" asp-action="Details">@Html.DisplayFor(modelItem => item.ExcerciseName)</a>
+                }
             </td>
             <td>
                 <a class="btn btn-default col-md-offset-2" asp-action="Edit" asp-route-id="@item.ExcerciseId">Редактировать</a>
@@ -21,4 +29,5 @@
 }
 </table>
 <p><a asp-action="Create" class="btn btn-default">Добавить</a></p>
+<a href="javascript:showConfirm(null,'Are you sure','Really dow it')">Yes/No</a>
 

@@ -24,8 +24,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
 
     @Html.Raw(JavaScriptSnippet.FullScript)
+    <script src="@Url.Content("~/lib/react-bootstrap/react-bootstrap.js")"></script>
+    @*<script src="@Url.Content("~/lib/react-modal/dist/react-modal.js")"></script>*@
+    <script src="@Url.Content("~/js/react/excercises.jsx")"></script>
+    <script src="@Url.Content("~/js/react/confirm.jsx")"></script>
 </head>
 <body>
+    <div id="excerciseDiv" style="position:absolute;align-self:center;"></div>
+    <div id="confirmDiv" style="position:absolute;align-self:center;"></div>
+    <div id="okDiv" style="position:absolute;align-self:center;"></div>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">

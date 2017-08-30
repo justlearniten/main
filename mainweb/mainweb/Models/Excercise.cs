@@ -24,6 +24,34 @@ namespace mainweb.Models
         {
           
         }
+
+        internal int Check(ExcerciseItemDetailsViewModel eid)
+        {
+            foreach (var cr in CorrectResponses)
+                if (KindaEqual(cr.Answer, eid.Answer))
+                    return 1;
+            return 0;
+        }
+
+        internal bool KindaEqual(string one, string two)
+        {
+            return NormalizeStr(one) == NormalizeStr(two); ;
+
+        }
+
+        private string NormalizeStr(string str)
+        {
+            string res = str.Trim();
+            res = res
+                .Replace(".", " . ")
+                .Replace("!", " ! ")
+                .Replace("?", " ? ")
+                .Replace("'", " ' ");
+            while (res.Contains("  "))
+                res = res.Replace("  ", " ");
+            res = res.ToUpper();
+            return res;
+        }
     }
     public class Excercise
     {
@@ -37,6 +65,18 @@ namespace mainweb.Models
             get {
                 return 0;//TODO:
             }
+        }
+
+        internal int Check(ExcerciseDetailsViewModel model)
+        {
+            int res = 0;
+            for(var i=0;i<model.ExcerciseItems.Length;i++)
+            {
+                ExcerciseItem ei = ExcerciseItems.ElementAt(i);
+                ExcerciseItemDetailsViewModel eid = model.ExcerciseItems[i];
+                res += ei.Check(eid);
+            }
+            return res;
         }
     }
 }

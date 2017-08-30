@@ -1,4 +1,7 @@
-﻿var ExcerciseItem = React.createClass({
+﻿var Modal = ReactBootstrap.Modal;
+var Button = ReactBootstrap.Button;
+
+var ExcerciseItem = React.createClass({
     //addAnswer: function (e) {
     //    this.setState({ correctResponses: this.state.correctResponses.concat([{ answer: "hehehe" }]) });
     //},
@@ -34,7 +37,7 @@
             </div>
             );
         return (
-            <div className="form-horizontal form-group col-ms-12 well">
+            <div className="form-horizontal form-group col-md-12 well">
                 <label className="col-md-2 control-label">Вопрос</label>
                 <div className="col-md-10">
                     <input className = "form-control"
@@ -255,7 +258,160 @@ var Excercise = React.createClass({
             );
     }
 });
+///////////////////////////////////////////////////////////////////////////
+var ExcerciseDlg = React.createClass({
+    getInitialState: function () {
+        return {
+            //excercise: getExcercise(this.props.excerciseId),
+            currentItem: 0,
+            show:true
+        };
+    },
+    onEditAnswer: function (e) {
+        var newItems = this.state.excercise.excerciseItems.slice(0);
+        newItems[this.state.currentItem].answer = e.target.value;
+        this.setState({
+            excercise:
+            {
+                excerciseId: this.state.excercise.excerciseId,
+                excerciseName: this.state.excercise.excerciseName,
+                excerciseItems: newItems
+            }
+        });
+    },
+    onForward: function (e) {
+        var index = this.state.currentItem + 1;
+        if (index >= this.state.excercise.excerciseItems.length)
+            index = this.state.excercise.excerciseItems.length-1;
+        this.setState({ currentItem: index});
+    },
+    onBack: function (e) {
+        var index = this.state.currentItem - 1;
+        if (index < 0)
+            index = 0;
 
+        this.setState({ currentItem: index });
+    },
+    close: function () {
+        this.setState({ show: false });
+    },
+    onHide: function () {
+        showConfirm(
+            () => { this.setState({ show: false }); },
+            "Закончить упражнение без оценки?",
+            null,
+            "Да", "Нет");
+    },
+    check: function () {
+        console.log("checking");
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('post', '/Excercises/Check', false);
+        xhr.setRequestHeader("Content-Type", 'application/json');
+        xhr.onload = function () {
+            if (xhr.status != 200)
+                return xhr.onerror();
+            var res = JSON.parse(xhr.response);
+            console.log(res);
+            this.setState({ show: false });
+            var msg = "Вы набрали " + res.points + " баллов из " + res.maxPoints + " возможных";
+            showOk("Упраженение проверено", msg);
+
+        }.bind(this);
+        xhr.onerror = function () {
+            alert("Ошибка при проверке упражнения");
+        }
+        xhr.send(JSON.stringify(this.state.excercise));
+    },
+    onCheck: function () {
+        showConfirm(
+            this.check,
+            "Проверить упражнение?",
+            "Если вы уже выполняли это упражнение, проверка сбросит предыдущий результат.",
+            "Да", "Нет");
+    },
+    render: function () {
+        var a = (
+            <Modal bsSize="large" backdrop="static"
+                show={this.state.show} onHide={this.onHide} >
+                <Modal.Header closeButton >
+                    <Modal.Title><b>{this.state.excercise && this.state.excercise.excerciseName}</b></Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    <div className="form-horizontal">
+                        <div className="form-group">
+                            <label className="col-md-2 control-label">Вопрос: </label>
+                            <div className="col-md-8" style={{ paddingTop: "7px" }}>
+                                {this.state.excercise && this.state.excercise.excerciseItems[this.state.currentItem].question}
+                            </div>
+                        </div>
+
+                        <div className=" form-group">
+                            <label className="col-md-2 control-label">Ответ: </label>
+                            <input className="form-control col-md-8" style={{ maxWidth: "600px" }}
+                                value={this.state.excercise ? this.state.excercise.excerciseItems[this.state.currentItem].answer : ""}
+                                onChange={this.onEditAnswer} />
+                        </div>
+                    </div>
+                </Modal.Body>
+
+                <Modal.Footer >
+                    <div>
+                        <div className="col-md-4" style={{ textAlign: "left" }}>
+                            <Button onClick={this.onBack}><i className="fa fa-chevron-left" aria-hidden="true"></i></Button>
+                            <label className="control-label"
+                                style={{ paddingLeft: "10px", paddingRight: "10px" }}>
+                                &nbsp; {this.state.currentItem + 1} / {this.state.excercise ? this.state.excercise.excerciseItems.length : 1}&nbsp;
+                            </label>
+                            <Button onClick={this.onForward}><i className="fa fa-chevron-right" aria-hidden="true"></i></Button>
+                        </div>
+                        <div className="col-md-4 col-md-offset-4">
+                            <Button bsStyle="primary" onClick={this.onCheck}>Сдать на проверку</Button>
+                        </div>
+                    </div>
+                </Modal.Footer>
+            </Modal>
+        );
+        return a;
+    }
+});
+
+function getExcercise(excerciseId) {
+    
+
+    var xhr = new XMLHttpRequest();
+    var res = null;
+    xhr.open('get', '/Excercises/Details/' + excerciseId, false);
+    xhr.setRequestHeader("Accept", 'application/json');
+    xhr.onload = function () {
+        if (xhr.status != 200)
+            return null;
+        res = JSON.parse(xhr.response);
+    }.bind(this);
+    xhr.onerror = function () {
+        return null;
+    }
+    xhr.send();
+    return res;
+}
+
+function showExcercise(excerciseId){
+    console.log(excerciseId);
+
+    //var excercise = getExcercise(excerciseId);
+    
+    var a = ReactDOM.render(
+        <ExcerciseDlg excerciseId={excerciseId} show={true} />,
+        document.getElementById('excerciseDiv')
+    );
+    a.setState({
+        excercise: getExcercise(excerciseId),
+        currentItem: 0,
+        show: true
+    });
+}
+///////////////////////////////////////////////////////////////////////////
 
 //ReactDOM.render("ExcerciseItemsList",
 //    <CommentBox />,

@@ -19,7 +19,7 @@ namespace mainweb.Controllers
         {
             _context = context;    
         }
-
+     
         // GET: Excercises
         public async Task<IActionResult> Index()
         {
@@ -40,10 +40,27 @@ namespace mainweb.Controllers
             {
                 return NotFound();
             }
-
+            var a = Request.Headers["Accept"];
+            _context.Entry(excercise).Collection(e => e.ExcerciseItems).Load();
+            if (a.Count > 0 && String.Compare(a[0], "application/json", true) == 0 && HttpContext.User.Identity.IsAuthenticated)
+            {
+                
+                return Json(ExcerciseDetailsViewModel.FromExcercise(excercise));
+            }
             return View(excercise);
         }
+        public async Task<IActionResult> Check([FromBody] ExcerciseDetailsViewModel model)
+        {
+            Excercise excercise = await _context.Excercise
+                .Include(e=>e.ExcerciseItems)
+                .ThenInclude(ei=>ei.CorrectResponses)
+                .SingleOrDefaultAsync(e => e.ExcerciseId == model.ExcerciseId);
 
+            if (excercise == null)
+                return NotFound();
+            int points = excercise.Check(model);
+            return Json(new { points = points, maxPoints = excercise.ExcerciseItems.Count});
+        }
         // GET: Excercises/Create
         public IActionResult Create()
         {
