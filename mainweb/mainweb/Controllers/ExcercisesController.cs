@@ -25,7 +25,21 @@ namespace mainweb.Controllers
         {
             return View(await _context.Excercise.ToListAsync());
         }
-
+        // GET: Excercises/list
+        [Authorize]
+        public IActionResult List()
+        {
+            IList<String[]> res = new List<String[]>();
+            foreach (var e in _context.Excercise)
+            {
+                res.Add(new String[]
+                {
+                    e.ExcerciseName,
+                    e.ExcerciseId.ToString()
+                });
+            }
+            return Json(res.ToArray());
+        }
         // GET: Excercises/Details/5
         public async Task<IActionResult> Details(int? id)
         {
