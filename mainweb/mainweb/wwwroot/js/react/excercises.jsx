@@ -321,6 +321,10 @@ var ExcerciseDlg = React.createClass({
         xhr.onerror = function () {
             alert("Ошибка при проверке упражнения");
         }
+        var timeLocal =  new Date();
+        var offsetMinutes = timeLocal.getTimezoneOffset();
+        timeLocal = new Date(timeLocal.getTime() - offsetMinutes * 60 * 1000);
+        this.state.excercise.currentTime = timeLocal;
         xhr.send(JSON.stringify(this.state.excercise));
     },
     onCheck: function () {

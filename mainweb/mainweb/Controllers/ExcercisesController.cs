@@ -8,16 +8,18 @@ using Microsoft.EntityFrameworkCore;
 using mainweb.Data;
 using mainweb.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace mainweb.Controllers
 {
     public class ExcercisesController : Controller
     {
         private readonly ApplicationDbContext _context;
-
-        public ExcercisesController(ApplicationDbContext context)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public ExcercisesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
-            _context = context;    
+            _context = context;
+            _userManager = userManager;
         }
      
         // GET: Excercises
@@ -63,6 +65,7 @@ namespace mainweb.Controllers
             }
             return View(excercise);
         }
+        [Authorize]
         public async Task<IActionResult> Check([FromBody] ExcerciseDetailsViewModel model)
         {
             Excercise excercise = await _context.Excercise
@@ -73,8 +76,32 @@ namespace mainweb.Controllers
             if (excercise == null)
                 return NotFound();
             int points = excercise.Check(model);
-            return Json(new { points = points, maxPoints = excercise.ExcerciseItems.Count});
+            int maxPoints = excercise.ExcerciseItems.Count;
+
+            Test test = new Test()
+            {
+                ExcerciseId = excercise.ExcerciseId,
+                PointsEarned = points,
+                PointsAvailable = maxPoints,
+                TimeTaken = model.CurrentTime
+            };
+            var user = await _userManager.GetUserAsync(User);
+            _context.Entry(user).Collection(e => e.TestsTaken).Load();
+            var existingExcercise = user.TestsTaken.Where(tt => tt.ExcerciseId == excercise.ExcerciseId).FirstOrDefault();
+            if(existingExcercise == null)
+            {
+                user.TestsTaken.Add(test);
+            }
+            else
+            {
+                existingExcercise.PointsAvailable = maxPoints;
+                existingExcercise.PointsEarned = points;
+                existingExcercise.TimeTaken = model.CurrentTime;
+            }
+            await _context.SaveChangesAsync();
+            return Json(new { points = points, maxPoints = maxPoints});
         }
+        [Authorize(Roles = "Administrator")]
         // GET: Excercises/Create
         public IActionResult Create()
         {
@@ -86,6 +113,7 @@ namespace mainweb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Create([Bind("ExcerciseId,ExcerciseName")] Excercise excercise)
         {
             if (ModelState.IsValid)
@@ -103,6 +131,7 @@ namespace mainweb.Controllers
         }
 
         // GET: Excercises/Edit/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -124,7 +153,7 @@ namespace mainweb.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [FromBody] ExcerciseEditViewModel excerciseVM)
         {
@@ -158,7 +187,7 @@ namespace mainweb.Controllers
             return NotFound();
         }
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> AddExcerciseItem([FromBody] int excersizeId)
         {
             var excercise = await _context.Excercise
@@ -181,7 +210,7 @@ namespace mainweb.Controllers
        
         public class AddAnswerModel {public int excerciseId; public int excerciseItemId; };
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> AddAnswer([FromBody] AddAnswerModel model)
         {
             Excercise e = await _context.Excercise.SingleOrDefaultAsync(ee => ee.ExcerciseId == model.excerciseId);
@@ -199,7 +228,7 @@ namespace mainweb.Controllers
             return Json(cr);
         }
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteItem([FromBody] AddAnswerModel model)
         {
             Excercise e = await _context.Excercise.SingleOrDefaultAsync(ee => ee.ExcerciseId == model.excerciseId);
@@ -217,7 +246,7 @@ namespace mainweb.Controllers
         }
         public class DeleteAnswerModel { public int excerciseId; public int excerciseItemId; public int correctResponseId; };
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteAnswer([FromBody] DeleteAnswerModel model)
         {
             Excercise e = await _context.Excercise
@@ -239,7 +268,8 @@ namespace mainweb.Controllers
 
             return Json(e.ExcerciseItems);
         }
-        // GET: Excercises/Delete/5
+        // GET: Excercises/Delete/5/
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -260,6 +290,7 @@ namespace mainweb.Controllers
         // POST: Excercises/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var excercise = await _context.Excercise.SingleOrDefaultAsync(m => m.ExcerciseId == id);
@@ -271,6 +302,29 @@ namespace mainweb.Controllers
         private bool ExcerciseExists(int id)
         {
             return _context.Excercise.Any(e => e.ExcerciseId == id);
+        }
+        [Authorize]
+        public async Task<IActionResult> Progress()
+        {
+            var excercises = await _context.Excercise.ToListAsync();
+            var user = await _userManager.GetUserAsync(User);
+            _context.Entry(user).Collection(e => e.TestsTaken).Load();
+            var res = new List<ProgressViewModel>();
+            foreach(var ex in excercises)
+            {
+                ProgressViewModel pr = new ProgressViewModel() { Id = ex.ExcerciseId , ExcerciseName = ex.ExcerciseName};
+                Test t = user.TestsTaken.FirstOrDefault(tt => tt.ExcerciseId == ex.ExcerciseId);
+                if (t != null)
+                {
+                    pr.PointsAvailable = t.PointsAvailable;
+                    pr.PointsEarned = t.PointsEarned;
+                    pr.TimeTaken = t.TimeTaken;
+                }
+                res.Add(pr);
+
+            }
+            
+            return View(res);
         }
     }
 }

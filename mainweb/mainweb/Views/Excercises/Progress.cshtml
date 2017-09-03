@@ -1,0 +1,32 @@
+﻿@model IEnumerable<mainweb.Models.ProgressViewModel>
+
+
+<h4>Выполненные упражнения</h4>
+<table class="table">
+@{var i = 0;
+  String outStr;
+}
+@foreach (var item in Model) {
+        <tr>
+            @{i++;}
+            <td style="white-space: nowrap;width: 10px;">
+                @i.
+                @if(item.TimeTaken!=default(DateTime))
+                {
+                    var prct = (float)item.PointsEarned/item.PointsAvailable;
+                    outStr = String.Format("{0,10:MM/dd/yyyy} - {1,3:P0} ({2} из {3}) ",item.TimeTaken, prct,item.PointsEarned, item.PointsAvailable);
+                }
+                else{
+                    outStr="Не выполнено";
+                }
+
+                @outStr
+            </td>
+            <td>
+                <a href="javascript:showExcercise(@item.Id)">@item.ExcerciseName</a>
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>

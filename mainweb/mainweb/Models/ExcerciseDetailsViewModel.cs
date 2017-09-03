@@ -26,6 +26,7 @@ namespace mainweb.Models
         public int ExcerciseId { get; set; }
         public string ExcerciseName { get; set; }
         public ExcerciseItemDetailsViewModel[] ExcerciseItems { get; set; }
+        public DateTime CurrentTime { get; set; }
         public static ExcerciseDetailsViewModel FromExcercise(Excercise item)
         {
             ExcerciseDetailsViewModel res = new ExcerciseDetailsViewModel()

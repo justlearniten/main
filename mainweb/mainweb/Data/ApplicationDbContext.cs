@@ -29,5 +29,7 @@ namespace mainweb.Data
         }
 
         public DbSet<mainweb.Models.Excercise> Excercise { get; set; }
+
+        public DbSet<mainweb.Models.ProgressViewModel> ProgressViewModel { get; set; }
     }
 }
