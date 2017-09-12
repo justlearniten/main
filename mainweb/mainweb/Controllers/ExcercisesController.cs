@@ -313,15 +313,16 @@ namespace mainweb.Controllers
             foreach(var ex in excercises)
             {
                 ProgressViewModel pr = new ProgressViewModel() { Id = ex.ExcerciseId , ExcerciseName = ex.ExcerciseName};
+                _context.Entry(ex).Collection(e => e.ExcerciseItems).Load();
+                pr.PointsAvailable = ex.ExcerciseItems.Count;
                 Test t = user.TestsTaken.FirstOrDefault(tt => tt.ExcerciseId == ex.ExcerciseId);
                 if (t != null)
                 {
-                    pr.PointsAvailable = t.PointsAvailable;
+                   
                     pr.PointsEarned = t.PointsEarned;
                     pr.TimeTaken = t.TimeTaken;
                 }
                 res.Add(pr);
-
             }
             
             return View(res);

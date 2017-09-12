@@ -62,7 +62,11 @@ td.second-row{
     text-decoration-color: #000000 !important;
     border-bottom: 1px solid #000000;
 }
-
+td {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 4px;
+}
 .note {
     font-family: 'Bad Script', cursive;
     font-weight: bold;

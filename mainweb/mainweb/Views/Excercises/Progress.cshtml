@@ -3,30 +3,57 @@
 
 <h4>Выполненные упражнения</h4>
 <table class="table">
-@{var i = 0;
-  String outStr;
+@{
+    var i = 0;
+    String outStr;
+    int totalEarned = 0;
+    int totalAvailable = 0;
+    float prct = 0.0F;
 }
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
+    prct = 0.0F;
         <tr>
             @{i++;}
             <td style="white-space: nowrap;width: 10px;">
                 @i.
-                @if(item.TimeTaken!=default(DateTime))
+                @if (item.TimeTaken != default(DateTime))
                 {
-                    var prct = (float)item.PointsEarned/item.PointsAvailable;
-                    outStr = String.Format("{0,10:MM/dd/yyyy} - {1,3:P0} ({2} из {3}) ",item.TimeTaken, prct,item.PointsEarned, item.PointsAvailable);
-                }
-                else{
-                    outStr="Не выполнено";
-                }
+                    prct = (float)item.PointsEarned / item.PointsAvailable;
+                    outStr = String.Format("{0,10:dd/MM/yyyy} - {1,3:P0} ({2} из {3}) ", item.TimeTaken, prct, item.PointsEarned, item.PointsAvailable);
+                    totalEarned += item.PointsEarned;
 
+                }
+                else
+                {
+                    outStr = "Не выполнено";
+                }
+                @{
+                    totalAvailable += item.PointsAvailable;
+                }
                 @outStr
             </td>
             <td>
-                <a href="javascript:showExcercise(@item.Id)">@item.ExcerciseName</a>
+                @{ var w = String.Format("{0,3:F0}%", prct);}
+                <div style="background-color:aqua;width:100%;">
+                    
+                    <div>
+                        <a href="javascript:showExcercise(@item.Id)">@item.ExcerciseName</a>
+                    </div>
+                    <div style="background-color:blue;position:absolute;height:10px; width:@w;"></div>
+                </div>
             </td>
             
         </tr>
 }
-    </tbody>
+
+    @if (totalAvailable != 0)
+    {
+        var totalPrct = (float)totalEarned / totalAvailable;
+        outStr = String.Format("ИТОГО:  {0,3:P0}   ({1} из {2}) ", totalPrct, totalEarned, totalAvailable);
+        <tr>
+            <td><strong>@outStr</strong></td>
+            <td></td>
+        </tr>
+    }
 </table>
