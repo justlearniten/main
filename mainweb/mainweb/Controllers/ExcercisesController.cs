@@ -101,6 +101,20 @@ namespace mainweb.Controllers
             await _context.SaveChangesAsync();
             return Json(new { points = points, maxPoints = maxPoints});
         }
+        public class CheckAnswerViewModel
+        {
+            public int QuestionId { get; set; }
+            public string Question { get; set; }
+            public string Answer { get; set; }
+        }
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> CheckAnswer([FromBody] CheckAnswerViewModel model)
+        {
+            var item = await _context.ExcerciseItem.FirstOrDefaultAsync(ei => ei.ExcerciseItemId == model.QuestionId);
+            _context.Entry(item).Collection(i => i.CorrectResponses).Load();
+            return Json(new { correct = item.Check(model.Answer)!=0 });
+        }
         [Authorize(Roles = "Administrator")]
         // GET: Excercises/Create
         public IActionResult Create()

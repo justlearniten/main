@@ -1,6 +1,6 @@
 ﻿var Modal = ReactBootstrap.Modal;
 var Button = ReactBootstrap.Button;
-
+var FormGroup = ReactBootstrap.FormGroup;
 var ExcerciseItem = React.createClass({
     //addAnswer: function (e) {
     //    this.setState({ correctResponses: this.state.correctResponses.concat([{ answer: "hehehe" }]) });
@@ -262,9 +262,9 @@ var Excercise = React.createClass({
 var ExcerciseDlg = React.createClass({
     getInitialState: function () {
         return {
-            //excercise: getExcercise(this.props.excerciseId),
             currentItem: 0,
-            show:true
+            show: true,
+            validationState:null
         };
     },
     onEditAnswer: function (e) {
@@ -278,12 +278,48 @@ var ExcerciseDlg = React.createClass({
                 excerciseItems: newItems
             }
         });
+        this.checkAnswer();
+       
+    },
+    checkAnswer: function (index) {
+        var idx = index !== undefined ?index: this.state.currentItem;
+        var answer = this.state.excercise.excerciseItems[idx].answer.trim();
+
+        if (!answer) {
+            this.setState({ validationState: null });
+            return;
+        }
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('post', '/Excercises/CheckAnswer', true);
+        xhr.setRequestHeader("Content-Type", 'application/json');
+        xhr.onload = function () {
+            if (xhr.status != 200)
+                return xhr.onerror();
+
+            var res = JSON.parse(xhr.response);
+            var status = null;
+            if (res.correct)
+                status = "success";
+            else
+                status = "error";
+            this.setState({ validationState: status });
+
+        }.bind(this);
+
+        xhr.onerror = function () {
+            this.setState({ validationState: null });
+        }.bind(this);
+
+        xhr.send(JSON.stringify(this.state.excercise.excerciseItems[idx]));
+   
     },
     onForward: function (e) {
         var index = this.state.currentItem + 1;
         if (index >= this.state.excercise.excerciseItems.length)
             index = this.state.excercise.excerciseItems.length-1;
-        this.setState({ currentItem: index});
+        this.setState({ currentItem: index });
+        this.checkAnswer(index);
     },
     onBack: function (e) {
         var index = this.state.currentItem - 1;
@@ -291,6 +327,7 @@ var ExcerciseDlg = React.createClass({
             index = 0;
 
         this.setState({ currentItem: index });
+        this.checkAnswer(index);
     },
     close: function () {
         this.setState({ show: false });
@@ -303,7 +340,6 @@ var ExcerciseDlg = React.createClass({
             "Да", "Нет");
     },
     check: function () {
-        console.log("checking");
         var xhr = new XMLHttpRequest();
 
         xhr.open('post', '/Excercises/Check', false);
@@ -350,13 +386,16 @@ var ExcerciseDlg = React.createClass({
                                 {this.state.excercise && this.state.excercise.excerciseItems[this.state.currentItem].question}
                             </div>
                         </div>
-
+                        <FormGroup validationState={this.state.validationState} >
                         <div className=" form-group">
                             <label className="col-md-2 control-label">Ответ: </label>
                             <input className="form-control col-md-8" style={{ maxWidth: "600px" }}
                                 value={this.state.excercise ? this.state.excercise.excerciseItems[this.state.currentItem].answer : ""}
-                                onChange={this.onEditAnswer} />
+                                onChange={this.onEditAnswer}
+                               
+                            />
                         </div>
+                        </FormGroup>
                     </div>
                 </Modal.Body>
 

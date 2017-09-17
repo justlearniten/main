@@ -32,7 +32,11 @@ namespace mainweb.Models
                     return 1;
             return 0;
         }
-
+        internal int Check(string ans)
+        {
+            ExcerciseItemDetailsViewModel eid = new ExcerciseItemDetailsViewModel() { Answer = ans };
+            return Check(eid);
+        }
         internal bool KindaEqual(string one, string two)
         {
             return NormalizeStr(one) == NormalizeStr(two); ;
