@@ -1,13 +1,14 @@
-﻿@model mainweb.Models.Lesson
+﻿@model mainweb.Models.LessonGroup
+
 @{
-    ViewData["Title"] = "Новый урок";
+    
 }
 
-<form asp-action="Create">
-    <div class="form-horizontal">
-        <h4>Создание нового урока</h4>
+
+<form asp-action="EditGroup">
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="LessonGroupId" />
         <div class="form-group">
             <label asp-for="Title" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -15,10 +16,9 @@
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
         </div>
-
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-2">
-                <input type="submit" value="Создать" class="btn btn-default" />
+            <div class="col-md-2">
+                <input type="submit" value="Сохранить" class="btn btn-default" />
             </div>
             <div class="col-md-2">
                 <a class="btn btn-default" asp-action="GroupsList" asp-route-id="">Отмена</a>
@@ -26,3 +26,4 @@
         </div>
     </div>
 </form>
+

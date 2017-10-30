@@ -12,9 +12,12 @@
                 <span asp-validation-for="Title" class="text-danger"></span>
                 <input type="submit" value="Save" class="btn btn-default col-md-1 col-md-offset-1" />
             </div>
-            
+           
         </div>
-        
+        <div class="form-group">
+            <label class="col-md-2 control-label">Группа</label>
+            @Html.DropDownList("LessonGroupId", (SelectList)ViewBag.LessonGroups, "--Без группы--", new { @class = "form-control col-md-8" })
+        </div>
         @***************************************************************************@
         @*CKEditor*@
         <div class="form-group">

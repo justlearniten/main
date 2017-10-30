@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using mainweb.Data;
-using mainweb.Models;
 
 namespace mainweb.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170918025850_lesson-group2")]
+    partial class lessongroup2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -82,21 +82,6 @@ namespace mainweb.Data.Migrations
                     b.HasIndex("ExcerciseItemId");
 
                     b.ToTable("CorrectResponse");
-                });
-
-            modelBuilder.Entity("mainweb.Models.DictionaryEntry", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("DicDirection");
-
-                    b.Property<string>("Text")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Dictionary");
                 });
 
             modelBuilder.Entity("mainweb.Models.Excercise", b =>
@@ -199,23 +184,6 @@ namespace mainweb.Data.Migrations
                     b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Test");
-                });
-
-            modelBuilder.Entity("mainweb.Models.Translation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("DictionaryEntryId");
-
-                    b.Property<string>("Text")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DictionaryEntryId");
-
-                    b.ToTable("Translation");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>
@@ -341,8 +309,8 @@ namespace mainweb.Data.Migrations
 
             modelBuilder.Entity("mainweb.Models.Lesson", b =>
                 {
-                    b.HasOne("mainweb.Models.LessonGroup", "LessonGroup")
-                        .WithMany("Lessons")
+                    b.HasOne("mainweb.Models.LessonGroup")
+                        .WithMany("CorrectResponses")
                         .HasForeignKey("LessonGroupId");
                 });
 
@@ -351,13 +319,6 @@ namespace mainweb.Data.Migrations
                     b.HasOne("mainweb.Models.ApplicationUser")
                         .WithMany("TestsTaken")
                         .HasForeignKey("ApplicationUserId");
-                });
-
-            modelBuilder.Entity("mainweb.Models.Translation", b =>
-                {
-                    b.HasOne("mainweb.Models.DictionaryEntry")
-                        .WithMany("Translatins")
-                        .HasForeignKey("DictionaryEntryId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

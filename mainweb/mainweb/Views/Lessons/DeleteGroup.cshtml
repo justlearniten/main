@@ -1,0 +1,29 @@
+﻿@model mainweb.Models.LessonGroup
+
+@{
+    ViewData["Title"] = "Удалить группу";
+}
+
+
+
+<h3>Дествительно удалить?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="LessonGroupId" />
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+    </dl>
+    
+    <form asp-action="DeleteGroup">
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> 
+            <a asp-action="GroupsList" class="btn btn-default">Back to List</a>
+        </div>
+    </form>
+</div>
+

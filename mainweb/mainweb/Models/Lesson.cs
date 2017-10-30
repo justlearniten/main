@@ -17,6 +17,16 @@ namespace mainweb.Models
         public String Title { get; set; }
         [Display(Name = "Название файла")]
         public String FilePath { get; set; }
+        [Display(Name ="Группа")]
+        public virtual LessonGroup LessonGroup { get; set; }
+    }
+    public class LessonGroup
+    {
+        public int LessonGroupId { get; set; }
+        [Display(Name = "Название группы")]
+        [Required]
+        public string Title { get; set; }
+        public virtual ICollection<Lesson> Lessons { get; set; }
     }
     
 }

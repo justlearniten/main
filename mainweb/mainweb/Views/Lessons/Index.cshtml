@@ -1,4 +1,4 @@
-﻿@model IEnumerable<mainweb.Models.Lesson>
+﻿@model mainweb.Models.LessonsViewModel
 @{
     ViewData["Title"] = "Уроки";
 }
@@ -6,29 +6,44 @@
     var i = 1;
 }
 @{
-    if (Model.Count() > 1)
+    if (Model.Lesson==null)
     {
-        <table style="border:hidden">
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @*List lessons*@
-                        @i.
-                        @{ i++;}
-                        <a asp-route-id="@item.LessonId">@Html.DisplayFor(modelItem => item.Title)</a>
-                    </td>
-                    <td>
-                        <a class="btn btn-default col-md-offset-2" asp-action="Edit" asp-route-id="@item.LessonId">Редактировать</a>
-                    </td>
-                </tr>
+        @foreach (var item in Model.UngrouppedLessons) //first ungroupped
+        {
+            <div>
+               <a class="col-md-8" asp-route-id="@item.LessonId">@Html.DisplayFor(modelItem => item.Title)</a>
+             @if ((bool)ViewData["IsAdmin"])
+             {
+                <a class="btn btn-default" asp-action="Edit" asp-route-id="@item.LessonId">Редактировать</a>
              }
-        </table>
-        <p><a asp-action="Create" class="btn btn-default">Добавить</a></p>
+             </div>
+        }
+        @foreach (var g in Model.Groups)
+        {
+            <h4 class="col-md-12">@g.Title</h4>
+            @foreach (var item in g.Lessons)
+            {
+                <div>
+                    <a class="col-md-8" asp-route-id="@item.LessonId">@Html.DisplayFor(modelItem => item.Title)</a>
+                    @if ((bool)ViewData["IsAdmin"])
+                    {
+                        <a class="btn btn-default" asp-action="Edit" asp-route-id="@item.LessonId">Редактировать</a>
+                    }
+                </div>
+            }
+        }
+        @if ((bool)ViewData["IsAdmin"])
+        {
+            <hr />
+        <p>
+            <a asp-action="Create" class="btn btn-default">Добавить урок</a>
+            <a asp-action="GroupsList" class="btn btn-default">Группы</a>
+        </p>
+        }
     }
     else
     {
         @*Include the static file*@
-        @Html.Raw(File.ReadAllText("wwwroot/lessons/" + Model.First().FilePath))
+        @Html.Raw(File.ReadAllText("wwwroot/lessons/" + Model.Lesson.FilePath))
     }
 }

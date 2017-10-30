@@ -32,5 +32,8 @@ namespace mainweb.Data
 
         public DbSet<mainweb.Models.ProgressViewModel> ProgressViewModel { get; set; }
         public DbSet<ExcerciseItem> ExcerciseItem { get; set; }
+        public DbSet<LessonGroup> LessonGroups { get; set; }
+
+        public DbSet<DictionaryEntry> Dictionary { get; set; }
     }
 }

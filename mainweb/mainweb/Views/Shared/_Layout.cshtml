@@ -59,7 +59,7 @@
         <div class="row">
             <div class="col-md-2">
                 <a asp-controller="Excercises" asp-action="Progress" asp-route-id="" class="btn btn-menu">Мой прогресс</a>
-                <button type="button" class="btn btn-menu">Мой словарь</button>
+                <a asp-controller="Dictionary" asp-action="Index" asp-route-id="" class="btn btn-menu">Мой словарь</a>
                 <button type="button" class="btn btn-menu">Все равно не понимаю</button>
                 <div class="panel panel-info panel-menu">
                     <div class="panel-heading">
@@ -79,6 +79,7 @@
 
                 <a asp-controller="Lessons" asp-action="Index" asp-route-id="" class="btn btn-menu" >Уроки</a>
                 <a asp-controller="Excercises" asp-action="Index" asp-route-id="" class="btn btn-menu">Упражнения</a>
+                <a asp-controller="Dictionary" asp-action="Index" asp-route-id="" class="btn btn-menu">Словарь</a>
                 <button type="button" class="btn btn-menu">Справочник</button>
                 @* @await Html.PartialAsync("../Lesson/_LessonListPartial")*@
                 @*  @await Component.InvokeAsync("LessonListComponent")*@

@@ -25,6 +25,13 @@ namespace mainweb.Controllers
         // GET: Excercises
         public async Task<IActionResult> Index()
         {
+            ViewData["IsAdmin"] = false;
+            var user = await _userManager.GetUserAsync(User);
+            if (user!=null)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+                ViewData["IsAdmin"] = roles.Contains("Administrator");
+            }
             return View(await _context.Excercise.ToListAsync());
         }
         // GET: Excercises/list
@@ -115,6 +122,7 @@ namespace mainweb.Controllers
             _context.Entry(item).Collection(i => i.CorrectResponses).Load();
             return Json(new { correct = item.Check(model.Answer)!=0 });
         }
+        [HttpGet]
         [Authorize(Roles = "Administrator")]
         // GET: Excercises/Create
         public IActionResult Create()
@@ -340,6 +348,12 @@ namespace mainweb.Controllers
             }
             
             return View(res);
+        }
+        [HttpGet]
+        [Authorize(Roles = "Administrator")]
+        public IActionResult CreateGroup()
+        {
+            return View();
         }
     }
 }

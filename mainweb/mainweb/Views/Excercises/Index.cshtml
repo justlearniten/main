@@ -21,12 +21,19 @@
                     <a asp-route-id="@item.ExcerciseId" asp-action="Details">@Html.DisplayFor(modelItem => item.ExcerciseName)</a>
                 }
             </td>
+            @if ((bool)ViewData["IsAdmin"])
+            {
             <td>
                 <a class="btn btn-default col-md-offset-2" asp-action="Edit" asp-route-id="@item.ExcerciseId">Редактировать</a>
             </td>
+            }
         </tr>
     }
 }
 </table>
-<p><a asp-action="Create" class="btn btn-default">Добавить</a></p>
-
+@if ((bool)ViewData["IsAdmin"])
+{
+    <p>
+    <a asp-action="Create" class="btn btn-default">Добавить урок</a>
+    </p>
+}

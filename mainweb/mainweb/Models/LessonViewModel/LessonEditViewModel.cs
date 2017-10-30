@@ -11,6 +11,7 @@ namespace mainweb.Models
         {
             LessonId = lesson.LessonId;
             Title = lesson.Title;
+            LessonGroupId = lesson.LessonGroup?.LessonGroupId;
         }
         public LessonEditViewModel() { }
         public int LessonId { get; set; }
@@ -18,5 +19,6 @@ namespace mainweb.Models
         public String Title { get; set; }
         [Display(Name = "Название файла")]
         public String Content { get; set; }
+        public int? LessonGroupId { get; set; }
     }
 }
