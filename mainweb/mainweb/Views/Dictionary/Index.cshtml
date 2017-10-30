@@ -3,70 +3,62 @@
 @{
     char start = 'A';
     char end = 'Z';
+    string cl = "";
 }
 
 <ul class="nav nav-tabs">
     @if ((DictionaryEntry.Direction)ViewData["dir"] == DictionaryEntry.Direction.ENGRUS)
     {
-        
-        <li class="active">
-            <a asp-action="Index" asp-route-l="A" asp-route-dir="0" >Англо - Русский</a>
-        </li>
+        cl = "active";
     }
-    else
-    {
-        <li>
-            <a asp-action="Index" asp-route-l="A" asp-route-dir="0">Англо - Русский</a>
-        </li>
-    }
+    <li class="@cl">
+        <a asp-action="Index" asp-route-l="A" asp-route-dir="0">Англо - Русский</a>
+    </li>
+    @{ cl = "";}
     @if ((DictionaryEntry.Direction)ViewData["dir"] == DictionaryEntry.Direction.RUSENG)
-            {
-                start = 'А';end = 'Я';
-        <li class="active">
-            <a asp-action="Index" asp-route-l="А" asp-route-dir="1">Русско - Английский</a>
-        </li>
-    }
-    else
     {
-        <li>
-            <a asp-action="Index" asp-route-l="А" asp-route-dir="1">Русско - Английский</a>
-        </li>
+        start = 'А'; end = 'Я';
+        cl = "active";
     }
-       
+    <li class="@cl">
+        <a asp-action="Index" asp-route-l="А" asp-route-dir="1">Русско - Английский</a>
+    </li>
+
+
 </ul>
 <br />
-    @for (char l = start; l <= end; l++)
+@for (char l = start; l <= end; l++)
+{
+    if (l.ToString().ToUpper() == (string)ViewData["l"])
     {
-        if(l.ToString().ToUpper()==(string)ViewData["l"])
-        {
-            <strong>@l</strong>
-
-        }
-        else
-        {
-            <a asp-action="Index" asp-route-l="@l" asp-route-dir="@ViewData["dir"]">@l</a>
-        }
+        <strong>@l</strong>
 
     }
-    <table class="table">
+    else
+    {
+        <a asp-action="Index" asp-route-l="@l" asp-route-dir="@ViewData["dir"]">@l</a>
+    }
 
-        <tbody>
-            @foreach (var item in Model)
+}
+<table class="table">
+
+    <tbody>
+        @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        <span class="col-md-12">
-                            <strong>@item.Text.ToUpper()</strong>
-                        </span>
-                        @foreach (var t in item.Translatins)
+            <tr>
+                <td>
+                    <span class="col-md-12">
+                        <strong>@item.Text.ToUpper()</strong>
+                    </span>
+                    @foreach (var t in item.Translatins)
                 {
-                            <span class="col-md-10 col-md-offset-2">
-                                @t.Text
-                </span>
-                        }
-                    </td>
+                        <span class="col-md-10 col-md-offset-2">
+                            @t.Text
+                        </span>
+                    }
+                </td>
 
-                </tr>
-            }
-        </tbody>
-    </table>
+            </tr>
+        }
+    </tbody>
+</table>
