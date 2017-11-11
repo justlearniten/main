@@ -11,12 +11,12 @@ CKEDITOR.plugins.add( 'floatpanel', {
 	var panels = {};
 
 	function getPanel( editor, doc, parentElement, definition, level ) {
-		// Generates the panel key: docId-eleId-skinName-langDir[-uiColor][-CSSs][-level]
+		// Generates the panel key: docId-eleId-skinName-langDir
 		var key = CKEDITOR.tools.genKey( doc.getUniqueId(), parentElement.getUniqueId(), editor.lang.dir, editor.uiColor || '', definition.css || '', level || '' ),
-			panel = panels[ key ];
+			panel = panels;
 
 		if ( !panel ) {
-			panel = panels[ key ] = new CKEDITOR.ui.panel( doc, definition );
+			panel = panels = new CKEDITOR.ui.panel( doc, definition );
 			panel.element = parentElement.append( CKEDITOR.dom.element.createFromHtml( panel.render( editor ), doc ) );
 
 			panel.element.setStyles( {
@@ -136,9 +136,9 @@ CKEDITOR.plugins.add( 'floatpanel', {
 			 *      * `3` = bottom-left
 			 *      * `4` = bottom-right
 			 *
-			 * @param {Number} [offsetX=0]
-			 * @param {Number} [offsetY=0]
-			 * @param {Function} [callback] A callback function executed when block positioning is done.
+			 * @param {Number} 
+			 * @param {Number} 
+			 * @param {Function}  A callback function executed when block positioning is done.
 			 * @todo what do exactly these params mean (especially corner)?
 			 */
 			showBlock: function( name, offsetParent, corner, offsetX, offsetY, callback ) {
@@ -210,7 +210,7 @@ CKEDITOR.plugins.add( 'floatpanel', {
 							return;
 
 						if ( this.visible && !this._.activeChild ) {
-							// [iOS] Allow hide to be prevented if touch is bound
+							//  Allow hide to be prevented if touch is bound
 							// to any parent of the iframe blur happens before touch (http://dev.ckeditor.com/ticket/10714).
 							if ( CKEDITOR.env.iOS ) {
 								if ( !this._.hideTimeout )
@@ -234,7 +234,7 @@ CKEDITOR.plugins.add( 'floatpanel', {
 						this.allowBlur( true );
 					}, this );
 
-					// [iOS] if touch is bound to any parent of the iframe blur
+					//  if touch is bound to any parent of the iframe blur
 					// happens twice before touchstart and before touchend (http://dev.ckeditor.com/ticket/10714).
 					if ( CKEDITOR.env.iOS ) {
 						// Prevent false hiding on blur.
@@ -537,8 +537,8 @@ CKEDITOR.plugins.add( 'floatpanel', {
 			 *      * `3` = bottom-left
 			 *      * `4` = bottom-right
 			 *
-			 * @param {Number} [offsetX=0]
-			 * @param {Number} [offsetY=0]
+			 * @param {Number} 
+			 * @param {Number} 
 			 * @todo
 			 */
 			showAsChild: function( panel, blockName, offsetParent, corner, offsetX, offsetY ) {
@@ -593,7 +593,7 @@ CKEDITOR.plugins.add( 'floatpanel', {
 		var isLastInstance = CKEDITOR.tools.isEmpty( CKEDITOR.instances );
 
 		for ( var i in panels ) {
-			var panel = panels[ i ];
+			var panel = panels;
 			// Safe to destroy it since there're no more instances.(http://dev.ckeditor.com/ticket/4241)
 			if ( isLastInstance )
 				panel.destroy();

@@ -40,7 +40,7 @@ CKEDITOR.dialog.add('exerciseDialog', function (editor) {
         //////////////////////////////////////////////////////////////////////////
         onLoad: function () {
             var sel = this.getContentElement("main", "exercises");
-            sel.setValue(exerciseList[0][1]);
+            sel.setValue(exerciseList);
         },
         //////////////////////////////////////////////////////////////////////////
         //OK handler
@@ -50,8 +50,8 @@ CKEDITOR.dialog.add('exerciseDialog', function (editor) {
             var exerciseId = dialog.getValueOf('main', 'exercises');
             var exerciseTitle = undefined;
             for (var i = 0; i < exerciseList.length; i++)
-                if (exerciseId === exerciseList[i][1])
-                    exerciseTitle = exerciseList[i][0];
+                if (exerciseId === exerciseList)
+                    exerciseTitle = exerciseList;
             var exerciseLink = "<a href='javascript:showExcercise(" + exerciseId + ")'>" + exerciseTitle + "</a>";
             console.log(exerciseLink);
             var a = CKEDITOR.dom.element.createFromHtml(exerciseLink);

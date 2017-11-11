@@ -11,14 +11,14 @@
 		// Check for sample compliance.
 		var editor = ev.editor,
 			meta = CKEDITOR.document.$.getElementsByName( 'ckeditor-sample-required-plugins' ),
-			requires = meta.length ? CKEDITOR.dom.element.get( meta[ 0 ] ).getAttribute( 'content' ).split( ',' ) : [],
+			requires = meta.length ? CKEDITOR.dom.element.get( meta,
 			missing = [],
 			i;
 
 		if ( requires.length ) {
 			for ( i = 0; i < requires.length; i++ ) {
-				if ( !editor.plugins[ requires[ i ] ] )
-					missing.push( '<code>' + requires[ i ] + '</code>' );
+				if ( !editor.plugins )
+					missing.push( '<code>' + requires + '</code>' );
 			}
 
 			if ( missing.length ) {

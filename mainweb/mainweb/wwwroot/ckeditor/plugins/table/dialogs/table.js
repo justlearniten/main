@@ -10,16 +10,16 @@
 			var id = this.id;
 			if ( !data.info )
 				data.info = {};
-			data.info[ id ] = this.getValue();
+			data.info = this.getValue();
 		};
 
 	function tableColumns( table ) {
 		var cols = 0,
 			maxCols = 0;
 		for ( var i = 0, row, rows = table.$.rows.length; i < rows; i++ ) {
-			row = table.$.rows[ i ], cols = 0;
+			row = table.$.rows, cols = 0;
 			for ( var j = 0, cell, cells = row.cells.length; j < cells; j++ ) {
-				cell = row.cells[ j ];
+				cell = row.cells;
 				cols += cell.colSpan;
 			}
 
@@ -98,11 +98,11 @@
 						table = selected;
 					else if ( ranges.length > 0 ) {
 						// Webkit could report the following range on cell selection (http://dev.ckeditor.com/ticket/4948):
-						// <table><tr><td>[&nbsp;</td></tr></table>]
+						// <table><tr><td>
 						if ( CKEDITOR.env.webkit )
-							ranges[ 0 ].shrink( CKEDITOR.NODE_ELEMENT );
+							ranges.shrink( CKEDITOR.NODE_ELEMENT );
 
-						table = editor.elementPath( ranges[ 0 ].getCommonAncestor( true ) ).contains( 'table', 1 );
+						table = editor.elementPath( ranges.getCommonAncestor( true ) ).contains( 'table', 1 );
 					}
 
 					// Save a reference to the selected table, and push a new set of default values.
@@ -201,7 +201,7 @@
 					// Should we make all first cells in a row TH?
 					if ( !this.hasColumnHeaders && ( headers == 'col' || headers == 'both' ) ) {
 						for ( row = 0; row < table.$.rows.length; row++ ) {
-							newCell = new CKEDITOR.dom.element( table.$.rows[ row ].cells[ 0 ] );
+							newCell = new CKEDITOR.dom.element( table.$.rows );
 							newCell.renameNode( 'th' );
 							newCell.setAttribute( 'scope', 'row' );
 						}
@@ -210,9 +210,9 @@
 					// Should we make all first TH-cells in a row make TD? If 'yes' we do it the other way round :-)
 					if ( ( this.hasColumnHeaders ) && !( headers == 'col' || headers == 'both' ) ) {
 						for ( i = 0; i < table.$.rows.length; i++ ) {
-							row = new CKEDITOR.dom.element( table.$.rows[ i ] );
+							row = new CKEDITOR.dom.element( table.$.rows );
 							if ( row.getParent().getName() == 'tbody' ) {
-								newCell = new CKEDITOR.dom.element( row.$.cells[ 0 ] );
+								newCell = new CKEDITOR.dom.element( row.$.cells );
 								newCell.renameNode( 'td' );
 								newCell.removeAttribute( 'scope' );
 							}
@@ -233,7 +233,7 @@
 					// Override the default cursor position after insertElement to place
 					// cursor inside the first cell (http://dev.ckeditor.com/ticket/7959), IE needs a while.
 					setTimeout( function() {
-						var firstCell = new CKEDITOR.dom.element( table.$.rows[ 0 ].cells[ 0 ] );
+						var firstCell = new CKEDITOR.dom.element( table.$.rows );
 						var range = editor.createRange();
 						range.moveToPosition( firstCell, CKEDITOR.POSITION_AFTER_START );
 						range.select();
@@ -253,8 +253,8 @@
 				label: editor.lang.table.title,
 				elements: [ {
 					type: 'hbox',
-					widths: [ null, null ],
-					styles: [ 'vertical-align:top' ],
+					widths: ,
+					styles: ,
 					children: [ {
 						type: 'vbox',
 						padding: 0,
@@ -295,10 +295,10 @@
 							'default': '',
 							label: editor.lang.table.headers,
 							items: [
-								[ editor.lang.table.headersNone, '' ],
-								[ editor.lang.table.headersRow, 'row' ],
-								[ editor.lang.table.headersColumn, 'col' ],
-								[ editor.lang.table.headersBoth, 'both' ]
+								,
+								,
+								,
+								
 							],
 							setup: function( selectedTable ) {
 								// Fill in the headers field.
@@ -308,7 +308,7 @@
 								// Check if all the first cells in every row are TH
 								for ( var row = 0; row < selectedTable.$.rows.length; row++ ) {
 									// If just one cell isn't a TH then it isn't a header column
-									var headCell = selectedTable.$.rows[ row ].cells[ 0 ];
+									var headCell = selectedTable.$.rows;
 									if ( headCell && headCell.nodeName.toLowerCase() != 'th' ) {
 										dialog.hasColumnHeaders = false;
 										break;
@@ -326,9 +326,9 @@
 						{
 							type: 'text',
 							id: 'txtBorder',
-							requiredContent: 'table[border]',
+							requiredContent: 'table',
 							// Avoid setting border which will then disappear.
-							'default': editor.filter.check( 'table[border]' ) ? 1 : 0,
+							'default': editor.filter.check( 'table' ) ? 1 : 0,
 							label: editor.lang.table.border,
 							controlStyle: 'width:3em',
 							validate: CKEDITOR.dialog.validate.number( editor.lang.table.invalidBorder ),
@@ -345,14 +345,14 @@
 						{
 							id: 'cmbAlign',
 							type: 'select',
-							requiredContent: 'table[align]',
+							requiredContent: 'table',
 							'default': '',
 							label: editor.lang.common.align,
 							items: [
-								[ editor.lang.common.notSet, '' ],
-								[ editor.lang.common.alignLeft, 'left' ],
-								[ editor.lang.common.alignCenter, 'center' ],
-								[ editor.lang.common.alignRight, 'right' ]
+								,
+								,
+								,
+								
 							],
 							setup: function( selectedTable ) {
 								this.setValue( selectedTable.getAttribute( 'align' ) || '' );
@@ -370,7 +370,7 @@
 						padding: 0,
 						children: [ {
 							type: 'hbox',
-							widths: [ '5em' ],
+							widths: ,
 							children: [ {
 								type: 'text',
 								id: 'txtWidth',
@@ -395,7 +395,7 @@
 						},
 						{
 							type: 'hbox',
-							widths: [ '5em' ],
+							widths: ,
 							children: [ {
 								type: 'text',
 								id: 'txtHeight',
@@ -425,10 +425,10 @@
 						{
 							type: 'text',
 							id: 'txtCellSpace',
-							requiredContent: 'table[cellspacing]',
+							requiredContent: 'table',
 							controlStyle: 'width:3em',
 							label: editor.lang.table.cellSpace,
-							'default': editor.filter.check( 'table[cellspacing]' ) ? 1 : 0,
+							'default': editor.filter.check( 'table' ) ? 1 : 0,
 							validate: CKEDITOR.dialog.validate.number( editor.lang.table.invalidCellSpacing ),
 							setup: function( selectedTable ) {
 								this.setValue( selectedTable.getAttribute( 'cellSpacing' ) || '' );
@@ -443,10 +443,10 @@
 						{
 							type: 'text',
 							id: 'txtCellPad',
-							requiredContent: 'table[cellpadding]',
+							requiredContent: 'table',
 							controlStyle: 'width:3em',
 							label: editor.lang.table.cellPad,
-							'default': editor.filter.check( 'table[cellpadding]' ) ? 1 : 0,
+							'default': editor.filter.check( 'table' ) ? 1 : 0,
 							validate: CKEDITOR.dialog.validate.number( editor.lang.table.invalidCellPadding ),
 							setup: function( selectedTable ) {
 								this.setValue( selectedTable.getAttribute( 'cellPadding' ) || '' );
@@ -516,7 +516,7 @@
 						type: 'text',
 						id: 'txtSummary',
 						bidi: true,
-						requiredContent: 'table[summary]',
+						requiredContent: 'table',
 						label: editor.lang.table.summary,
 						setup: function( selectedTable ) {
 							this.setValue( selectedTable.getAttribute( 'summary' ) || '' );

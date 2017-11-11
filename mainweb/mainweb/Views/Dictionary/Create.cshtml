@@ -1,48 +1,34 @@
-@model mainweb.Models.DictionaryEntry
-
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
-<body>
+﻿@model BulkDictionaryEntry
+@{ await Html.RenderPartialAsync("_TabPartial"); }
 
 <form asp-action="Create">
-    <div class="form-horizontal">
-        <h4>DictionaryEntry</h4>
+    В словаре имеется @ViewData["DictionaryTotal"] записей, из них @ViewData["DictionaryEng"] английских. Имеется @ViewData["DictionaryTrans"] переводов.
+     <div class="form-horizontal">
+        Вводите по одной словарьной статье на каждой строке.
+        <br />
+        <strong>слово:перевод;второй перевод</strong><br />
+        @if (ViewData["error"] != null)
+        {
+            <strong style="color:red">@ViewData["error"]</strong><br />
+        }
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+   
+       @Model?.Entry
+       
         <div class="form-group">
-            <label asp-for="DicDirection" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="DicDirection" class="form-control"></select>
-                <span asp-validation-for="DicDirection" class="text-danger"></span>
+           
+            <div class="col-md-12" >
+                <textarea  name="Entry" class="form-control"  style="max-width:100%;min-width:100px;min-height:100px;"></textarea>
+                
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Text" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Text" class="form-control" />
-                <span asp-validation-for="Text" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class=" col-md-2" >
+                <input type="submit" value="Сохранить" class="btn btn-default" />
             </div>
         </div>
     </div>
 </form>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
-</body>
-</html>

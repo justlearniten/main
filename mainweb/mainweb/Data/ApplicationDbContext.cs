@@ -35,5 +35,6 @@ namespace mainweb.Data
         public DbSet<LessonGroup> LessonGroups { get; set; }
 
         public DbSet<DictionaryEntry> Dictionary { get; set; }
+        public DbSet<Translation> Translations { get; set; }
     }
 }

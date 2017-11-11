@@ -215,7 +215,7 @@ namespace mainweb.Data.Migrations
 
                     b.HasIndex("DictionaryEntryId");
 
-                    b.ToTable("Translation");
+                    b.ToTable("Translations");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole", b =>

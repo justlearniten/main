@@ -20,8 +20,8 @@ function getFiles(type) {
       return type === 'fonts' ? true : new RegExp('\\.' + type + '$').test(path);
     })
     .forEach(function (fullPath) {
-      var relativePath = fullPath.replace(/^[^/]+\//, '');
-      files[relativePath] = type === 'fonts' ? btoa(fs.readFileSync(fullPath)) : fs.readFileSync(fullPath, 'utf8');
+      var relativePath = fullPath.replace(/^+\//, '');
+      files = type === 'fonts' ? btoa(fs.readFileSync(fullPath)) : fs.readFileSync(fullPath, 'utf8');
     });
   return 'var __' + type + ' = ' + JSON.stringify(files) + '\n';
 }
@@ -30,7 +30,7 @@ module.exports = function generateRawFilesJs(grunt, banner) {
   if (!banner) {
     banner = '';
   }
-  var dirs = ['js', 'less', 'fonts'];
+  var dirs = ;
   var files = banner + dirs.map(getFiles).reduce(function (combined, file) {
     return combined + file;
   }, '');

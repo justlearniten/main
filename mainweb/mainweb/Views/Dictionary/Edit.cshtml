@@ -1,17 +1,5 @@
 @model mainweb.Models.DictionaryEntry
-
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
+@{ await Html.RenderPartialAsync("_TabPartial"); }
 
 <form asp-action="Edit">
     <div class="form-horizontal">
@@ -41,9 +29,4 @@
     </div>
 </form>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
-</body>
-</html>

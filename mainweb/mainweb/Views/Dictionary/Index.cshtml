@@ -1,45 +1,6 @@
 ﻿@model IEnumerable<mainweb.Models.DictionaryEntry>
 
-@{
-    char start = 'A';
-    char end = 'Z';
-    string cl = "";
-}
-
-<ul class="nav nav-tabs">
-    @if ((DictionaryEntry.Direction)ViewData["dir"] == DictionaryEntry.Direction.ENGRUS)
-    {
-        cl = "active";
-    }
-    <li class="@cl">
-        <a asp-action="Index" asp-route-l="A" asp-route-dir="0">Англо - Русский</a>
-    </li>
-    @{ cl = "";}
-    @if ((DictionaryEntry.Direction)ViewData["dir"] == DictionaryEntry.Direction.RUSENG)
-    {
-        start = 'А'; end = 'Я';
-        cl = "active";
-    }
-    <li class="@cl">
-        <a asp-action="Index" asp-route-l="А" asp-route-dir="1">Русско - Английский</a>
-    </li>
-
-
-</ul>
-<br />
-@for (char l = start; l <= end; l++)
-{
-    if (l.ToString().ToUpper() == (string)ViewData["l"])
-    {
-        <strong>@l</strong>
-
-    }
-    else
-    {
-        <a asp-action="Index" asp-route-l="@l" asp-route-dir="@ViewData["dir"]">@l</a>
-    }
-
-}
+@{ await Html.RenderPartialAsync("_TabPartial"); }
 <table class="table">
 
     <tbody>

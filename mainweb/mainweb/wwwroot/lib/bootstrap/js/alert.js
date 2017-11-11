@@ -13,7 +13,7 @@
   // ALERT CLASS DEFINITION
   // ======================
 
-  var dismiss = '[data-dismiss="alert"]'
+  var dismiss = ''
   var Alert   = function (el) {
     $(el).on('click', dismiss, this.close)
   }
@@ -28,7 +28,7 @@
 
     if (!selector) {
       selector = $this.attr('href')
-      selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
+      selector = selector && selector.replace(/.*(?=#*$)/, '') // strip for ie7
     }
 
     var $parent = $(selector === '#' ? [] : selector)
@@ -67,7 +67,7 @@
       var data  = $this.data('bs.alert')
 
       if (!data) $this.data('bs.alert', (data = new Alert(this)))
-      if (typeof option == 'string') data[option].call($this)
+      if (typeof option == 'string') data.call($this)
     })
   }
 

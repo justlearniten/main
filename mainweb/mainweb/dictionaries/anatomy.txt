@@ -1,0 +1,84 @@
+back of the head : затылок
+beard : борода
+cheek : щека
+chin : подбородок
+ear : ухо
+eye : глаз
+eyebrow / brow : бровь
+eyelash / lash : ресница
+eyelid / lid : веко
+forehead : лоб
+hair : волос, волосы
+head : голова
+high forehead : высокий лоб
+lip : губа
+moustache : усы
+mouth : рот
+nose : нос
+nostril : ноздря
+tongue : язык
+tooth : зуб (множественное число: teeth)
+whiskers : бакенбарды
+back : спина
+belly : живот
+breast : грудь
+buttocks : ягодицы
+chest : грудь, грудная клетка
+navel / belly button : пуп, пупок
+neck : шея
+shoulder : плечо
+waist : талия
+arm : рука (от кисти до плеча)
+elbow : локоть
+finger : палец (руки)
+finger nail : ноготь пальца руки
+fist : кулак
+forearm : предплечье
+hand : рука (кисть)
+index finger : указательный палец (руки)
+knuckle : сустав пальца
+little finger : мизинец, маленький палец (руки)
+middle finger : средний палец (руки)
+ring finger : безымянный палец (руки)
+thumb : большой палец (руки)
+underarm : подмышка
+wrist : запястье
+ankle : лодыжка
+big toe : большой палец ноги
+calf : икра ноги (мн. ч.: calves)
+foot : ступня (мн. ч.: feet)
+heel : пята, пятка
+hip : бедро, бок (наружная сторона таза и верхней части ноги)
+knee : колено
+leg : нога (от бедра до ступни)
+little toe : маленький палец ноги
+shin / shank : голень
+thigh : бедро (от таза до колена)
+toe : палец ноги
+toe nail : ноготь пальца ноги
+bladder : мочевой пузырь
+brain : мозг
+digestive system : пищеварительная система
+gallbladder : желчный пузырь
+heart : сердце
+intestines : кишечник
+kidney : почка
+large intestine / colon : толстая кишка
+liver : печень
+lungs : легкие
+pancreas : поджелудочная железа
+pupil : зрачок
+rectum : прямая кишка
+small intestine : тонкая кишка
+spleen : селезенка
+stomach : желудок
+tympanic membrane : барабанная перепонка
+coccyx : копчик
+collar-bone : ключица
+jaw : челюсть
+phalanges : фаланги
+ribs : ребра
+shoulder-blade : лопатка
+skeleton : скелет
+skull : череп
+spine : позвоночник

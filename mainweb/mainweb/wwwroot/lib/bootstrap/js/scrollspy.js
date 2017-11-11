@@ -35,7 +35,7 @@
   }
 
   ScrollSpy.prototype.getScrollHeight = function () {
-    return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    return this.$scrollElement.scrollHeight, document.documentElement.scrollHeight)
   }
 
   ScrollSpy.prototype.refresh = function () {
@@ -47,7 +47,7 @@
     this.targets      = []
     this.scrollHeight = this.getScrollHeight()
 
-    if (!$.isWindow(this.$scrollElement[0])) {
+    if (!$.isWindow(this.$scrollElement)) {
       offsetMethod = 'position'
       offsetBase   = this.$scrollElement.scrollTop()
     }
@@ -62,12 +62,12 @@
         return ($href
           && $href.length
           && $href.is(':visible')
-          && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+          && ) || null
       })
-      .sort(function (a, b) { return a[0] - b[0] })
+      .sort(function (a, b) { return a })
       .each(function () {
-        that.offsets.push(this[0])
-        that.targets.push(this[1])
+        that.offsets.push(this)
+        that.targets.push(this)
       })
   }
 
@@ -85,19 +85,19 @@
     }
 
     if (scrollTop >= maxScroll) {
-      return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      return activeTarget != (i = targets) && this.activate(i)
     }
 
-    if (activeTarget && scrollTop < offsets[0]) {
+    if (activeTarget && scrollTop < offsets) {
       this.activeTarget = null
       return this.clear()
     }
 
     for (i = offsets.length; i--;) {
-      activeTarget != targets[i]
-        && scrollTop >= offsets[i]
-        && (offsets[i + 1] === undefined || scrollTop < offsets[i + 1])
-        && this.activate(targets[i])
+      activeTarget != targets
+        && scrollTop >= offsets
+        && (offsets)
+        && this.activate(targets)
     }
   }
 
@@ -107,8 +107,8 @@
     this.clear()
 
     var selector = this.selector +
-      '[data-target="' + target + '"],' +
-      this.selector + '[href="' + target + '"]'
+      ',' +
+      this.selector + ''
 
     var active = $(selector)
       .parents('li')
@@ -140,7 +140,7 @@
       var options = typeof option == 'object' && option
 
       if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
-      if (typeof option == 'string') data[option]()
+      if (typeof option == 'string') data()
     })
   }
 
@@ -163,7 +163,7 @@
   // ==================
 
   $(window).on('load.bs.scrollspy.data-api', function () {
-    $('[data-spy="scroll"]').each(function () {
+    $('').each(function () {
       var $spy = $(this)
       Plugin.call($spy, $spy.data())
     })

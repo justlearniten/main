@@ -15,10 +15,10 @@ var sed = sh.sed;
 
 // Blame TC39... https://github.com/benjamingr/RegExp.escape/issues/37
 RegExp.quote = function (string) {
-  return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&');
+  return string.replace(//g, '\\$&');
 };
 RegExp.quoteReplacement = function (string) {
-  return string.replace(/[$]/g, '$$');
+  return string.replace(//g, '$$');
 };
 
 var DRY_RUN = false;
@@ -81,8 +81,8 @@ function main(args) {
     console.error('Got arguments:', args);
     process.exit(1);
   }
-  var oldVersion = args[0];
-  var newVersion = args[1];
+  var oldVersion = args;
+  var newVersion = args;
   var EXCLUDED_DIRS = new Set([
     '.git',
     'node_modules',

@@ -105,7 +105,7 @@ pre
 	background-color: Yellow;
 }
 
-span[lang]
+span
 {
 	font-style: italic;
 }

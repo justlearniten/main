@@ -18,14 +18,14 @@ CKEDITOR.plugins.add( 'table', {
 
 		editor.addCommand( 'table', new CKEDITOR.dialogCommand( 'table', {
 			context: 'table',
-			allowedContent: 'table{width,height}[align,border,cellpadding,cellspacing,summary];' +
+			allowedContent: 'table{width,height};' +
 				'caption tbody thead tfoot;' +
-				'th td tr[scope];' +
+				'th td tr;' +
 				( editor.plugins.dialogadvtab ? 'table' + editor.plugins.dialogadvtab.allowedContent() : '' ),
 			requiredContent: 'table',
 			contentTransformations: [
-				[ 'table{width}: sizeToStyle', 'table[width]: sizeToAttribute' ],
-				[ 'td: splitBorderShorthand' ],
+				,
+				,
 				[ {
 					element: 'table',
 					right: function( element ) {
@@ -33,7 +33,7 @@ CKEDITOR.plugins.add( 'table', {
 							if ( element.styles.border && element.styles.border.match( /solid/ ) ) {
 								element.attributes.border = 1;
 							}
-							if ( element.styles[ 'border-collapse' ] == 'collapse' ) {
+							if ( element.styles == 'collapse' ) {
 								element.attributes.cellspacing = 0;
 							}
 						}

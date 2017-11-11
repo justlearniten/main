@@ -3,7 +3,7 @@ var Button = ReactBootstrap.Button;
 var FormGroup = ReactBootstrap.FormGroup;
 var ExcerciseItem = React.createClass({
     //addAnswer: function (e) {
-    //    this.setState({ correctResponses: this.state.correctResponses.concat([{ answer: "hehehe" }]) });
+    //    this.setState({ correctResponses: this.state.correctResponses.concat() });
     //},
     onEditQuestion: function (e) {
         this.props.onEditQuestion(this.props.item.excerciseItemId, e.target.value);
@@ -128,7 +128,7 @@ var Excercise = React.createClass({
                 return xhr.onerror();
             var newItem = JSON.parse(xhr.response);
             console.log(newItem);
-            this.setState({ excerciseItems: this.state.excerciseItems.concat([newItem]) });
+            this.setState({ excerciseItems: this.state.excerciseItems.concat() });
         }.bind(this);
         xhr.onerror = function () {
             alert("Ошибка  при создании вопроса!");
@@ -139,8 +139,8 @@ var Excercise = React.createClass({
         console.log(newQuestion);
         var newItems = this.state.excerciseItems.slice(0);
         for (var i = 0; i < newItems.length; i++) {
-            if (newItems[i].excerciseItemId == itemId) {
-                newItems[i].question = newQuestion;
+            if (newItems.excerciseItemId == itemId) {
+                newItems.question = newQuestion;
                 break;
             }
         }
@@ -149,10 +149,10 @@ var Excercise = React.createClass({
     onEditAnswer: function (excerciseItemId, correctResponseId, newValue) {
         var newItems = this.state.excerciseItems.slice(0);
         for (var i = 0; i < newItems.length; i++) {
-            if (newItems[i].excerciseItemId == excerciseItemId) {
-                for (var j = 0; j < newItems[i].correctResponses.length; j++) {
-                    if (newItems[i].correctResponses[j].correctResponseId == correctResponseId) {
-                        newItems[i].correctResponses[j].answer = newValue;
+            if (newItems.excerciseItemId == excerciseItemId) {
+                for (var j = 0; j < newItems.correctResponses.length; j++) {
+                    if (newItems.correctResponseId == correctResponseId) {
+                        newItems.answer = newValue;
                         break;
                     }
                 }
@@ -175,8 +175,8 @@ var Excercise = React.createClass({
             console.log(newAnswer);
             var newExcerciseItems = JSON.parse(JSON.stringify(this.state.excerciseItems));
             for (var i = 0; i < newExcerciseItems.length; i++) {
-                if (newExcerciseItems[i].excerciseItemId == excerciseItemId)
-                    newExcerciseItems[i].correctResponses.push(newAnswer);
+                if (newExcerciseItems.excerciseItemId == excerciseItemId)
+                    newExcerciseItems.correctResponses.push(newAnswer);
             }
             this.setState({ excerciseItems: newExcerciseItems });
         }.bind(this);
@@ -218,8 +218,8 @@ var Excercise = React.createClass({
             
             var newItems = [];
             for (var i = 0; i < this.state.excerciseItems.length; i++)
-                if (this.state.excerciseItems[i].excerciseItemId != excerciseItemId)
-                    newItems.push(this.state.excerciseItems[i]);
+                if (this.state.excerciseItems.excerciseItemId != excerciseItemId)
+                    newItems.push(this.state.excerciseItems);
             this.setState({ excerciseItems: newItems });
         }.bind(this);
         xhr.onerror = function () {
@@ -269,7 +269,7 @@ var ExcerciseDlg = React.createClass({
     },
     onEditAnswer: function (e) {
         var newItems = this.state.excercise.excerciseItems.slice(0);
-        newItems[this.state.currentItem].answer = e.target.value;
+        newItems.answer = e.target.value;
         this.setState({
             excercise:
             {
@@ -283,7 +283,7 @@ var ExcerciseDlg = React.createClass({
     },
     checkAnswer: function (index) {
         var idx = index !== undefined ?index: this.state.currentItem;
-        var answer = this.state.excercise.excerciseItems[idx].answer.trim();
+        var answer = this.state.excercise.excerciseItems.answer.trim();
 
         if (!answer) {
             this.setState({ validationState: null });
@@ -311,7 +311,7 @@ var ExcerciseDlg = React.createClass({
             this.setState({ validationState: null });
         }.bind(this);
 
-        xhr.send(JSON.stringify(this.state.excercise.excerciseItems[idx]));
+        xhr.send(JSON.stringify(this.state.excercise.excerciseItems));
    
     },
     onForward: function (e) {
@@ -383,14 +383,14 @@ var ExcerciseDlg = React.createClass({
                         <div className="form-group">
                             <label className="col-md-2 control-label">Вопрос: </label>
                             <div className="col-md-8" style={{ paddingTop: "7px" }}>
-                                {this.state.excercise && this.state.excercise.excerciseItems[this.state.currentItem].question}
+                                {this.state.excercise && this.state.excercise.excerciseItems.question}
                             </div>
                         </div>
                         <FormGroup validationState={this.state.validationState} >
                         <div className=" form-group">
                             <label className="col-md-2 control-label">Ответ: </label>
                             <input className="form-control col-md-8" style={{ maxWidth: "600px" }}
-                                value={this.state.excercise ? this.state.excercise.excerciseItems[this.state.currentItem].answer : ""}
+                                value={this.state.excercise ? this.state.excercise.excerciseItems.answer : ""}
                                 onChange={this.onEditAnswer}
                                
                             />

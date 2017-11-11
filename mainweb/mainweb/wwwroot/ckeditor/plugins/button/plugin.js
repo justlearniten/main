@@ -59,7 +59,7 @@
 	 * Button UI element.
 	 *
 	 * @readonly
-	 * @property {String} [='button']
+	 * @property {String} 
 	 * @member CKEDITOR
 	 */
 	CKEDITOR.UI_BUTTON = 'button';
@@ -123,7 +123,7 @@
 
 				if ( mode ) {
 					// Restore saved button state.
-					var state = this.modes[ mode ] ? modeStates[ mode ] !== undefined ? modeStates[ mode ] : CKEDITOR.TRISTATE_OFF : CKEDITOR.TRISTATE_DISABLED;
+					var state = this.modes : CKEDITOR.TRISTATE_OFF : CKEDITOR.TRISTATE_DISABLED;
 
 					state = editor.readOnly && !this.readOnly ? CKEDITOR.TRISTATE_DISABLED : state;
 
@@ -202,7 +202,7 @@
 
 				editor.on( 'beforeModeUnload', function() {
 					if ( editor.mode && this._.state != CKEDITOR.TRISTATE_DISABLED )
-						modeStates[ editor.mode ] = this._.state;
+						modeStates = this._.state;
 				}, this );
 
 				// Update status when activeFilter, mode or readOnly changes.

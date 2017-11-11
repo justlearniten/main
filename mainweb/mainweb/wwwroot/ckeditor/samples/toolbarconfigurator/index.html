@@ -3,9 +3,9 @@
 Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.md or http://ckeditor.com/license
 -->
-<!--[if IE 8]><html class="ie8"><![endif]-->
-<!--[if gt IE 8]><html><![endif]-->
-<!--[if !IE]><!--><html><!--<![endif]-->
+<!---->
+<!---->
+<!---->
 <head>
 	<meta charset="utf-8">
 	<title>Toolbar Configurator</title>
@@ -184,7 +184,7 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 		} );
 
 		CKEDITOR.document.getWindow().on( 'resize', function() {
-			updateToolbar( ( mode === 'basic' ? toolbarModifier : toolbarTextModifier )[ 'editorInstance' ] );
+			updateToolbar( ( mode === 'basic' ? toolbarModifier : toolbarTextModifier ) );
 		} );
 
 		function onRefresh( modifier ) {
@@ -348,7 +348,7 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 
 			checkAll: function() {
 				for ( var i = 0; i < this.watched.length; i++ ) {
-					this.check( this.watched[ i ] );
+					this.check( this.watched );
 				}
 			},
 

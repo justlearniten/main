@@ -84,7 +84,7 @@ CKEDITOR.plugins.add( 'colorbutton', {
 		}
 
 		function addButton( name, type, title, order, options ) {
-			var style = new CKEDITOR.style( config[ 'colorButton_' + type + 'Style' ] ),
+			var style = new CKEDITOR.style( config ),
 				colorBoxId = CKEDITOR.tools.getNextId() + '_colorBox',
 				panelBlock;
 
@@ -118,13 +118,13 @@ CKEDITOR.plugins.add( 'colorbutton', {
 
 					var keys = block.keys;
 					var rtl = editor.lang.dir == 'rtl';
-					keys[ rtl ? 37 : 39 ] = 'next'; // ARROW-RIGHT
-					keys[ 40 ] = 'next'; // ARROW-DOWN
-					keys[ 9 ] = 'next'; // TAB
-					keys[ rtl ? 39 : 37 ] = 'prev'; // ARROW-LEFT
-					keys[ 38 ] = 'prev'; // ARROW-UP
-					keys[ CKEDITOR.SHIFT + 9 ] = 'prev'; // SHIFT + TAB
-					keys[ 32 ] = 'click'; // SPACE
+					keys = 'next'; // ARROW-RIGHT
+					keys = 'next'; // ARROW-DOWN
+					keys = 'next'; // TAB
+					keys = 'prev'; // ARROW-LEFT
+					keys = 'prev'; // ARROW-UP
+					keys = 'prev'; // SHIFT + TAB
+					keys = 'click'; // SPACE
 				},
 
 				refresh: function() {
@@ -160,7 +160,7 @@ CKEDITOR.plugins.add( 'colorbutton', {
 						this._.panel._.iframe.getFrameDocument().getById( colorBoxId ).setStyle( 'background-color', automaticColor );
 					}
 
-					var range = selection && selection.getRanges()[ 0 ];
+					var range = selection && selection.getRanges();
 
 					if ( range ) {
 						var walker = new CKEDITOR.dom.walker( range ),
@@ -226,10 +226,10 @@ CKEDITOR.plugins.add( 'colorbutton', {
 				editor.fire( 'saveSnapshot' );
 
 				// Clean up any conflicting style within the range.
-				editor.removeStyle( new CKEDITOR.style( config[ 'colorButton_' + type + 'Style' ], { color: 'inherit' } ) );
+				editor.removeStyle( new CKEDITOR.style( config, { color: 'inherit' } ) );
 
 				if ( color ) {
-					var colorStyle = config[ 'colorButton_' + type + 'Style' ];
+					var colorStyle = config;
 
 					colorStyle.childRule = type == 'back' ?
 					function( element ) {
@@ -268,17 +268,17 @@ CKEDITOR.plugins.add( 'colorbutton', {
 				if ( ( i % colorsPerRow ) === 0 )
 					output.push( '</tr><tr>' );
 
-				var parts = colors[ i ].split( '/' ),
-					colorName = parts[ 0 ],
-					colorCode = parts[ 1 ] || colorName;
+				var parts = colors.split( '/' ),
+					colorName = parts,
+					colorCode = parts || colorName;
 
 				// The data can be only a color code (without #) or colorName + color code
 				// If only a color code is provided, then the colorName is the color with the hash
 				// Convert the color from RGB to RRGGBB for better compatibility with IE and <font>. See http://dev.ckeditor.com/ticket/5676
-				if ( !parts[ 1 ] )
+				if ( !parts )
 					colorName = '#' + colorName.replace( /^(.)(.)(.)$/, '$1$1$2$2$3$3' );
 
-				var colorLabel = editor.lang.colorbutton.colors[ colorCode ] || colorCode;
+				var colorLabel = editor.lang.colorbutton.colors || colorCode;
 				output.push( '<td>' +
 					'<a class="cke_colorbox" _cke_focus=1 hidefocus=true' +
 						' title="', colorLabel, '"' +
@@ -351,12 +351,12 @@ CKEDITOR.plugins.add( 'colorbutton', {
 /**
  * Whether to enable the **More Colors** button in the color selectors.
  *
- * Read more in the [documentation](#!/guide/dev_colorbutton)
- * and see the [SDK sample](http://sdk.ckeditor.com/samples/colorbutton.html).
+ * Read more in the (#!/guide/dev_colorbutton)
+ * and see the (http://sdk.ckeditor.com/samples/colorbutton.html).
  *
  *		config.colorButton_enableMore = false;
  *
- * @cfg {Boolean} [colorButton_enableMore=true]
+ * @cfg {Boolean} 
  * @member CKEDITOR.config
  */
 
@@ -371,8 +371,8 @@ CKEDITOR.plugins.add( 'colorbutton', {
  * **Since 4.6.2:** The default color palette has changed. It contains fewer colors in more
  * pastel shades than the previous one.
  *
- * Read more in the [documentation](#!/guide/dev_colorbutton)
- * and see the [SDK sample](http://sdk.ckeditor.com/samples/colorbutton.html).
+ * Read more in the (#!/guide/dev_colorbutton)
+ * and see the (http://sdk.ckeditor.com/samples/colorbutton.html).
  *
  *		// Brazil colors only.
  *		config.colorButton_colors = '00923E,F8C100,28166F';
@@ -387,7 +387,7 @@ CKEDITOR.plugins.add( 'colorbutton', {
  *			'FFA07A,FFA500,FFFF00,00FF00,AFEEEE,ADD8E6,DDA0DD,D3D3D3,' +
  *			'FFF0F5,FAEBD7,FFFFE0,F0FFF0,F0FFFF,F0F8FF,E6E6FA,FFF';
  *
- * @cfg {String} [colorButton_colors=see source]
+ * @cfg {String} 
  * @member CKEDITOR.config
  */
 CKEDITOR.config.colorButton_colors = '1ABC9C,2ECC71,3498DB,9B59B6,4E5F70,F1C40F,' +
@@ -398,8 +398,8 @@ CKEDITOR.config.colorButton_colors = '1ABC9C,2ECC71,3498DB,9B59B6,4E5F70,F1C40F,
 /**
  * Stores the style definition that applies the text foreground color.
  *
- * Read more in the [documentation](#!/guide/dev_colorbutton)
- * and see the [SDK sample](http://sdk.ckeditor.com/samples/colorbutton.html).
+ * Read more in the (#!/guide/dev_colorbutton)
+ * and see the (http://sdk.ckeditor.com/samples/colorbutton.html).
  *
  *		// This is actually the default value.
  *		config.colorButton_foreStyle = {
@@ -407,7 +407,7 @@ CKEDITOR.config.colorButton_colors = '1ABC9C,2ECC71,3498DB,9B59B6,4E5F70,F1C40F,
  *			styles: { color: '#(color)' }
  *		};
  *
- * @cfg [colorButton_foreStyle=see source]
+ * @cfg 
  * @member CKEDITOR.config
  */
 CKEDITOR.config.colorButton_foreStyle = {
@@ -421,8 +421,8 @@ CKEDITOR.config.colorButton_foreStyle = {
 /**
  * Stores the style definition that applies the text background color.
  *
- * Read more in the [documentation](#!/guide/dev_colorbutton)
- * and see the [SDK sample](http://sdk.ckeditor.com/samples/colorbutton.html).
+ * Read more in the (#!/guide/dev_colorbutton)
+ * and see the (http://sdk.ckeditor.com/samples/colorbutton.html).
  *
  *		// This is actually the default value.
  *		config.colorButton_backStyle = {
@@ -430,7 +430,7 @@ CKEDITOR.config.colorButton_foreStyle = {
  *			styles: { 'background-color': '#(color)' }
  *		};
  *
- * @cfg [colorButton_backStyle=see source]
+ * @cfg 
  * @member CKEDITOR.config
  */
 CKEDITOR.config.colorButton_backStyle = {
@@ -441,35 +441,35 @@ CKEDITOR.config.colorButton_backStyle = {
 /**
  * Whether to enable the **Automatic** button in the color selectors.
  *
- * Read more in the [documentation](#!/guide/dev_colorbutton)
- * and see the [SDK sample](http://sdk.ckeditor.com/samples/colorbutton.html).
+ * Read more in the (#!/guide/dev_colorbutton)
+ * and see the (http://sdk.ckeditor.com/samples/colorbutton.html).
  *
  *		config.colorButton_enableAutomatic = false;
  *
- * @cfg {Boolean} [colorButton_enableAutomatic=true]
+ * @cfg {Boolean} 
  * @member CKEDITOR.config
  */
 
 /**
  * Defines how many colors will be shown per row in the color selectors.
  *
- * Read more in the [documentation](#!/guide/dev_colorbutton)
- * and see the [SDK sample](http://sdk.ckeditor.com/samples/colorbutton.html).
+ * Read more in the (#!/guide/dev_colorbutton)
+ * and see the (http://sdk.ckeditor.com/samples/colorbutton.html).
  *
  *		config.colorButton_colorsPerRow = 8;
  *
  * @since 4.6.2
- * @cfg {Number} [colorButton_colorsPerRow=6]
+ * @cfg {Number} 
  * @member CKEDITOR.config
  */
 
 /**
  * Whether the plugin should convert `background` CSS properties with color only, to a `background-color` property,
- * allowing the [Color Button](http://ckeditor.com/addon/colorbutton) plugin to edit these styles.
+ * allowing the (http://ckeditor.com/addon/colorbutton) plugin to edit these styles.
  *
  *		config.colorButton_normalizeBackground = false;
  *
  * @since 4.6.1
- * @cfg {Boolean} [colorButton_normalizeBackground=true]
+ * @cfg {Boolean} 
  * @member CKEDITOR.config
  */
