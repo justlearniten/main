@@ -1,0 +1,264 @@
+﻿balcony  : ярус; балкон
+box : ложа
+box office : билетная касса
+character : действующее лицо
+checkroom : гардероб
+comedian : актер-комик
+comedy : комедия
+company (of actors) : труппа (актеров)
+crowd scenes : массовые сцены
+drama : драма
+Drama Theatre : драматический театр
+dress circle : балкон первого яруса; бельэтаж
+dress rehearsal : генеральная репетиция
+dresses : костюмы
+costumes : костюмы
+entrance : вход
+evening performance : вечерний спектакль
+exit : выход
+first night  : премьера
+premiere : премьера
+footlights : рампа
+gallery : галерка
+make-up man : гример
+matinee  : спектакль 
+opera : опера
+Opera and Ballet Theatre : театр оперы и балета
+Opera House : оперный театр
+performance : представление; спектакль
+pit : амфитеатр
+play : пьеса
+producer : режиссер; постановщик
+prompter : суфлер
+Puppet Theatre : театр кукол
+Satire Theatre : театр сатиры
+scenery : декорация
+scriptwriter : сценарист
+sets : декорации к определенной сцене
+setting : место действия 
+sketch : эскиз
+stage : сцена
+stalls : партер
+parquet : партер
+theatre  : театр
+theater : театр
+theatre-goer : театрал
+ticket : билет
+tragedy : трагедия
+tragic actor : актер-трагик
+tragedian : актер-трагик
+actor : актер
+actress : актриса
+animated cartoon : мультипликационный фильм; мультфильм
+cartoon : мультипликационный фильм; мультфильм
+assistant director : помощник режиссера
+black and white film : черно-белый фильм
+camera operator : оператор камеры
+cameraman : оператор камеры
+children's film : детский фильм
+cinemascope : фильм для широкого экрана
+close-up : кадр, снятый крупным планом
+color documentary film : цветной документальный фильм
+comedy (film) : комедия
+credits : титры
+direct a film : режиссировать фильм
+director : режиссер
+dub (in) a film : дублировать фильм
+educational film : учебный фильм
+episode : эпизод
+executive producer : исполнительный продюсер
+feature film : художественный фильм
+film crew : команда фильма 
+full-length film : полнометражный фильм
+genre : жанр
+historical film : исторический фильм
+motion picture : кинофильм
+movie star  : кинозвезда
+film star  : кинозвезда
+cinema star : кинозвезда
+movie theater : кинотеатр
+movie house : кинотеатр
+cinema : кинотеатр
+movie-goer : любитель кино
+film-fan : любитель кино
+newsreel : хроника; киножурнал
+popular science film : научно-популярный фильм
+prequel : приквел 
+producer : продюсер
+release a film : выпускать фильм на экран
+review : рецензия
+reviewer : критик
+scene  : кадр
+shot : кадр
+screen : экран; экранизировать
+screen adaptation : экранизация
+film adaptation : экранизация
+screen version : экранизация
+script of a film : сценарий фильма
+sequel : сиквел
+shoot a film : снимать фильм
+short film : короткометражный фильм
+show : сеанс (в кинотеатре)
+show a film : демонстрировать фильм
+silent film : немой фильм
+sound film  :  звуковой фильм
+talkie :  звуковой фильм
+star (in a film) : появляться в ведущей роли (в фильме)
+subtitles : субтитры
+captions : субтитры
+thriller : триллер
+title of the film : название фильма
+trailer : трейлер 
+viewing : просмотр фильма
+wide-screen film : широкоэкранный фильм
+balalaika : балалайка
+banjo : банджо
+baritone : баритон
+bass : бас
+bassoon : фагот
+baton : дирижерская палочка
+castanets : кастаньеты
+chorus : хор
+clarinet : кларнет
+classical music : классическая музыка
+composer : композитор
+concert : концерт
+concert hall : филармония; концертный зал
+concert of chamber music : концерт камерной музыки
+concert of classical music : концерт классической музыки
+concert of folk music : концерт народной музыки
+conductor : дирижер
+contralto : контральто
+cornet : корнет
+cymbals : цимбалы
+drum : барабан
+duet : дуэт
+flute : флейта
+folk-song : народная песня
+gong : гонг
+grand piano : рояль
+guitar : гитара
+harp : арфа
+hautboy : гобой
+horn : рожок; рог
+jazz : джаз
+lyrics : слова песни
+mandolin : мандолина
+mandoline : мандолина
+mass singing : массовое пение
+melody : мелодия
+mezzo-soprano : меццо-сопрано
+mixed chorus : смешанный хор
+music : музыка
+musical : мюзикл
+musical instrument : музыкальный инструмент
+musician : музыкант
+orchestra : оркестр
+performer : исполнитель
+piano : пианино
+quartet : квартет
+quintet : квинтет
+rhythm : ритм
+septet : септет
+sextet : секстет
+singing : пение
+solo : соло
+soloist : солист
+sonata : соната
+song : песня
+soprano : сопрано
+symphony : симфония
+tenor : тенор
+trio : трио
+trombone : тромбон
+trumpet : труба
+tune : мелодия; мотив
+tuning fork : камертон
+violin : скрипка
+waltz : вальс
+ancients coins : старинные монеты
+antique : античное искусство
+decorations : украшения
+exhibit : экспонат
+exhibition : выставка
+manuscript : рукопись
+mosaic works : мозаичные работы
+museum : музей
+museum of Fine Arts : музей изобразительных искусств
+painter : художник
+artist : художник
+painting  : картина
+picture : картина
+portrait : портрет
+restoration work : реставрационная работа
+vase : ваза
+work of art : произведение искусства
+baccarat : баккара (карточная игра)
+bet : пари
+blackjack : блэк джек; очко (карточная игра)
+casino : казино
+chip : фишка (деньги казино)
+craps : карточная игра типа "блэк джек"
+dealer : сдающий карты
+horse race : лошадиные бега
+keno : кено 
+poker : покер
+pool : пул (бильярд)
+roulette : рулетка
+broadcast : передача 
+aerial : антенна
+antenna : антенна
+AM (amplitude modulation) : АМ, амплитудная модуляция
+announcer : диктор
+FM (frequency modulation) : частотная модуляция
+frequency : частота
+on air : в эфире
+radio : радио
+radio set : радиоприемник
+radio station : радиостанция
+radio wave : радиоволна
+signal : сигнал
+speech : речь
+weather report : сводка погоды
+aerial : антенна
+antenna : антенна
+channel : канал
+HDTV (= high definition television) : ТВЧ (= телевидение высокой четкости)
+liquid-crystal display televisions (= LCD TV) : телевизор с жидкокристаллическим экраном
+picture : изображение
+plasma display panel (= PDP) : плазменная панель; газоразрядный экран
+program : программа
+programme : программа
+screen : экран
+telecast : телепередача; передавать; показывать (по телевидению)
+television (TV) : телевидение
+tube : кинескоп
+cathode ray tube (CRT) : кинескоп
+TV set : телевизор
+TV station : ТВ станция
+ballet : балет
+boogie-woogie : буги-вуги
+dance : танец; танцевать
+dancer : танцор
+dancing : танцы
+foxtrot : фокстрот
+polka : полька
+quickstep : квикстеп
+rumba : румба
+salsa : сальса
+samba : самба
+tango : танго
+waltz : вальс
+anniversary party : юбилейный вечер
+birthday party : день рождения
+cocktail party : вечер с коктейлями
+dinner-party : званый ужин; званый обед
+hen party  : девичник
+house-warming party : новоселье
+invite : приглашение; приглашать
+party : вечер; вечеринка
+stag party : холостяцкая вечеринка; мальчишник
+bachelor party : холостяцкая вечеринка; мальчишник
+tea-party : чай (званый) 
+wedding party: свадебный вечер
+wedding reception : свадебный вечер

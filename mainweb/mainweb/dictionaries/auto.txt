@@ -1,0 +1,92 @@
+﻿armored car : бронеавтомобиль
+automobile : автомобиль
+bicycle  : велосипед
+bike : велосипед
+breakdown van : эвакуатор
+tow truck : эвакуатор
+car : автомобиль; машина
+caravan  : жилой фургон; автомобиль-дача; трейлер
+RV (recreational vehicle)  : жилой фургон; автомобиль-дача; трейлер
+motor home : жилой фургон; автомобиль-дача; трейлер
+company car : служебный автомобиль
+convertible : кабриолет
+estate car : автомобиль с кузовом универсал
+station wagon : автомобиль с кузовом универсал
+four wheel drive : автомобиль повышенной проходимости
+4WD : автомобиль повышенной проходимости
+4x4 : автомобиль повышенной проходимости
+limousine :  лимузин
+limo :  лимузин
+lorry : грузовик
+truck : грузовик
+motorcycle : мотоцикл
+patrol car : патрульный автомобиль
+pickup : пикап
+pickup truck : пикап
+racing car : гоночный автомобиль
+saloon: седан
+sedan : седан
+sports car : спортивный автомобиль
+vehicle : транспортное средство
+accelerator : педаль газа
+battery : аккумулятор
+bonnet  : капот
+hood : капот
+boot : багажник
+trunk : багажник
+brakes : тормоза
+bumper : бампер
+clutch : сцепление
+engine : двигатель
+fan belt : ремень вентилятора
+first gear : первая скорость
+gear lever : рычаг включения передач
+gearshift : рычаг включения передач
+headlights : фары
+motor : мотор
+neutral : нейтральная скорость
+radiator : радиатор
+reverse : задний ход
+shift : включать (передачу)
+silencer : выхлопная труба
+muffler : выхлопная труба
+tail light : задний свет
+tire : шина
+transmission : коробка передач
+wheel : колесо
+wiper : стеклоочиститель
+flashlight : карманный фонарик
+fuse : предохранитель
+jack : домкрат
+oil : масло
+pliers : клещи
+screwdriver : отвертка
+spare part : запчасть
+spark plug : свеча зажигания
+sparking plug : свеча зажигания
+tool : инструмент
+wrench : гаечный ключ
+car park : парковка; стоянка
+parking lot : парковка; стоянка
+car wash : автомойка
+filling station: заправочная станция
+gas station : заправочная станция
+garage : крытая парковка; парковка в здании
+repair shop : мастерская
+toll road : платная дорога
+turnpike : место взимания дорожного сбора на платной дороге
+break down : сломаться
+breakdown : поломка
+buckle up : разг. пристегнуться
+car theft : автомобильная кража
+diesel : дизельное топливо
+driving licence : водительские права
+driver's license : водительские права
+fasten one's seat belt : застегнуть ремень
+fix (something) : починить (что-либо)
+fuel : топливо
+mph (= miles per hour) : миль в час (скорость движения)
+petrol : бензин
+gasoline : бензин
+gas : бензин
+speed limit : ограничение скорости

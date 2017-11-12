@@ -1,0 +1,211 @@
+﻿amphibians : земноводные; амфибии
+frog : лягушка
+newt : тритон
+tadpole : головастик
+toad : жаба
+arachnids : паукообразные
+scorpion : скорпион
+spider : паук
+tarantula : тарантула
+albatross : альбатрос
+beak : клюв
+bird : птица
+blackbird : черный дрозд
+canary : канарейка
+coat : оперение (птицы)
+crest : гребешок; хохолок
+crow : ворона
+cuckoo : кукушка
+duck : утка
+eagle : орел
+falcon  : сокол
+finch : зяблик
+flamingo : фламинго
+goose : гусь
+hawk : ястреб
+hummingbird : колибри
+jackdaw : галка
+jay : сойка
+nightingale : соловей
+nuthatch : поползень
+ostrich : страус
+owl : сова
+parrot : попугай
+peacock : павлин
+pelican : пеликан
+penguin : пингвин
+pheasant : фазан
+pigeon : голубь
+dove : голубь
+raven : ворон
+robin : малиновка
+rooster : петух
+cock : петух
+sparrow : воробей
+stork : аист
+swallow : ласточка
+swan : лебедь
+swift : стриж
+talon : коготь; длинный ноготь
+tit : синица
+turkey : индюк; индейка
+vulture : гриф
+woodpecker : дятел
+carp : карп
+claw : клешня
+cod : треска
+crab : краб
+dolphin : дельфин
+eel : угорь
+fin : плавник
+fish : рыба
+gill : жабры
+goldfish : золотая рыбка
+halibut : палтус
+jellyfish : медуза
+lobster : лобстер
+marine animal : морское животное; водное млекопитающее
+otter : выдра
+perch : окунь
+pike : щука
+plaice : камбала
+ray : скат
+salmon : лосось ; семга
+sawfish : рыба-пила
+scales : чешуя
+scallop : гребешок (моллюск)
+seahorse : морской конек
+seal : тюлень
+shark : акула
+shell : ракушка ; панцирь
+shrimp : креветка
+prawn : креветка
+starfish : морская звезда
+sturgeon : осетр
+swordfish : рыба-меч
+trout : форель
+tuna : тунец
+tuna fish : тунец
+whale : кит
+ant : муравей
+aphid : тля
+bee : пчела
+beetle : жук
+bug : насекомое; жук
+bumblebee : шмель
+caterpillar : гусеница
+cockroach : таракан
+roach : таракан
+dragonfly : стрекоза
+flea : блоха
+fly : муха
+gadfly : овод; слепень
+grasshopper : кузнечик
+insects : насекомые
+ladybird : божья коровка
+ladybug : божья коровка
+larva  : личинка
+maggot : личинка
+midge : мошка; комар
+millipede : многоножка
+moth : моль ; мотылек
+nymph : личинка; куколка насекомого
+wasp : оса
+anteater  : муравьед
+ant-bear : муравьед
+antelope : антилопа
+armadillo : броненосец
+badger : барсук
+bear : медведь
+beaver : бобр; бобер
+bullock : вол
+camel : верблюд
+chimpanzee : шимпанзе
+claw : коготь; лапа с когтями
+coat : мех; шерсть
+fur : мех; шерсть
+dachshund : такса (порода собак)
+deer : олень; лань
+elephant : слон
+elk : лось
+fox : лисица; лиса
+gazelle : газель
+giraffe : жираф
+goat : козел; коза
+grizzly bear : медведь-гризли
+guinea pig : морская свинка
+hamster : хомяк
+hare : заяц
+hedgehog : еж; ежик
+hog : боров
+horse : лошадь; конь
+hyena : гиена
+lion : лев
+llama : лама
+lynx : рысь
+mammal : млекопитающее
+mammoth : мамонт
+marmot : сурок
+mink : норка
+mole : крот
+mongoose : мангуст
+moose : американский лось
+mouse : мышь
+mule : мул
+muzzle : морда; рыло
+panda : панда
+paw : лапа
+pig : свинья
+swine : свинья
+platypus : утконос
+polar bear : полярный медведь; белый медведь
+polecat : хорек
+pony : пони
+porcupine : дикобраз
+puma : пума
+raccoon : енот
+rat : крыса
+reindeer : северный олень
+rhinoceros : носорог
+sheep : овца; баран
+skunk : скунс
+sloth : ленивец
+squirrel : белка
+tail : хвост
+tiger : тигр
+trunk : хобот (слона)
+tusk : клык; бивень
+weasel : ласка
+whisker : усы (кошки, тигра, и т.п.)
+wolf : волк
+zebra : зебра	antler
+boa : удав
+chameleon : хамелеон
+crocodile : крокодил
+iguana : игуана
+lizard : ящерица
+poisonous snake : ядовитая змея
+venomous snake : ядовитая змея
+python : питон
+rattlesnake : гремучая змея
+reptile : рептилия
+salamander : саламандра
+sea snake : морская змея
+sea serpent : морская змея
+snake : змея
+tortoise : черепаха (сухопутная)
+turtle : черепаха 
+calf : теленок
+colt : жеребенок
+cub : детеныш 
+cygnet : молодой лебедь
+duckling : утенок
+eaglet : орленок
+fawn : молодой олень (до одного года)
+foal : жеребенок; осленок
+gosling : гусенок
+kid : козленок
+kitten : котенок
+lamb : ягненок; барашек; овечка
+leveret : зайчонок
+puppy : щенок

@@ -1,0 +1,201 @@
+﻿athlete : атлет; спортсмен
+champion : чемпион
+championship : первенство
+competition  : соревнование; состязание
+contest  : соревнование; состязание
+contestant : участник соревнования; состязания
+defeat : поражение
+final : финал
+finish : финиш
+first place : первое место
+game : игра
+gym : спортзал
+gymnasium : спортзал
+home team : хозяева поля
+laurel wreath : лавровый венок
+match : матч
+medal : медаль
+national team : сборная страны
+Olympics : Олимпийские игры
+Olympic Games : Олимпийские игры
+playground  : спортивная площадка
+sports ground : спортивная площадка
+record : рекорд
+result : результат
+semifinal : полуфинал
+semi-final : полуфинал
+spectator : зритель; наблюдатель
+sport : спорт
+sports : спорт
+sports fan : спортивный болельщик
+sportsman : спортсмен
+sportswoman : спортсменка
+stadium : стадион
+start : старт
+team : команда; сборная
+title : звание
+tournament : турнир
+trainer : тренер
+coach : тренер
+victory : победа
+winner : победитель
+world champion : чемпион мира
+world record : мировой рекорд
+attack : атака
+ball : мяч
+basketball : баскетбол
+block : блокировать
+bring the score to : довести счет до
+centre forward : центральный нападающий
+defender : защитник
+defense : защита
+defence : защита
+draw  : ничья
+tie  : ничья
+even the score : сравнять счет
+field : поле
+football : футбол
+forward : нападающий
+goal : гол ; ворота
+goalkeeper : вратарь
+keep score : вести счет
+lose a point : потерять очко
+open the score : открыть счет
+opponent : противник
+pass : передавать мяч
+feed the ball : передавать мяч
+penalty : штраф; наказание; пенальти
+player : игрок
+receive the ball : принимать мяч
+score : счет; забить гол
+serve the ball : подавать мяч
+shoot the ball at the basket : бросать мяч в корзину
+volleyball : волейбол
+whistle : свисток
+bar : планка
+baton : эстафетная палочка
+cross country race : бег по пересеченной местности; кросс
+discus throw : метание диска
+heat : забег
+high jump : прыжок в высоту
+javelin throw : метание копья
+jumps : прыжки
+lap : этап дистанции
+long distance race : бег на длинную дистанцию
+long jump : прыжок в длину
+marathon race : марафонский бег
+pole vault  : прыжок с шестом
+pole vaulting : прыжок с шестом
+race : соревнование по бегу
+relay : эстафета
+round : круг
+route : маршрут
+runs : бег
+sprint : спринт
+throws : метание
+track and field athletics : легкая атлетика
+blow : удар
+punch : удар
+boxing : бокс
+clinch : обхват
+close fight : ближний бой
+clutch : захват
+freestyle wrestling : вольная борьба
+hurl : бросок
+throw : бросок
+knockout : нокаут
+knock-out : нокаут
+referee : судья
+ring : ринг
+round : раунд
+second : секундант
+uppercut : удар снизу; апперкот
+wrestling : борьба
+figure skater : фигурист
+figure skating : фигурное катание
+ice hockey : хоккей на льду
+skating : езда на коньках
+skating rink : каток
+skiing : езда на лыжах
+skiing race : скоростной бег на лыжах
+skiing relay : лыжная эстафета
+slalom : слалом
+speed skating : скоростной бег на коньках
+aquatics : водный спорт
+swimming : водный спорт
+bathing suit : купальный костюм
+swimsuit : купальный костюм
+boat : лодка
+boating : лодочный спорт
+canoe : каноэ
+coxswain  : рулевой (на гоночных лодках)
+diving : прыжки в воду
+diving board : трамплин для прыжков в воду
+springboard : трамплин для прыжков в воду
+diving cap : купальная шапочка
+freestyle : вольный стиль
+kayak : каяк
+oar : весло
+regatta : парусные  гонки
+rowing : гребля
+sailboat : парусная лодка
+somersault : прыжок кувырком
+speedboat : моторная лодка
+motorboat : моторная лодка
+steersman : рулевой
+stroke : стиль
+swimming pool : бассейн для плавания
+synchronized swimming : синхронное плавание
+water polo : водное поло
+waterskiing : водные лыжи
+yacht racing : парусные гонки
+yachting : парусный спорт
+yachtsman : яхтсмен
+adjourn the game : отложить игру
+bishop : слон
+chess : шахматы
+chess tournament : шахматный турнир
+chessman : фигура (шахматная)
+piece : фигура (шахматная)
+grandmaster : гроссмейстер
+king : король
+knight : конь
+move : сделать ход
+pawn : пешка
+play white : играть белыми 
+queen : королева; ферзь; дама
+resign : сдать партию
+resume the game : возобновить игру
+rook  : ладья
+castle : ладья
+sacrifice a piece : пожертвовать фигуру
+win a piece : выиграть фигуру
+archery : стрельба из лука
+billiards : бильярд
+bobsleigh : бобслей (катание с гор на санях с рулем)
+bodybuilding : культуризм;бодибилдинг
+bowling : боулинг
+cycling : езда на велосипеде
+darts : дартс; дротики
+draughts : шашки
+fencing : фехтование
+fishing : рыбная ловля
+gymnastics : гимнастика
+hiking : поход; экскурсия
+horse racing : лошадиные бега
+hunting : охота
+hurdle race : бег с препятствиями; барьерный бег
+jogging : бег трусцой
+mountaineering : альпинизм
+paintball : пейнтбол
+parachuting : парашютизм; скайдайвинг
+skydiving : парашютизм; скайдайвинг
+shooting : стрельба
+skateboarding : скейтбординг
+snowboarding : сноубординг
+surfing : серфинг
+table tennis : настольный теннис
+tennis : теннис
+tug of war : перетягивание каната
+walking : ходьба
+windsurfing : виндсерфинг
