@@ -68,6 +68,7 @@ namespace mainweb.Controllers
         public async Task<IActionResult> Create()
         {
             await CheckAdmin();
+            await PopulateStats();
             return View();
         }
 
@@ -83,9 +84,9 @@ namespace mainweb.Controllers
         }
         private async Task PopulateStats()
         {
-            int countTotal = _context.Dictionary.Count();
-            int countEng = _context.Dictionary.Count(d => d.DicDirection == DictionaryEntry.Direction.ENGRUS);
-            int countTrans = _context.Translations.Count();
+            int countTotal = await _context.Dictionary.CountAsync();
+            int countEng = await _context.Dictionary.CountAsync(d => d.DicDirection == DictionaryEntry.Direction.ENGRUS);
+            int countTrans = await _context.Translations.CountAsync();
 
             ViewData["DictionaryTotal"] = countTotal;
             ViewData["DictionaryEng"] = countEng;
@@ -100,6 +101,7 @@ namespace mainweb.Controllers
         public async Task<IActionResult> Create([Bind("Entry")]BulkDictionaryEntry model)
         {
             await CheckAdmin();
+           
             if (model.Entry != null)
             {
                 try
@@ -116,20 +118,34 @@ namespace mainweb.Controllers
                     return View(model);
                 }
             }
+            await PopulateStats();
             return View();
         }
         public async Task AddLineToDictionary(String l)
         {
-            String[] splitted = l.Split(":".ToArray(),StringSplitOptions.RemoveEmptyEntries);
+            String[] splitted = l.Split(":".ToArray(), StringSplitOptions.RemoveEmptyEntries);
             if (splitted.Length != 2)
                 throw new Exception("Неверный формат строки: " + l);
-            string word = NormalizeWord(splitted[0]);
+            string word = splitted[0];
+            string[] translations = splitted[1].Split(";".ToArray(), StringSplitOptions.RemoveEmptyEntries);
+
+            await AddTranslation(word, translations);
+            //add reverse
+            foreach(string s in translations)
+                await AddTranslation(s, new string[] { word });
+        }
+
+        private async Task<string> AddTranslation(string word, string[] translations)
+        {
+            word = NormalizeWord(word);
+
             DictionaryEntry dictionary = await _context.Dictionary.FirstOrDefaultAsync(d => d.Text == word);
             if (dictionary == null)
             {
                 DictionaryEntry.Direction dir = DictionaryEntry.Direction.ENGRUS;
                 if (word[0] >= 'а' && word[0] <= 'я') dir = DictionaryEntry.Direction.RUSENG;
-                dictionary = new DictionaryEntry() {
+                dictionary = new DictionaryEntry()
+                {
                     Text = word,
                     DicDirection = dir,
                     Translatins = new List<Translation>()
@@ -140,14 +156,15 @@ namespace mainweb.Controllers
             {
                 _context.Entry(dictionary).Collection(d => d.Translatins).Load();
             }
-            foreach(string t in splitted[1].Split(";".ToArray(), StringSplitOptions.RemoveEmptyEntries))
+            foreach (string t in translations)
             {
                 string translation = NormalizeTranslation(t);
-                if (dictionary.Translatins.FirstOrDefault(tt=>tt.Text==translation)==null)
-                    dictionary.Translatins.Add(new Translation() {Text = translation});
+                if (dictionary.Translatins.FirstOrDefault(tt => tt.Text == translation) == null)
+                    dictionary.Translatins.Add(new Translation() { Text = translation });
             }
-            
+
             await _context.SaveChangesAsync();
+            return word;
         }
 
         private string NormalizeTranslation(string v)

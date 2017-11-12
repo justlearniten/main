@@ -1,0 +1,138 @@
+﻿actor : актер
+actress : актриса
+astronaut : астронавт; космонавт
+author : автор; писатель
+authoress : писательница
+baker : пекарь; булочник
+barber : парикмахер; цирюльник
+beautician : косметолог
+cosmetician : косметолог
+biologist : биолог
+bricklayer : каменщик
+bus driver : водитель автобуса
+butcher : мясник
+caretaker : лицо, нанимаемое для того, чтобы следить, заботиться о ком-либо или чем-либо
+carpenter : плотник
+chauffeur : шофер; водитель
+driver : шофер; водитель
+chimney sweep : трубочист
+chimney sweeper : трубочист
+sweep : трубочист
+sweeper : трубочист
+clothier: торговец мануфактурными товарами; торговец одежды, галантереи, и т.п.
+draper: торговец мануфактурными товарами; торговец одежды, галантереи, и т.п.
+outfitter : торговец мануфактурными товарами; торговец одежды, галантереи, и т.п.
+coach : тренер; инструктор
+cobbler : сапожник; занимающийся починкой обуви
+confectioner : кондитер
+construction worker : рабочий-строитель
+cook : кухарка; повар
+dentist : зубной врач; дантист
+doctor : врач
+electrician : электрик; электротехник; электромонтер
+engineer : инженер
+explorer : исследователь
+farmer : фермер
+fashion model : модель
+model : модель
+ferryman : перевозчик; паромщик
+fireman : пожарный
+firefighter : пожарный
+florist : торговец цветами
+gardener : садовник
+glazier : стекольщик
+greengrocer : продавец фруктов; овощей
+grocer : торговец бакалейными товарами; бакалейщик
+hairdresser : парикмахер
+hairstylist : парикмахер-стилист
+hunter : охотник
+huntsman : охотник
+legislator : законодатель
+mechanic : механик
+miner : шахтер
+nurse : медсестра; медбрат; сиделка
+optician : оптик
+painter : художник; маляр
+pharmacist : аптекарь; фармацевт
+chemist : аптекарь; фармацевт
+druggist : аптекарь; фармацевт
+pilot : пилот; летчик
+plumber : водопроводчик
+police officer : полицейский;полицейская
+policeman : полицейский
+policewoman : полицейская
+research scientist : научный исследователь
+roofer  : кровельщик
+slater : кровельщик
+scavenger : уборщик мусора; метельщик улиц
+secretary : секретарь
+shepherd : пастух
+shepherdess : пастушка
+shop assistant  : продавец; продавщица
+sales person  : продавец; продавщица
+salesman  : продавец
+saleswoman  : продавщица
+salesclerk : продавец; продавщица
+singer : певец
+stationer : торговец канцелярскими принадлежностями
+surgeon : хирург
+taxi driver : водитель такси
+cab driver : водитель такси
+teacher : учитель; преподаватель
+tiler : плиточник
+tobacconist : торговец табачными изделиями
+vet : ветеринар; ветеринарный врач
+veterinary surgeon : ветеринар; ветеринарный врач
+veterinarian : ветеринар; ветеринарный врач
+vocalist : вокалист; певец; певица
+waiter : официант
+waitress : официантка
+zoologist : зоолог
+earn one's leaving : зарабатывать на жизнь
+employee : служащий
+employer : работодатель; наниматель
+flexitime : свободный режим рабочего дня; скользящий график
+flextime : свободный режим рабочего дня; скользящий график
+full-time job : работа на полную ставку
+get a raise : получить повышение
+job  : работа
+work : работа
+occupation : род занятий; профессия
+part-time job : работа на неполную ставку
+pay cut : снижение заработной платы
+wage cut : снижение заработной платы
+profession : профессия
+promotion : продвижение по службе
+regular job : постоянная работа
+run a firm : руководить фирмой
+salary  : заработная плата
+wages : заработная плата
+severance : выходное пособие
+severance pay : выходное пособие
+trade : занятие; ремесло; профессия
+work in shifts : работать посменно
+work overtime : работать сверхурочно
+worker : рабочий
+working hours : рабочие часы
+application : заявление
+application form : бланк заявления
+apply for a job : подать документы для приема на работу
+apprentice  : ученик; стажер; практикант
+trainee : ученик; стажер; практикант
+apprenticeship : ученичество
+CV (curriculum vitae ) : краткая биография
+job interview : собеседование при приеме на работу
+skilled worker : опытный рабочий
+training : обучение; тренировка
+vacancy : вакансия
+be unemployed : быть безработным
+be out of work : быть безработным
+discharge : увольнение
+fire : уволить
+dismiss  : уволить
+discharge : уволить
+sack : уволить
+look for a job : искать работу
+quit : бросать работу
+resign : уходить в отставку
+unemployment : безработица

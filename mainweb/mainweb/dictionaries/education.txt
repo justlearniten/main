@@ -1,0 +1,234 @@
+﻿algebra : алгебра
+biology : биология
+chemistry : химия
+computer science : информатика
+economics : экономика
+English : английский язык
+geography : география
+geometry : геометрия
+history : история
+literature : литература
+maths  : математика
+math  : математика
+music : музыка
+physics : физика
+psychology : психология
+sociology : социология
+addition : сложение
+common denominator : общий знаменатель
+decimal fraction : десятичная дробь
+denominator : знаменатель
+difference : разность
+division : деление
+equation : уравнение
+fraction : дробь (математическая)
+improper fraction : неправильная дробь
+mixed fraction : смешанная дробь
+multiplication : умножение
+number : число
+numerator : числитель
+problem : задача (математическая)
+proper fraction : правильная дробь
+quotient : частное (при делении)
+remainder : остаток (при делении)
+series of numbers : ряд чисел
+subtraction : вычитание
+sum : сумма
+table : таблица
+angle : угол
+approximately equals : приблизительно равняется
+braces : фигурные скобки
+brackets : скобки
+cube root of : корень кубический из
+decimal point : точка в десятичных дробях
+divided by : деленное на; знак деления
+division : деление
+equal or greater than : больше чем или равно
+equal or less than : меньше чем или равно
+equality : равенство
+equals : равняется; знак равно
+greater than : больше чем
+inequality : неравенство
+infinity : бесконечность
+length of line from A to B : длина линии от A до B
+less than : меньше чем
+mathematical sign : математический знак
+minus : минус
+multiplication : умножение
+multiplication table : таблица умножения
+negative sign : знак отрицания
+not equal : не равно
+nth root of : корень n-й степени из
+parallel : параллельный; параллель
+parentheses : круглые или овальные скобки
+round brackets : круглые или овальные скобки
+percent : процент
+per cent : процент
+perpendicular : перпендикулярный; перпендикуляр
+plus : плюс
+plus or minus : плюс или минус
+right angle : прямой угол
+square brackets : квадратные скобки
+square root of : корень квадратный из
+times by : умноженное на; знак умножения
+attendance : посещаемость
+bell : звонок
+break  : перемена; перерыв
+recess : перемена; перерыв
+cafeteria : столовая
+class : уроки; занятия
+class : курс обучения (курс какой-либо дисциплины)
+class : выпуск студентов или учащихся какого-либо года
+classroom : кабинет (в школе)
+course : курс
+diploma : аттестат; диплом
+exam  : экзамен
+examination : экзамен
+form: класс (группа учеников)
+grade : класс (группа учеников)
+group : группа
+homework : домашние задания; уроки
+lesson : урок; занятие
+mark : оценка; отметка
+grade : оценка; отметка
+pupil  : ученик
+student : ученик
+register : журнал
+school : школа
+teacher : учитель
+term  : четверть; семестр
+semester : четверть; семестр
+test : тест; контрольная
+transfer : перевод (из одного учебного заведения в другое)
+admission : поступление
+enrollment : поступление
+audience : аудитория; слушающие
+auditorium : аудитория; зал
+cafeteria : столовая
+class : занятия
+course : курс
+dean : декан
+dean's office : деканат
+degree : ученая степень
+department : отделение
+diploma : диплом
+exam  : экзамен
+examination : экзамен
+faculty : факультет
+finals : выпускные экзамены; государственные экзамены
+freshman : первокурсник
+graduation : окончание учебного заведения; выпуск
+group: группа
+class : группа
+higher education : высшее образование
+higher learning : высшее образование
+institute : институт
+lecture : лекция
+lecturer : лектор
+lodgings : общежитие
+dormitory : общежитие
+mark  : отметка; оценка
+grade : отметка; оценка
+notes : конспект
+professor : профессор
+sophomore : студент-второкурсник
+student : студент
+teacher : преподаватель
+term  : семестр
+semester : семестр
+test : тест; контрольная
+university  : университет
+college : университет
+almanac : альманах
+annotation : аннотация
+atlas : атлас
+author : автор
+binding : переплет
+book : книга
+booklet : книжечка; брошюра; буклет
+bookmark: закладка
+bookmarker : закладка
+chapter : глава
+children's book : детская книга
+classical literature : классическая литература
+contents : содержание; оглавление
+cover : обложка
+dictionary : словарь
+drama : драма
+encyclopedia : энциклопедия
+epilogue : эпилог
+essay : очерк; эссе
+fable : басня
+fairy tale : сказка
+fantasy : фэнтези
+fiction : художественная литература
+flash fiction  : малая проза
+microfiction : малая проза
+guide book : путеводитель
+handbook : руководство; справочник
+horror fiction : литература ужасов; ужасы; мистика
+illustrated book : иллюстрированная книга
+introduction : введение
+memoir : мемуары
+reminiscence : мемуары
+modern literature : современная литература
+nonfiction  : документальная проза
+non-fiction : документальная проза
+novel : роман
+novella  : новелла
+short novel : новелла
+pamphlet : брошюра
+booklet : брошюра
+paragraph : абзац
+passage : отрывок
+picture book : (детская) книжка с картинками
+pocketbook : книжка небольшого формата; карманное издание
+pocket edition : книжка небольшого формата; карманное издание
+poem : стихотворение
+poetry : поэзия
+preface : предисловие
+prologue : пролог
+prose : проза
+reference book : справочник
+book of reference : справочник
+rhyme : рифма; рифмованный стих
+saga : сага
+satire : сатира
+science fiction : научная фантастика
+sonnet : сонет
+story  : рассказ
+short story : рассказ
+technical literature : техническая литература
+text : текст
+textbook : учебник
+thesaurus : тезаурус
+title : заглавие
+translation : перевод
+urban legend : городская легенда; байка
+urban myth : городская легенда; байка
+urban tale : городская легенда; байка
+contemporary legend : городская легенда; байка
+volume : том
+writer : писатель
+blackboard  : доска
+chalkboard : доска
+chalk : мел
+crayon : цветной карандаш; цветной мелок
+easel : мольберт; подставка
+eraser : ластик; резинка
+rubber : ластик; резинка
+exercise book : тетрадь
+copybook  : тетрадь
+notebook : тетрадь
+glue : клей
+ink : чернила
+paper : бумага
+paper clip : скрепка для бумаг
+pen : ручка
+pencil : карандаш
+pencil sharpener : точилка
+rubber band : резинка (для скрепления чего-либо)
+ruler : линейка
+scissors : ножницы
+stapler : степлер
+table : стол

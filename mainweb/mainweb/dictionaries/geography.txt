@@ -1,0 +1,67 @@
+﻿area : район; область
+capital : столица
+city : город
+country : страна
+district : район
+region : край; область
+state : государство ; штат
+town : небольшой город
+village : деревня
+cape : мыс
+cliff : отвесная скала; утес
+glacier : ледник
+hill : холм
+mountain : гора
+mountain range  : горная цепь
+mountain chain : горная цепь
+pass : ущелье
+peak : >пик
+plain : равнина
+plateau : плато; плоскогорье
+summit : вершина
+valley : долина
+volcano : вулкан
+desert : пустыня
+equator : экватор
+forest : лес
+highlands : горная местность
+jungle : джунгли
+lowlands : низменность
+oasis : оазис
+swamp : болото; топь
+tropics : тропики
+tundra : тундра
+canal : канал
+lake : озеро
+ocean : океан
+ocean current : океаническое течение
+pool : пруд; заводь; водоем
+pond : пруд; заводь; водоем
+river : река
+sea : море
+spring : источник; родник; ключ
+stream : ручей
+bay : бухта; залив
+beach : пляж
+coast : побережье; морской берег
+continent : континент
+estuary : дельта; устье реки
+gulf : морской залив
+island : остров
+peninsula : полуостров
+eruption : извержение 
+conflagration : большие пожары
+earthquake : землетрясение
+fire : пожар
+flood : наводнение
+hurricane  : ураган; тропический циклон
+tornado : торнадо; смерч
+twister : торнадо; смерч
+tsunami : цунами
+atlas : атлас
+climate : климат
+hemisphere : полушарие
+latitude : широта
+longitude : долгота
+map : карта
+temperature : температура

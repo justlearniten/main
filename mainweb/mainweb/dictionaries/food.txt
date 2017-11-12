@@ -1,0 +1,239 @@
+﻿all-you-can-eat buffet : шведский стол
+buffet : буфет
+cafe : кафе
+coffee shop : кафе, в котором подают, как правило, кофе и десерты
+diner : недорогая закусочная, часто располагающаяся у обочины дороги (более употребительно в американском английском)
+hotdog stand : сосисочная
+restaurant : ресторан
+(a stack of) pancakes : (стопка) блинчиков
+bacon : бекон
+bagel : бейгл (соленый круглый крендель из дрожжевого теста)
+bun : булочка
+roll : булочка
+butter : сливочное масло
+cereals : собирательное название для мюсли, кукурузных хлопьев, и т.п.
+cheese : сыр
+cornflakes : кукурузные хлопья
+doughnut : пончик; жаренный пирожок
+donut : пончик; жаренный пирожок
+eggs : яйца
+eggs over easy : яичница-глазунья, зажаренная с двух сторон
+fried eggs: яичница
+eggs sunny side up : яичница-глазунья
+graham : булочка из муки грубого помола
+granola : мюсли
+ham : ветчина
+hash browns : картофельные оладьи
+hash brown potatoes : картофельные оладьи
+jelly : джем
+maple syrup : кленовый сироп (употребляется с блинчиками)
+muffin : маффин (маленькое песочное пирожное с изюмом, шоколадом, и др.)
+oatmeal : овсяные хлопья
+omelet : омлет
+omelette : омлет
+peanut butter : арахисовое масло
+pumpernickel : пумперникель (сорт черного хлеба)
+sausage : сарделька, сосиска
+scrambled eggs : яичница-болтунья
+slice of bread : кусок хлеба
+slice of toast : кусок хлеба, подсушенный в тостере
+coffee :  кофе
+juice :сок
+ milk :  молоко
+carbonated water : вода с газом
+sparkling water : вода с газом
+club soda : вода с газом
+cream : сливки
+decaf : без кофеина (кофе)
+grapefruit juice : грейпфрутовый сок
+hot chocolate : горячее какао
+iced-tea : чай со льдом
+lemonade : лимонад
+milk shake : молоко с мороженым
+mineral water : минеральная вода
+orange juice : апельсиновый сок
+refill : дополнительная порция напитка
+root beer : рутбир, корневое пиво, сарсапарилла 
+soda : газированная ароматизированная вода
+soft drink : безалкогольный напиток
+sugar : сахар
+tea : чай
+water : вода
+yogurt : йогурт
+yoghurt : йогурт
+wine : вино
+(wine) cooler : игристое вино с соком
+beer : пиво
+bourbon whiskey : виски бурбон
+champagne : шампанское
+bubbly : шампанское
+cocktail : коктейль
+eggnog : яичный ликер
+mulled wine : глинтвейн
+scotch whiskey : шотландское виски
+beef : говядина
+chicken : курица
+pork : свинина
+rib eye (steak) : стейк без костей (нежное)
+sirloin (steak) : стейк без костей (большой кусок)
+spare ribs : ребрышки
+strip (steak) : отбивная
+T-bone (steak) : стейк из средней части (с жирком)
+tenderloin (steak) : филе (постное)
+turkey : индейка
+veal : телятина
+buffalo wings  : куриные крылышки жареные во фритюре
+hot wings  : куриные крылышки жареные во фритюре
+chicken wings : куриные крылышки жареные во фритюре
+burger : бургер
+cheeseburger : чизбургер
+fish and chips : рыба жареная во фритюре и картофель фри
+French fries : картофель фри
+chips : картофель фри
+hamburger : гамбургер
+hot-dog : хот-дог
+nachos : начос (кукурузные чипсы)
+nachos with cheese : начос с сыром
+onion rings : жаренные во фритюре луковые кольца
+pizza : пицца
+popcorn : поп-корн
+potato crisps : картофельные чипсы
+potato chips : картофельные чипсы
+sandwich : сэндвич
+slice of pizza : слайс пиццы
+Caesar's salad : салат "Цезарь" (листовый салат с яйцом, анчоусами и оливковым маслом)
+chef salad : смешанный салат
+coleslaw : белокочанная капуста с майонезом
+tossed salad : зеленый салат
+tuna salad : салат из тунца
+waldorf salad : уолдорфский салат (салат с сельдереем, яблоками и грецкими орехами)
+asparagus : спаржа
+avocado : авокадо
+bean sprout : стручковая фасоль
+beans : бобы
+beet : свекла
+broccoli : брокколи
+Brussels sprout : брюссельская капуста
+cabbage : капуста
+carrot : морковь
+cauliflower : цветная капуста
+chard : артишок
+chick peas : нут, турецкий горох
+cucumber : огурец
+eggplant : баклажан
+endive : салат эндивий
+garlic : чеснок
+kohlrabi : кольраби
+leek : лук-порей
+lentils : чечевица
+okra : гибискус съедобный
+onion : лук репчатый
+peas : горох
+pepper : стручковый перец
+potato : картофель
+rice : рис
+scallion : лук-перо, лук-шалот
+spinach : шпинат
+squash : тыква
+sweet potato : батат, сладкий картофель
+turnip : репа, турнепс
+zucchini : цуккини
+almond : миндаль
+apple : яблоко
+apricot : абрикос
+banana : банан
+berry : ягода
+blackberry : ежевика
+blueberry : черника
+Brazil nut : бразильский орех
+cashew : кешью
+cherry : вишня
+cranberry : клюква
+grape : виноград
+grapefruit : грейпфрут
+hazelnut : лесной орех
+hickory : гикори (североамериканский орех)
+lemon : лимон
+lime : лайм
+macadamia : орех макадами
+melon : дыня
+orange : апельсин
+peach : персик
+peanut : арахис
+pear : груша
+pecan : орех пекан
+pineapple : ананас
+pistachio : фисташки
+plum : слива
+raspberry : малина
+strawberry : клубника
+tangerine  : мандарин
+mandarin  : мандарин
+walnut : грецкий орех
+(chocolate chip) cookies : печенье с шоколадной крошкой
+apple pie : яблочный пирог
+blueberry pie : пирог с черникой
+brownie : шоколадное пирожное с орехами
+cake (with frosting) : пирожное с сахарной глазурью
+candy bar : сладкая плитка
+chocolate : шоколад
+chocolate bar : плитка шоколада
+cobbler : фруктовое пирожное
+fruit : фрукты
+ice cream : мороженое
+jello : желе
+key lime pie : пирог с лаймом
+licorice : лакрица
+pecan pie : пирожное с орехами
+sprinkles : крошка, присыпка
+sundae : мороженое со сладким сиропом, сливками и присыпкой
+baked : жареный
+fried : жареный
+boiled : отварной
+braised : тушенный
+stewed : тушенный
+broiled  : приготовленный на гриле
+roast : приготовленный на гриле
+mashed : пюре
+pickled : маринованный
+poached : слегка отваренный
+smoked : копченый
+steamed : приготовленный на пару
+stuffed : фаршированный
+glazed : глазурованный
+caffeine free : не содержит кофеина 
+decaf : без кофеина (о кофе)
+diet : не содержит сахара (о напитках)
+fat free : обезжиренный (о молочных продуктах)
+lean : низкокалорийный (о продуктах)
+light : с низким содержанием алкоголя
+low cholesterol : с низким содержанием холестерина
+low fat : нежирный (о молочных продуктах)
+no preservatives : без консервантов
+butter dish : масленка
+china : фарфоровая посуда
+coffee pot : кофейник
+crockery : фаянсовая посуда
+cup : чашка
+cutlery : столовые приборы
+dinner plate : неглубокая тарелка
+dish : блюдо, тарелка
+earthenware : глиняная посуда
+fork : вилка
+glass : стакан
+goblet : бокал
+knife : нож
+pepper shaker : перечница
+pepper box : перечница
+pitcher  : кувшин
+jug : кувшин
+plate : тарелка
+saucer : блюдце
+soup plate : глубокая тарелка
+spoon : ложка
+sugar basin : сахарница
+tea caddy : чайница
+tea kettle : чайник
+tea spoon : чайная ложка
+teapot : заварочный чайник
+tray : поднос

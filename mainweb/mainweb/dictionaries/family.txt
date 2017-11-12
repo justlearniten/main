@@ -1,38 +1,109 @@
-aunt : тетяbaby : грудной ребенокboyfriend : возлюбленный; молодой человекbrother : братbrother-in-law : зять (муж сестры) / шурин (брат жены) / свояк (муж свояченицы) / деверь (брат мужа)
-child / kid : ребенок
-children / kids : дети
-cousin : двоюродный брат; двоюродная сестраdad / daddy : папа
-daughter : дочьdaughter-in-law : невестка; сноха (жена сына)
-father : отецfather-in-law : свекор (отец мужа); тесть (отец жены)
-fiance / groom / bridegroom : женихfiancee / bride : невестаfolks / family : семьяfoster child : приемыш
-foster father : приемный отец
-foster mother : приемная мать
-girlfriend : возлюбленная; девушкаgodchild : крестник; крестницаgoddaughter : крестницаgodfather : крестный отецgodmother : крестная матьgodson : крестникgrandchild : внук; внучкаgranddad / grandpa / gramps : разг. дедушка
-granddaughter : внучкаgrandfather : дедушкаgrandma / granny / grams : разг. бабушка
-grandmother : бабушкаgrandson : внукgreat granddaughter : правнучка
-great grandfather : прадед
-great grandmother : прабабушка
-great grandson : правнук
-husband : мужmaternal grandfather : дедушка по линии матери
-maternal grandmother : бабушка по линии матери
-mother : матьmother-in-law : свекровь (мать мужа); теща (мать жены)
-mum / mummy / mom : мама
-nephew : племянникniece : племянницаparents : родителиpaternal grandfather : дедушка по линии отца
-paternal grandmother : бабушка по линии отца
-relatives : родственникиsister : сестраsister-in-law : невестка (жена брата) / золовка (сестра мужа) / свояченица (сестра жены)
-son : сынson-in-law : зять (муж дочери)
-spouse : супруг; супругаstepbrother / half brother : сводный брат
-stepchild : пасынок; падчерицаstepdaughter : падчерицаstepfather : отчимstepmother : мачехаstepsister / half sister : сводная сестра
-stepson : пасынокuncle : дядяwife : жена
-adop : усыновлять; удочерятьadult / grown-up : взрослый человекancestor : предокbachelor : холостякbaptize : креститьbe engaged : быть помолвленным
-be in love : быть влюбленным
-be married to : быть женатым на; бать замужем за
-be pregnant : быть беременной
-birthday : день рожденияborn : рожденныйbring up / raise : воспитывать
-couple : пара (супружеская)descendant : потомокdivorced : разведенныйexpect a baby : ожидать ребенка
-fall in love : влюбиться
-give birth to (somebody) : родить (кого-либо)
-go to school : ходить в школу
-guardian : опекун; попечительmarry / get married : жениться; выйти замуж
-orphan : сиротаspinster : старая дева; незамужняя женщинаteenager : подростокwedding : свадьбаwidow : вдоваwidowed : овдовевший
-widower : вдовецyouth : юноша, молодой человек; юность, молодость
+п»їaunt : С‚РµС‚СЏ
+baby : РіСЂСѓРґРЅРѕР№ СЂРµР±РµРЅРѕРє
+boyfriend : РІРѕР·Р»СЋР±Р»РµРЅРЅС‹Р№; РјРѕР»РѕРґРѕР№ С‡РµР»РѕРІРµРє
+brother : Р±СЂР°С‚
+brother-in-law : Р·СЏС‚СЊ (РјСѓР¶ СЃРµСЃС‚СЂС‹) ; С€СѓСЂРёРЅ (Р±СЂР°С‚ Р¶РµРЅС‹);СЃРІРѕСЏРє (РјСѓР¶ СЃРІРѕСЏС‡РµРЅРёС†С‹);РґРµРІРµСЂСЊ (Р±СЂР°С‚ РјСѓР¶Р°)
+child : СЂРµР±РµРЅРѕРє
+kid : СЂРµР±РµРЅРѕРє
+children  : РґРµС‚Рё
+kids : РґРµС‚Рё
+cousin : РґРІРѕСЋСЂРѕРґРЅС‹Р№ Р±СЂР°С‚; РґРІРѕСЋСЂРѕРґРЅР°СЏ СЃРµСЃС‚СЂР°
+dad : РїР°РїР°
+daddy : РїР°РїР°
+daughter : РґРѕС‡СЊ
+daughter-in-law : РЅРµРІРµСЃС‚РєР°; СЃРЅРѕС…Р° (Р¶РµРЅР° СЃС‹РЅР°)
+father : РѕС‚РµС†
+father-in-law : СЃРІРµРєРѕСЂ (РѕС‚РµС† РјСѓР¶Р°); С‚РµСЃС‚СЊ (РѕС‚РµС† Р¶РµРЅС‹)
+fiancГ© : Р¶РµРЅРёС…
+groom : Р¶РµРЅРёС…
+bridegroom : Р¶РµРЅРёС…
+fiancГ©e : РЅРµРІРµСЃС‚Р°
+bride : РЅРµРІРµСЃС‚Р°
+folks  : СЃРµРјСЊСЏ
+family : СЃРµРјСЊСЏ
+foster child : РїСЂРёРµРјС‹С€
+foster father : РїСЂРёРµРјРЅС‹Р№ РѕС‚РµС†
+foster mother : РїСЂРёРµРјРЅР°СЏ РјР°С‚СЊ
+girlfriend : РІРѕР·Р»СЋР±Р»РµРЅРЅР°СЏ; РґРµРІСѓС€РєР°
+godchild : РєСЂРµСЃС‚РЅРёРє; РєСЂРµСЃС‚РЅРёС†Р°
+goddaughter : РєСЂРµСЃС‚РЅРёС†Р°
+godfather : РєСЂРµСЃС‚РЅС‹Р№ РѕС‚РµС†
+godmother : РєСЂРµСЃС‚РЅР°СЏ РјР°С‚СЊ
+godson : РєСЂРµСЃС‚РЅРёРє
+grandchild : РІРЅСѓРє; РІРЅСѓС‡РєР°
+granddad : СЂР°Р·Рі. РґРµРґСѓС€РєР°
+grandpa : СЂР°Р·Рі. РґРµРґСѓС€РєР°
+gramps : СЂР°Р·Рі. РґРµРґСѓС€РєР°
+granddaughter : РІРЅСѓС‡РєР°
+grandfather : РґРµРґСѓС€РєР°
+grandma : СЂР°Р·Рі. Р±Р°Р±СѓС€РєР°
+granny : СЂР°Р·Рі. Р±Р°Р±СѓС€РєР°
+grams : СЂР°Р·Рі. Р±Р°Р±СѓС€РєР°
+grandmother : Р±Р°Р±СѓС€РєР°
+grandson : РІРЅСѓРє
+great granddaughter : РїСЂР°РІРЅСѓС‡РєР°
+great grandfather : РїСЂР°РґРµРґ
+great grandmother : РїСЂР°Р±Р°Р±СѓС€РєР°
+great grandson : РїСЂР°РІРЅСѓРє
+husband : РјСѓР¶
+maternal grandfather : РґРµРґСѓС€РєР° РїРѕ Р»РёРЅРёРё РјР°С‚РµСЂРё
+maternal grandmother : Р±Р°Р±СѓС€РєР° РїРѕ Р»РёРЅРёРё РјР°С‚РµСЂРё
+mother : РјР°С‚СЊ
+mother-in-law : СЃРІРµРєСЂРѕРІСЊ (РјР°С‚СЊ РјСѓР¶Р°); С‚РµС‰Р° (РјР°С‚СЊ Р¶РµРЅС‹)
+mum : РјР°РјР°
+mummy : РјР°РјР°
+mom : РјР°РјР°
+nephew : РїР»РµРјСЏРЅРЅРёРє
+niece : РїР»РµРјСЏРЅРЅРёС†Р°
+parents : СЂРѕРґРёС‚РµР»Рё
+paternal grandfather : РґРµРґСѓС€РєР° РїРѕ Р»РёРЅРёРё РѕС‚С†Р°
+paternal grandmother : Р±Р°Р±СѓС€РєР° РїРѕ Р»РёРЅРёРё РѕС‚С†Р°
+relatives : СЂРѕРґСЃС‚РІРµРЅРЅРёРєРё
+sister : СЃРµСЃС‚СЂР°
+sister-in-law : РЅРµРІРµСЃС‚РєР° (Р¶РµРЅР° Р±СЂР°С‚Р°) ; Р·РѕР»РѕРІРєР° (СЃРµСЃС‚СЂР° РјСѓР¶Р°) ; СЃРІРѕСЏС‡РµРЅРёС†Р° (СЃРµСЃС‚СЂР° Р¶РµРЅС‹)
+son : СЃС‹РЅ
+son-in-law : Р·СЏС‚СЊ (РјСѓР¶ РґРѕС‡РµСЂРё)
+spouse : СЃСѓРїСЂСѓРі; СЃСѓРїСЂСѓРіР°
+stepbrother : СЃРІРѕРґРЅС‹Р№ Р±СЂР°С‚
+half brother : СЃРІРѕРґРЅС‹Р№ Р±СЂР°С‚
+stepchild : РїР°СЃС‹РЅРѕРє; РїР°РґС‡РµСЂРёС†Р°
+stepdaughter : РїР°РґС‡РµСЂРёС†Р°
+stepfather : РѕС‚С‡РёРј
+stepmother : РјР°С‡РµС…Р°
+stepsister : СЃРІРѕРґРЅР°СЏ СЃРµСЃС‚СЂР°
+half sister : СЃРІРѕРґРЅР°СЏ СЃРµСЃС‚СЂР°
+stepson : РїР°СЃС‹РЅРѕРє
+uncle : РґСЏРґСЏ
+wife : Р¶РµРЅР°
+adop : СѓСЃС‹РЅРѕРІР»СЏС‚СЊ; СѓРґРѕС‡РµСЂСЏС‚СЊ
+adult : РІР·СЂРѕСЃР»С‹Р№ С‡РµР»РѕРІРµРє
+grown-up : РІР·СЂРѕСЃР»С‹Р№ С‡РµР»РѕРІРµРє
+ancestor : РїСЂРµРґРѕРє
+bachelor : С…РѕР»РѕСЃС‚СЏРє
+baptize : РєСЂРµСЃС‚РёС‚СЊ
+be engaged : Р±С‹С‚СЊ РїРѕРјРѕР»РІР»РµРЅРЅС‹Рј
+be in love : Р±С‹С‚СЊ РІР»СЋР±Р»РµРЅРЅС‹Рј
+be married to : Р±С‹С‚СЊ Р¶РµРЅР°С‚С‹Рј РЅР°; Р±Р°С‚СЊ Р·Р°РјСѓР¶РµРј Р·Р°
+be pregnant : Р±С‹С‚СЊ Р±РµСЂРµРјРµРЅРЅРѕР№
+birthday : РґРµРЅСЊ СЂРѕР¶РґРµРЅРёСЏ
+born : СЂРѕР¶РґРµРЅРЅС‹Р№
+bring up : РІРѕСЃРїРёС‚С‹РІР°С‚СЊ
+raise : РІРѕСЃРїРёС‚С‹РІР°С‚СЊ
+couple : РїР°СЂР° (СЃСѓРїСЂСѓР¶РµСЃРєР°СЏ)
+descendant : РїРѕС‚РѕРјРѕРє
+divorced : СЂР°Р·РІРµРґРµРЅРЅС‹Р№
+expect a baby : РѕР¶РёРґР°С‚СЊ СЂРµР±РµРЅРєР°
+fall in love : РІР»СЋР±РёС‚СЊСЃСЏ
+give birth to (somebody) : СЂРѕРґРёС‚СЊ (РєРѕРіРѕ-Р»РёР±Рѕ)
+go to school : С…РѕРґРёС‚СЊ РІ С€РєРѕР»Сѓ
+guardian : РѕРїРµРєСѓРЅ; РїРѕРїРµС‡РёС‚РµР»СЊ
+marry : Р¶РµРЅРёС‚СЊСЃСЏ; РІС‹Р№С‚Рё Р·Р°РјСѓР¶
+get married : Р¶РµРЅРёС‚СЊСЃСЏ; РІС‹Р№С‚Рё Р·Р°РјСѓР¶
+orphan : СЃРёСЂРѕС‚Р°
+spinster : СЃС‚Р°СЂР°СЏ РґРµРІР°; РЅРµР·Р°РјСѓР¶РЅСЏСЏ Р¶РµРЅС‰РёРЅР°
+teenager : РїРѕРґСЂРѕСЃС‚РѕРє
+wedding : СЃРІР°РґСЊР±Р°
+widow : РІРґРѕРІР°
+widowed : РѕРІРґРѕРІРµРІС€РёР№
+widower : РІРґРѕРІРµС†
+youth : СЋРЅРѕС€Р°; РјРѕР»РѕРґРѕР№ С‡РµР»РѕРІРµРє ; СЋРЅРѕСЃС‚СЊ; РјРѕР»РѕРґРѕСЃС‚СЊ

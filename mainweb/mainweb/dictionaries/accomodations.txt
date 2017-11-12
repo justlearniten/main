@@ -1,0 +1,175 @@
+﻿apartment house : многоквартирный дом
+barrack : барак
+building : здание
+bungalow : бунгало; одноэтажный дом с верандой
+cabin: домик
+log cabin : бревенчатая хижина
+camp site : кемпинг
+cottage : коттедж; загородный дом
+country house : загородный дом 
+dwelling : жилище; дом 
+dwelling house : жилой дом
+dwelling place : местожительство
+flat : квартира
+apartment : квартира
+guesthouse : домик для гостей
+home : дом; домашний очаг
+hotel : гостиница; отель
+house : дом
+hovel : лачуга
+hut : хижина
+inn : маленькая гостиница
+lodge : охотничий домик; помещение садовника
+lodging : жилище
+lodgment  : жилище; квартира
+lodgement : жилище; квартира
+mansion : особняк
+motel : мотель
+multistoried building : высотное здание; многоэтажное здание
+multi-storey building : высотное здание; многоэтажное здание
+private residence : большой частный дом
+resort : курорт
+shanty : хибарка
+summer house : летний домик
+youth hostel  : хостел
+hostel : хостел
+accommodation : жилье
+air-con : кондиционер
+fan : вентилятор
+bunk bed : двухъярусная кровать
+bunk beds : двухъярусная кровать
+dining room : обеденный зал
+dormitory : общая спальня
+dorm : общая спальня
+double bed : двуспальная кровать
+double room : номер на двоих с одной двуспальной кроватью
+jacuzzi  : джакузи
+hot tub : джакузи
+no vacancies : нет свободных мест
+queen size bed : очень широкая кровать
+reception : стойка регистрации 
+receptionist : человек, который работает на стойке регистрации
+room service : обслуживание номеров
+shower : душ 
+bathtub :  ванна
+single room : номер на одного
+suite : номер-люкс
+twin room : номер на двоих с двумя односпальными кроватями
+twin size bed : односпальная кровать
+water bed : кровать на водяном матрасе
+attic : чердак; верхний чердачный этаж
+balcony : балкон
+bathroom : ванная
+bedroom : спальня
+cellar : погреб; подвал
+cloakroom : гардероб
+closet  : чулан
+store room  : чулан
+lumber room : чулан
+dining room : столовая
+drawing room : гостиная
+sitting room : гостиная
+entrance hall : прихожая
+flight of stairs : лестничный пролет
+floor : этаж
+storey : этаж
+front of the house : фасад дома
+hall : передняя; вестибюль; холл
+kitchen : кухня
+landing : лестничная площадка
+lavatory: уборная
+toilet : уборная
+library : библиотека
+living room : общая комната
+loft  : чердак
+garret : чердак
+nursery : детская
+pantry : кладовая
+larder : кладовая
+box room : кладовая
+parapet : перила; парапет
+roof : крыша; кровля
+staircase : лестница
+stairs : лестница
+study : рабочий кабинет
+arbor: беседка
+arbour : беседка
+barn : сарай; амбар
+shed : сарай; амбар
+court : площадка для спортивных игр
+cowshed : коровник
+flower bed : клумба
+flower garden : цветник
+garage : гараж
+garden : сад
+garden plot : участок земли под сад
+hayloft : сеновал
+hedge : живая изгородь; плетень
+kennel : собачья будка
+lawn : лужайка; газон
+orchard : фруктовый сад
+pigsty : свинарник; хлев
+pond : пруд
+stable : конюшня
+yard : двор
+armchair : кресло
+ashtray : пепельница
+bathtub : ванна
+tub : ванна
+bed : кровать
+bedclothes : постельное белье
+bedspread: покрывало
+counterpane : покрывало
+coverlet : покрывало
+blanket : одеяло
+blanket cover : пододеяльник
+blinds : шторы
+carpet : ковер
+chair : стул
+comforter : стеганое пуховое одеяло
+couch : диван
+sofa : диван
+crib: детская кроватка
+cot : детская кроватка
+cup : чашка
+curtains : занавески
+desk : письменный стол
+fork : вилка
+freezer : морозильник; морозильная камера
+furniture : мебель
+garbage can : мусорное ведро
+heating : отопление
+key : ключ
+lavatory : туалет
+restroom: туалет
+bathroom : туалет
+lift  : лифт
+elevator : лифт
+light bulb : электрическая лампа
+mattress : матрац
+mug : кружка
+oven : духовой шкаф; духовка
+pan : сковородка; кастрюля
+pillow : подушка
+pillow case : наволочка
+plate : тарелка
+quilt : стеганое покрывало
+refrigerator  : холодильник
+fridge : холодильник
+safe : сейф
+shampoo : шампунь
+sheet : простыня
+sink : раковина
+soap : мыло
+spoon : ложка
+stairs : лестница (в здании)
+stool : табурет
+stove : печка; печь
+swimming pool : плавательный бассейн
+table : стол
+tablecloth : скатерть
+tap : водопроводный кран
+faucet : водопроводный кран
+toilet tissue : туалетная бумага
+towel : полотенце
+water supply : водоснабжение

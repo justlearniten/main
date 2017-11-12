@@ -1,0 +1,83 @@
+﻿barometer : барометр
+below freezing : ниже нуля
+degrees : градусы
+synoptic : синоптик
+weather : погода
+weather forecast : прогноз погоды
+weather station : метеорологическая станция
+weatherman : метеоролог
+bright  : ясный
+clear : ясный
+dry : сухой
+fresh : свежий
+heat : жара; зной
+hot : жаркий
+muggy : влажная и душная
+sticky : жаркий и влажный
+sultry : знойный; душный
+sunny : солнечный
+warm : теплый
+chilly : холодный; прохладный
+cloudy : облачный
+cold : холодный
+cool : прохладный; свежий
+frosty  : морозный
+freezing : морозный
+hazy : туманный
+misty : туманный
+foggy : туманный
+windy : ветреный
+cloud : облако; туча
+dense clouds : густые облака
+heavy grey clouds : огромные темные тучи
+low clouds: низкие  облака
+black clouds :  черные облака
+moon : луна
+overcast : покрытый облаками; мрачный; хмурый (о небе)
+sky : небо
+star : звезда
+sun : солнце
+blinding snowstorm : буран
+blizzard : снежная буря
+breath of air : дуновение ветерка
+puff of wind : дуновение ветерка
+breeze : бриз
+cold biting wind : холодный резкий ветер
+cold wind : холодный ветер
+gale: сильный ветер
+strong wind : сильный ветер
+gust of wind : порыв ветра
+hurricane  : ураган; буря
+very strong wind : ураган; буря
+slight wind : легкий ветерок
+moderate wind : легкий ветерок
+squall : шквал
+storm : шторм
+tornado  : торнадо; смерч; ураган
+twister : торнадо; смерч; ураган
+whirlwind : вихрь; ураган; торнадо
+wind : ветер
+dark : темный
+it lightens : сверкает молния
+it thunders : гремит гром
+lightning : молния
+thunder : гром
+thunder-cloud : грозовая туча
+thunderstorm : гроза
+dew : роса
+drizzle : моросящий дождь
+fog : густой туман
+frost : мороз
+hail : град
+humidity : сырость; влажность
+mist : легкий тума; дымка
+precipitation : осадки
+rain : дождь; идти (о дожде)
+shower : ливень
+sleet : дождь со снегом
+snow : снег; идти (о снеге)
+snowdrift : снежный сугроб
+snowfall : снегопад
+snowflake : снежинка
+storm : буря
+to pour : лить (о дожде)
