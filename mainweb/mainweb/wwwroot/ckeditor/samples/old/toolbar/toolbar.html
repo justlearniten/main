@@ -41,10 +41,10 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 		<pre class="samples">
 CKEDITOR.replace( <em>'textarea_id'</em>, {
 	<strong>toolbar:</strong> [
-		{ name: 'document', items:  },	// Defines toolbar group with name (used to create voice label) and items in 3 subgroups.
-		,			// Defines toolbar group without name.
+		{ name: 'document', items: [ 'Source', '-', 'NewPage', 'Preview', '-', 'Templates' ] },	// Defines toolbar group with name (used to create voice label) and items in 3 subgroups.
+		[ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ],			// Defines toolbar group without name.
 		'/',																					// Line break - next group will be placed in new line.
-		{ name: 'basicstyles', items:  }
+		{ name: 'basicstyles', items: [ 'Bold', 'Italic' ] }
 	]
 });</pre>
 
@@ -63,10 +63,10 @@ CKEDITOR.replace( <em>'textarea_id'</em>, {
 		<pre class="samples">
 CKEDITOR.replace( <em>'textarea_id'</em>, {
 	<strong>toolbarGroups:</strong> [
-		{ name: 'document',	   groups:  },			// Displays document group with its two subgroups.
- 		{ name: 'clipboard',   groups:  },			// Group's name will be used to create voice label.
+		{ name: 'document',	   groups: [ 'mode', 'document' ] },			// Displays document group with its two subgroups.
+ 		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },			// Group's name will be used to create voice label.
  		'/',																// Line break - next group will be placed in new line.
- 		{ name: 'basicstyles', groups:  },
+ 		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
  		{ name: 'links' }
 	]
 
@@ -153,12 +153,12 @@ CKEDITOR.replace( <em>'textarea_id'</em>, {
 			toolbar = editor.toolbar;
 
 		for ( var i = 0; i < toolbar.length; ++i ) {
-			var group = dumpToolbarGroup( toolbar, printGroups );
+			var group = dumpToolbarGroup( toolbar[ i ], printGroups );
 			if ( group )
 				output.push( group );
 		}
 
-		return 'config.toolbar' + ( printGroups ? 'Groups' : '' ) + ' = ;';
+		return 'config.toolbar' + ( printGroups ? 'Groups' : '' ) + ' = [\n\t' + output.join( ',\n\t' ) + '\n];';
 	}
 
 	function dumpToolbarGroup( group, printGroups ) {
@@ -192,18 +192,18 @@ CKEDITOR.replace( <em>'textarea_id'</em>, {
 			i, item;
 
 		for ( var i = 0; i < items.length; ++i ) {
-			item = items;
+			item = items[ i ];
 			if ( typeof item == 'string' )
 				names.push( item );
 			else {
 				if ( item.type == CKEDITOR.UI_SEPARATOR )
 					names.push( '-' );
 				else
-					names.push( buttonsNames );
+					names.push( buttonsNames[ item.name ] );
 			}
 		}
 
-		return '';
+		return '[ \'' + names.join( '\', \'' ) + '\' ]';
 	}
 
 	// Creates { 'lowercased': 'LowerCased' } buttons names hash.
@@ -212,7 +212,7 @@ CKEDITOR.replace( <em>'textarea_id'</em>, {
 			name;
 
 		for ( name in items ) {
-			hash = name;
+			hash[ items[ name ].name ] = name;
 		}
 
 		return hash;

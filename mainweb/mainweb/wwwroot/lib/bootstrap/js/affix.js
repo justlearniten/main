@@ -123,7 +123,7 @@
       var options = typeof option == 'object' && option
 
       if (!data) $this.data('bs.affix', (data = new Affix(this, options)))
-      if (typeof option == 'string') data()
+      if (typeof option == 'string') data[option]()
     })
   }
 
@@ -146,7 +146,7 @@
   // ==============
 
   $(window).on('load', function () {
-    $('').each(function () {
+    $('[data-spy="affix"]').each(function () {
       var $spy = $(this)
       var data = $spy.data()
 

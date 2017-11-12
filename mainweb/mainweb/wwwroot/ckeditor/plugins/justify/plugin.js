@@ -44,16 +44,16 @@
 		if ( classes ) {
 			switch ( value ) {
 				case 'left':
-					this.cssClassName = classes;
+					this.cssClassName = classes[ 0 ];
 					break;
 				case 'center':
-					this.cssClassName = classes;
+					this.cssClassName = classes[ 1 ];
 					break;
 				case 'right':
-					this.cssClassName = classes;
+					this.cssClassName = classes[ 2 ];
 					break;
 				case 'justify':
-					this.cssClassName = classes;
+					this.cssClassName = classes[ 3 ];
 					break;
 			}
 
@@ -102,14 +102,14 @@
 				var classes = editor.config.justifyClasses;
 				if ( classes ) {
 					// The left align class.
-					if ( node.hasClass( classes ) ) {
-						node.removeClass( classes );
-						node.addClass( classes );
+					if ( node.hasClass( classes[ 0 ] ) ) {
+						node.removeClass( classes[ 0 ] );
+						node.addClass( classes[ 2 ] );
 					}
 					// The right align class.
-					else if ( node.hasClass( classes ) ) {
-						node.removeClass( classes );
-						node.addClass( classes );
+					else if ( node.hasClass( classes[ 2 ] ) ) {
+						node.removeClass( classes[ 2 ] );
+						node.addClass( classes[ 0 ] );
 					}
 				}
 
@@ -143,7 +143,7 @@
 			useComputedState = useComputedState === undefined || useComputedState;
 
 			for ( var i = ranges.length - 1; i >= 0; i-- ) {
-				iterator = ranges.createIterator();
+				iterator = ranges[ i ].createIterator();
 				iterator.enlargeBr = enterMode != CKEDITOR.ENTER_BR;
 
 				while ( ( block = iterator.getNextParagraph( enterMode == CKEDITOR.ENTER_P ? 'p' : 'div' ) ) ) {
@@ -238,8 +238,8 @@
  * The array should contain 4 members, in the following order: left, center, right, justify.
  *
  *		// Use the classes 'AlignLeft', 'AlignCenter', 'AlignRight', 'AlignJustify'
- *		config.justifyClasses = ;
+ *		config.justifyClasses = [ 'AlignLeft', 'AlignCenter', 'AlignRight', 'AlignJustify' ];
  *
- * @cfg {Array} 
+ * @cfg {Array} [justifyClasses=null]
  * @member CKEDITOR.config
  */

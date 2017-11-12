@@ -98,7 +98,7 @@ CKEDITOR.plugins.add( 'panelbutton', {
 						if ( me.className )
 							this.element.getFirst().removeClass( me.className + '_panel' );
 
-						me.setState( me.modes && me.modes ? CKEDITOR.TRISTATE_OFF : CKEDITOR.TRISTATE_DISABLED );
+						me.setState( me.modes && me.modes[ editor.mode ] ? CKEDITOR.TRISTATE_OFF : CKEDITOR.TRISTATE_DISABLED );
 
 						_.on = 0;
 
@@ -132,7 +132,7 @@ CKEDITOR.plugins.add( 'panelbutton', {
  * Button UI element.
  *
  * @readonly
- * @property {String} 
+ * @property {String} [='panelbutton']
  * @member CKEDITOR
  */
 CKEDITOR.UI_PANELBUTTON = 'panelbutton';

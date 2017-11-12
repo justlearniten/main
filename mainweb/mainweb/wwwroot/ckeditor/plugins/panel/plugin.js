@@ -14,7 +14,7 @@
 	 * Panel UI element.
 	 *
 	 * @readonly
-	 * @property {String} 
+	 * @property {String} [='panel']
 	 * @member CKEDITOR
 	 */
 	CKEDITOR.UI_PANEL = 'panel';
@@ -86,7 +86,7 @@
 		 *
 		 * @param {CKEDITOR.editor} editor The editor instance which this button is
 		 * to be used by.
-		 * @param {Array}  The output array to which append the HTML relative
+		 * @param {Array} [output] The output array to which append the HTML relative
 		 * to this button.
 		 */
 		render: function( editor, output ) {
@@ -195,7 +195,7 @@
 		 * @todo
 		 */
 		addBlock: function( name, block ) {
-			block = this._.blocks = block instanceof CKEDITOR.ui.panel.block ? block : new CKEDITOR.ui.panel.block( this.getHolderElement(), block );
+			block = this._.blocks[ name ] = block instanceof CKEDITOR.ui.panel.block ? block : new CKEDITOR.ui.panel.block( this.getHolderElement(), block );
 
 			if ( !this._.currentBlock )
 				this.showBlock( name );
@@ -207,7 +207,7 @@
 		 * @todo
 		 */
 		getBlock: function( name ) {
-			return this._.blocks;
+			return this._.blocks[ name ];
 		},
 
 		/**
@@ -215,7 +215,7 @@
 		 */
 		showBlock: function( name ) {
 			var blocks = this._.blocks,
-				block = blocks,
+				block = blocks[ name ],
 				current = this._.currentBlock;
 
 			// ARIA role works better in IE on the body element, while on the iframe
@@ -277,8 +277,8 @@
 			// Set the a11y attributes of this element ...
 			this.element.setAttributes( {
 				'role': this.attributes.role || 'presentation',
-				'aria-label': this.attributes,
-				'title': this.attributes.title || this.attributes
+				'aria-label': this.attributes[ 'aria-label' ],
+				'title': this.attributes.title || this.attributes[ 'aria-label' ]
 			} );
 
 			this.keys = {};
@@ -376,7 +376,7 @@
 			},
 
 			onKeyDown: function( keystroke, noCycle ) {
-				var keyAction = this.keys;
+				var keyAction = this.keys[ keystroke ];
 				switch ( keyAction ) {
 					// Move forward.
 					case 'next':
@@ -437,7 +437,7 @@
 						link = index >= 0 && this.element.getElementsByTag( 'a' ).getItem( index );
 
 						if ( link )
-							link.$();
+							link.$[ keyAction ] ? link.$[ keyAction ]() : link.$[ 'on' + keyAction ]();
 
 						return false;
 				}

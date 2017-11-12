@@ -45,7 +45,7 @@
     var title   = this.getTitle()
     var content = this.getContent()
 
-    $tip.find('.popover-title')(title)
+    $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
     $tip.find('.popover-content').children().detach().end()[ // we use append for html objects to maintain js events
       this.options.html ? (typeof content == 'string' ? 'html' : 'append') : 'text'
     ](content)
@@ -67,7 +67,7 @@
 
     return $e.attr('data-content')
       || (typeof o.content == 'function' ?
-            o.content.call($e) :
+            o.content.call($e[0]) :
             o.content)
   }
 
@@ -87,7 +87,7 @@
 
       if (!data && /destroy|hide/.test(option)) return
       if (!data) $this.data('bs.popover', (data = new Popover(this, options)))
-      if (typeof option == 'string') data()
+      if (typeof option == 'string') data[option]()
     })
   }
 

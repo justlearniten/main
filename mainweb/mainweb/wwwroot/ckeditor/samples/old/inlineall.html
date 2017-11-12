@@ -36,9 +36,9 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 
 					// Rearrange the layout of the toolbar.
 					editor.config.toolbarGroups = [
-						{ name: 'editing',		groups:  },
+						{ name: 'editing',		groups: [ 'basicstyles', 'links' ] },
 						{ name: 'undo' },
-						{ name: 'clipboard',	groups:  },
+						{ name: 'clipboard',	groups: [ 'selection', 'clipboard' ] },
 						{ name: 'about' }
 					];
 				});
@@ -58,7 +58,7 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 			src: local('Arial Black');
 		}
 
-		*
+		*[contenteditable="true"]
 		{
 			padding: 10px;
 		}

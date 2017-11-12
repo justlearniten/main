@@ -14,7 +14,7 @@
   // =========================
 
   var backdrop = '.dropdown-backdrop'
-  var toggle   = ''
+  var toggle   = '[data-toggle="dropdown"]'
   var Dropdown = function (element) {
     $(element).on('click.bs.dropdown', this.toggle)
   }
@@ -26,7 +26,7 @@
 
     if (!selector) {
       selector = $this.attr('href')
-      selector = selector && /#*$)/, '') // strip for ie7
+      selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
     }
 
     var $parent = selector && $(selector)
@@ -44,7 +44,7 @@
 
       if (!$parent.hasClass('open')) return
 
-      if (e && e.type == 'click' && /input|textarea/i.test(e.target.tagName) && $.contains($parent, e.target)) return
+      if (e && e.type == 'click' && /input|textarea/i.test(e.target.tagName) && $.contains($parent[0], e.target)) return
 
       $parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
 
@@ -133,7 +133,7 @@
       var data  = $this.data('bs.dropdown')
 
       if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
-      if (typeof option == 'string') data.call($this)
+      if (typeof option == 'string') data[option].call($this)
     })
   }
 

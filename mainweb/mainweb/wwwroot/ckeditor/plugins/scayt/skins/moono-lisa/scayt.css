@@ -19,7 +19,7 @@
 	margin-bottom: 10px;
 }
 
-.cke_dialog_contents_body div .cke_dialog_ui_hbox_last > a.cke_dialog_ui_button
+.cke_dialog_contents_body div[name=dictionaries] .cke_dialog_ui_hbox_last > a.cke_dialog_ui_button
 {
     margin-top: 0;
 }

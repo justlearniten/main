@@ -10,8 +10,8 @@ if (typeof jQuery === 'undefined') {
 
 +function ($) {
   'use strict';
-  var version = $.fn.jquery.split(' ').split('.')
-  if ((version > 3)) {
+  var version = $.fn.jquery.split(' ')[0].split('.')
+  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1) || (version[0] > 3)) {
     throw new Error('Bootstrap\'s JavaScript requires jQuery version 1.9.1 or higher, but lower than version 4')
   }
 }(jQuery);
@@ -42,8 +42,8 @@ if (typeof jQuery === 'undefined') {
     }
 
     for (var name in transEndEventNames) {
-      if (el.style !== undefined) {
-        return { end: transEndEventNames }
+      if (el.style[name] !== undefined) {
+        return { end: transEndEventNames[name] }
       }
     }
 
@@ -91,7 +91,7 @@ if (typeof jQuery === 'undefined') {
   // ALERT CLASS DEFINITION
   // ======================
 
-  var dismiss = ''
+  var dismiss = '[data-dismiss="alert"]'
   var Alert   = function (el) {
     $(el).on('click', dismiss, this.close)
   }
@@ -106,7 +106,7 @@ if (typeof jQuery === 'undefined') {
 
     if (!selector) {
       selector = $this.attr('href')
-      selector = selector && selector.replace(/.*(?=#*$)/, '') // strip for ie7
+      selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
     }
 
     var $parent = $(selector === '#' ? [] : selector)
@@ -145,7 +145,7 @@ if (typeof jQuery === 'undefined') {
       var data  = $this.data('bs.alert')
 
       if (!data) $this.data('bs.alert', (data = new Alert(this)))
-      if (typeof option == 'string') data.call($this)
+      if (typeof option == 'string') data[option].call($this)
     })
   }
 
@@ -206,11 +206,11 @@ if (typeof jQuery === 'undefined') {
 
     state += 'Text'
 
-    if (data.resetText == null) $el.data('resetText', $el())
+    if (data.resetText == null) $el.data('resetText', $el[val]())
 
     // push to event loop to allow forms to submit
     setTimeout($.proxy(function () {
-      $el)
+      $el[val](data[state] == null ? this.options[state] : data[state])
 
       if (state == 'loadingText') {
         this.isLoading = true
@@ -224,7 +224,7 @@ if (typeof jQuery === 'undefined') {
 
   Button.prototype.toggle = function () {
     var changed = true
-    var $parent = this.$element.closest('')
+    var $parent = this.$element.closest('[data-toggle="buttons"]')
 
     if ($parent.length) {
       var $input = this.$element.find('input')
@@ -280,10 +280,10 @@ if (typeof jQuery === 'undefined') {
   // ===============
 
   $(document)
-    .on('click.bs.button.data-api', '', function (e) {
+    .on('click.bs.button.data-api', '[data-toggle^="button"]', function (e) {
       var $btn = $(e.target).closest('.btn')
       Plugin.call($btn, 'toggle')
-      if (!($(e.target).is('input'))) {
+      if (!($(e.target).is('input[type="radio"], input[type="checkbox"]'))) {
         // Prevent double click on radios, and the double selections (so cancellation) on checkboxes
         e.preventDefault()
         // The target component still receive the focus
@@ -291,7 +291,7 @@ if (typeof jQuery === 'undefined') {
         else $btn.find('input:visible,button:visible').first().trigger('focus')
       }
     })
-    .on('focus.bs.button.data-api blur.bs.button.data-api', '', function (e) {
+    .on('focus.bs.button.data-api blur.bs.button.data-api', '[data-toggle^="button"]', function (e) {
       $(e.target).closest('.btn').toggleClass('focus', /^focus(in)?$/.test(e.type))
     })
 
@@ -422,7 +422,7 @@ if (typeof jQuery === 'undefined') {
 
     if ($next.hasClass('active')) return (this.sliding = false)
 
-    var relatedTarget = $next
+    var relatedTarget = $next[0]
     var slideEvent = $.Event('slide.bs.carousel', {
       relatedTarget: relatedTarget,
       direction: direction
@@ -436,20 +436,20 @@ if (typeof jQuery === 'undefined') {
 
     if (this.$indicators.length) {
       this.$indicators.find('.active').removeClass('active')
-      var $nextIndicator = $(this.$indicators.children())
+      var $nextIndicator = $(this.$indicators.children()[this.getItemIndex($next)])
       $nextIndicator && $nextIndicator.addClass('active')
     }
 
     var slidEvent = $.Event('slid.bs.carousel', { relatedTarget: relatedTarget, direction: direction }) // yes, "slid"
     if ($.support.transition && this.$element.hasClass('slide')) {
       $next.addClass(type)
-      $next.offsetWidth // force reflow
+      $next[0].offsetWidth // force reflow
       $active.addClass(direction)
       $next.addClass(direction)
       $active
         .one('bsTransitionEnd', function () {
-          $next.removeClass(.join(' ')).addClass('active')
-          $active.removeClass(.join(' '))
+          $next.removeClass([type, direction].join(' ')).addClass('active')
+          $active.removeClass(['active', direction].join(' '))
           that.sliding = false
           setTimeout(function () {
             that.$element.trigger(slidEvent)
@@ -481,7 +481,7 @@ if (typeof jQuery === 'undefined') {
 
       if (!data) $this.data('bs.carousel', (data = new Carousel(this, options)))
       if (typeof option == 'number') data.to(option)
-      else if (action) data()
+      else if (action) data[action]()
       else if (options.interval) data.pause().cycle()
     })
   }
@@ -507,7 +507,7 @@ if (typeof jQuery === 'undefined') {
   var clickHandler = function (e) {
     var href
     var $this   = $(this)
-    var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#+$)/, '')) // strip for ie7
+    var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) // strip for ie7
     if (!$target.hasClass('carousel')) return
     var options = $.extend({}, $target.data(), $this.data())
     var slideIndex = $this.attr('data-slide-to')
@@ -523,11 +523,11 @@ if (typeof jQuery === 'undefined') {
   }
 
   $(document)
-    .on('click.bs.carousel.data-api', '', clickHandler)
-    .on('click.bs.carousel.data-api', '', clickHandler)
+    .on('click.bs.carousel.data-api', '[data-slide]', clickHandler)
+    .on('click.bs.carousel.data-api', '[data-slide-to]', clickHandler)
 
   $(window).on('load', function () {
-    $('').each(function () {
+    $('[data-ride="carousel"]').each(function () {
       var $carousel = $(this)
       Plugin.call($carousel, $carousel.data())
     })
@@ -554,8 +554,8 @@ if (typeof jQuery === 'undefined') {
   var Collapse = function (element, options) {
     this.$element      = $(element)
     this.options       = $.extend({}, Collapse.DEFAULTS, options)
-    this.$trigger      = $(',' +
-                           '')
+    this.$trigger      = $('[data-toggle="collapse"][href="#' + element.id + '"],' +
+                           '[data-toggle="collapse"][data-target="#' + element.id + '"]')
     this.transitioning = null
 
     if (this.options.parent) {
@@ -604,7 +604,7 @@ if (typeof jQuery === 'undefined') {
 
     this.$element
       .removeClass('collapse')
-      .addClass('collapsing')(0)
+      .addClass('collapsing')[dimension](0)
       .attr('aria-expanded', true)
 
     this.$trigger
@@ -616,7 +616,7 @@ if (typeof jQuery === 'undefined') {
     var complete = function () {
       this.$element
         .removeClass('collapsing')
-        .addClass('collapse in')('')
+        .addClass('collapse in')[dimension]('')
       this.transitioning = 0
       this.$element
         .trigger('shown.bs.collapse')
@@ -624,11 +624,11 @@ if (typeof jQuery === 'undefined') {
 
     if (!$.support.transition) return complete.call(this)
 
-    var scrollSize = $.camelCase(.join('-'))
+    var scrollSize = $.camelCase(['scroll', dimension].join('-'))
 
     this.$element
       .one('bsTransitionEnd', $.proxy(complete, this))
-      .emulateTransitionEnd(Collapse.TRANSITION_DURATION))
+      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)[dimension](this.$element[0][scrollSize])
   }
 
   Collapse.prototype.hide = function () {
@@ -640,7 +640,7 @@ if (typeof jQuery === 'undefined') {
 
     var dimension = this.dimension()
 
-    this.$element.offsetHeight
+    this.$element[dimension](this.$element[dimension]())[0].offsetHeight
 
     this.$element
       .addClass('collapsing')
@@ -664,18 +664,18 @@ if (typeof jQuery === 'undefined') {
     if (!$.support.transition) return complete.call(this)
 
     this.$element
-      (0)
+      [dimension](0)
       .one('bsTransitionEnd', $.proxy(complete, this))
       .emulateTransitionEnd(Collapse.TRANSITION_DURATION)
   }
 
   Collapse.prototype.toggle = function () {
-    this()
+    this[this.$element.hasClass('in') ? 'hide' : 'show']()
   }
 
   Collapse.prototype.getParent = function () {
     return $(this.options.parent)
-      .find('')
+      .find('[data-toggle="collapse"][data-parent="' + this.options.parent + '"]')
       .each($.proxy(function (i, element) {
         var $element = $(element)
         this.addAriaAndCollapsedClass(getTargetFromTrigger($element), $element)
@@ -695,7 +695,7 @@ if (typeof jQuery === 'undefined') {
   function getTargetFromTrigger($trigger) {
     var href
     var target = $trigger.attr('data-target')
-      || (href = $trigger.attr('href')) && href.replace(/.*(?=#+$)/, '') // strip for ie7
+      || (href = $trigger.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') // strip for ie7
 
     return $(target)
   }
@@ -712,7 +712,7 @@ if (typeof jQuery === 'undefined') {
 
       if (!data && options.toggle && /show|hide/.test(option)) options.toggle = false
       if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
-      if (typeof option == 'string') data()
+      if (typeof option == 'string') data[option]()
     })
   }
 
@@ -734,7 +734,7 @@ if (typeof jQuery === 'undefined') {
   // COLLAPSE DATA-API
   // =================
 
-  $(document).on('click.bs.collapse.data-api', '', function (e) {
+  $(document).on('click.bs.collapse.data-api', '[data-toggle="collapse"]', function (e) {
     var $this   = $(this)
 
     if (!$this.attr('data-target')) e.preventDefault()
@@ -764,7 +764,7 @@ if (typeof jQuery === 'undefined') {
   // =========================
 
   var backdrop = '.dropdown-backdrop'
-  var toggle   = ''
+  var toggle   = '[data-toggle="dropdown"]'
   var Dropdown = function (element) {
     $(element).on('click.bs.dropdown', this.toggle)
   }
@@ -776,7 +776,7 @@ if (typeof jQuery === 'undefined') {
 
     if (!selector) {
       selector = $this.attr('href')
-      selector = selector && /#*$)/, '') // strip for ie7
+      selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
     }
 
     var $parent = selector && $(selector)
@@ -794,7 +794,7 @@ if (typeof jQuery === 'undefined') {
 
       if (!$parent.hasClass('open')) return
 
-      if (e && e.type == 'click' && /input|textarea/i.test(e.target.tagName) && $.contains($parent, e.target)) return
+      if (e && e.type == 'click' && /input|textarea/i.test(e.target.tagName) && $.contains($parent[0], e.target)) return
 
       $parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
 
@@ -883,7 +883,7 @@ if (typeof jQuery === 'undefined') {
       var data  = $this.data('bs.dropdown')
 
       if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
-      if (typeof option == 'string') data.call($this)
+      if (typeof option == 'string') data[option].call($this)
     })
   }
 
@@ -981,7 +981,7 @@ if (typeof jQuery === 'undefined') {
     this.escape()
     this.resize()
 
-    this.$element.on('click.dismiss.bs.modal', '', $.proxy(this.hide, this))
+    this.$element.on('click.dismiss.bs.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
 
     this.$dialog.on('mousedown.dismiss.bs.modal', function () {
       that.$element.one('mouseup.dismiss.bs.modal', function (e) {
@@ -1003,7 +1003,7 @@ if (typeof jQuery === 'undefined') {
       that.adjustDialog()
 
       if (transition) {
-        that.$element.offsetWidth // force reflow
+        that.$element[0].offsetWidth // force reflow
       }
 
       that.$element.addClass('in')
@@ -1057,7 +1057,7 @@ if (typeof jQuery === 'undefined') {
       .off('focusin.bs.modal') // guard against infinite focus loop
       .on('focusin.bs.modal', $.proxy(function (e) {
         if (document !== e.target &&
-            this.$element !== e.target &&
+            this.$element[0] !== e.target &&
             !this.$element.has(e.target).length) {
           this.$element.trigger('focus')
         }
@@ -1116,11 +1116,11 @@ if (typeof jQuery === 'undefined') {
         }
         if (e.target !== e.currentTarget) return
         this.options.backdrop == 'static'
-          ? this.$element.focus()
+          ? this.$element[0].focus()
           : this.hide()
       }, this))
 
-      if (doAnimate) this.$backdrop.offsetWidth // force reflow
+      if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
 
       this.$backdrop.addClass('in')
 
@@ -1157,7 +1157,7 @@ if (typeof jQuery === 'undefined') {
   }
 
   Modal.prototype.adjustDialog = function () {
-    var modalIsOverflowing = this.$element.scrollHeight > document.documentElement.clientHeight
+    var modalIsOverflowing = this.$element[0].scrollHeight > document.documentElement.clientHeight
 
     this.$element.css({
       paddingLeft:  !this.bodyIsOverflowing && modalIsOverflowing ? this.scrollbarWidth : '',
@@ -1197,7 +1197,7 @@ if (typeof jQuery === 'undefined') {
     scrollDiv.className = 'modal-scrollbar-measure'
     this.$body.append(scrollDiv)
     var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
-    this.$body.removeChild(scrollDiv)
+    this.$body[0].removeChild(scrollDiv)
     return scrollbarWidth
   }
 
@@ -1212,7 +1212,7 @@ if (typeof jQuery === 'undefined') {
       var options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option == 'object' && option)
 
       if (!data) $this.data('bs.modal', (data = new Modal(this, options)))
-      if (typeof option == 'string') data(_relatedTarget)
+      if (typeof option == 'string') data[option](_relatedTarget)
       else if (options.show) data.show(_relatedTarget)
     })
   }
@@ -1235,10 +1235,10 @@ if (typeof jQuery === 'undefined') {
   // MODAL DATA-API
   // ==============
 
-  $(document).on('click.bs.modal.data-api', '', function (e) {
+  $(document).on('click.bs.modal.data-api', '[data-toggle="modal"]', function (e) {
     var $this   = $(this)
     var href    = $this.attr('href')
-    var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#+$)/, ''))) // strip for ie7
+    var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) // strip for ie7
     var option  = $target.data('bs.modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
 
     if ($this.is('a')) e.preventDefault()
@@ -1310,14 +1310,14 @@ if (typeof jQuery === 'undefined') {
     this.$viewport = this.options.viewport && $($.isFunction(this.options.viewport) ? this.options.viewport.call(this, this.$element) : (this.options.viewport.selector || this.options.viewport))
     this.inState   = { click: false, hover: false, focus: false }
 
-    if (this.$element instanceof document.constructor && !this.options.selector) {
+    if (this.$element[0] instanceof document.constructor && !this.options.selector) {
       throw new Error('`selector` option must be specified when initializing ' + this.type + ' on the window.document object!')
     }
 
     var triggers = this.options.trigger.split(' ')
 
     for (var i = triggers.length; i--;) {
-      var trigger = triggers
+      var trigger = triggers[i]
 
       if (trigger == 'click') {
         this.$element.on('click.' + this.type, this.options.selector, $.proxy(this.toggle, this))
@@ -1357,7 +1357,7 @@ if (typeof jQuery === 'undefined') {
     var defaults = this.getDefaults()
 
     this._options && $.each(this._options, function (key, value) {
-      if (defaults = value
+      if (defaults[key] != value) options[key] = value
     })
 
     return options
@@ -1373,7 +1373,7 @@ if (typeof jQuery === 'undefined') {
     }
 
     if (obj instanceof $.Event) {
-      self.inState = true
+      self.inState[obj.type == 'focusin' ? 'focus' : 'hover'] = true
     }
 
     if (self.tip().hasClass('in') || self.hoverState == 'in') {
@@ -1394,7 +1394,7 @@ if (typeof jQuery === 'undefined') {
 
   Tooltip.prototype.isInStateTrue = function () {
     for (var key in this.inState) {
-      if (this.inState) return true
+      if (this.inState[key]) return true
     }
 
     return false
@@ -1410,7 +1410,7 @@ if (typeof jQuery === 'undefined') {
     }
 
     if (obj instanceof $.Event) {
-      self.inState = false
+      self.inState[obj.type == 'focusout' ? 'focus' : 'hover'] = false
     }
 
     if (self.isInStateTrue()) return
@@ -1432,7 +1432,7 @@ if (typeof jQuery === 'undefined') {
     if (this.hasContent() && this.enabled) {
       this.$element.trigger(e)
 
-      var inDom = $.contains(this.$element)
+      var inDom = $.contains(this.$element[0].ownerDocument.documentElement, this.$element[0])
       if (e.isDefaultPrevented() || !inDom) return
       var that = this
 
@@ -1447,7 +1447,7 @@ if (typeof jQuery === 'undefined') {
       if (this.options.animation) $tip.addClass('fade')
 
       var placement = typeof this.options.placement == 'function' ?
-        this.options.placement.call(this, $tip) :
+        this.options.placement.call(this, $tip[0], this.$element[0]) :
         this.options.placement
 
       var autoToken = /\s?auto?\s?/i
@@ -1464,8 +1464,8 @@ if (typeof jQuery === 'undefined') {
       this.$element.trigger('inserted.bs.' + this.type)
 
       var pos          = this.getPosition()
-      var actualWidth  = $tip.offsetWidth
-      var actualHeight = $tip.offsetHeight
+      var actualWidth  = $tip[0].offsetWidth
+      var actualHeight = $tip[0].offsetHeight
 
       if (autoPlace) {
         var orgPlacement = placement
@@ -1504,8 +1504,8 @@ if (typeof jQuery === 'undefined') {
 
   Tooltip.prototype.applyPlacement = function (offset, placement) {
     var $tip   = this.tip()
-    var width  = $tip.offsetWidth
-    var height = $tip.offsetHeight
+    var width  = $tip[0].offsetWidth
+    var height = $tip[0].offsetHeight
 
     // manually read margins because getBoundingClientRect includes difference
     var marginTop = parseInt($tip.css('margin-top'), 10)
@@ -1520,7 +1520,7 @@ if (typeof jQuery === 'undefined') {
 
     // $.fn.offset doesn't round pixel values
     // so we use setOffset directly with our own function B-0
-    $.offset.setOffset($tip, $.extend({
+    $.offset.setOffset($tip[0], $.extend({
       using: function (props) {
         $tip.css({
           top: Math.round(props.top),
@@ -1532,8 +1532,8 @@ if (typeof jQuery === 'undefined') {
     $tip.addClass('in')
 
     // check to see if placing tip in new offset caused the tip to resize itself
-    var actualWidth  = $tip.offsetWidth
-    var actualHeight = $tip.offsetHeight
+    var actualWidth  = $tip[0].offsetWidth
+    var actualHeight = $tip[0].offsetHeight
 
     if (placement == 'top' && actualHeight != height) {
       offset.top = offset.top + height - actualHeight
@@ -1549,7 +1549,7 @@ if (typeof jQuery === 'undefined') {
     var arrowOffsetPosition = isVertical ? 'offsetWidth' : 'offsetHeight'
 
     $tip.offset(offset)
-    this.replaceArrow(arrowDelta, $tip, isVertical)
+    this.replaceArrow(arrowDelta, $tip[0][arrowOffsetPosition], isVertical)
   }
 
   Tooltip.prototype.replaceArrow = function (delta, dimension, isVertical) {
@@ -1562,7 +1562,7 @@ if (typeof jQuery === 'undefined') {
     var $tip  = this.tip()
     var title = this.getTitle()
 
-    $tip.find('.tooltip-inner')(title)
+    $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
     $tip.removeClass('fade in top bottom left right')
   }
 
@@ -1612,7 +1612,7 @@ if (typeof jQuery === 'undefined') {
   Tooltip.prototype.getPosition = function ($element) {
     $element   = $element || this.$element
 
-    var el     = $element
+    var el     = $element[0]
     var isBody = el.tagName == 'BODY'
 
     var elRect    = el.getBoundingClientRect()
@@ -1672,7 +1672,7 @@ if (typeof jQuery === 'undefined') {
     var o  = this.options
 
     title = $e.attr('data-original-title')
-      || (typeof o.title == 'function' ? o.title.call($e) :  o.title)
+      || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
 
     return title
   }
@@ -1755,7 +1755,7 @@ if (typeof jQuery === 'undefined') {
 
       if (!data && /destroy|hide/.test(option)) return
       if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
-      if (typeof option == 'string') data()
+      if (typeof option == 'string') data[option]()
     })
   }
 
@@ -1822,7 +1822,7 @@ if (typeof jQuery === 'undefined') {
     var title   = this.getTitle()
     var content = this.getContent()
 
-    $tip.find('.popover-title')(title)
+    $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
     $tip.find('.popover-content').children().detach().end()[ // we use append for html objects to maintain js events
       this.options.html ? (typeof content == 'string' ? 'html' : 'append') : 'text'
     ](content)
@@ -1844,7 +1844,7 @@ if (typeof jQuery === 'undefined') {
 
     return $e.attr('data-content')
       || (typeof o.content == 'function' ?
-            o.content.call($e) :
+            o.content.call($e[0]) :
             o.content)
   }
 
@@ -1864,7 +1864,7 @@ if (typeof jQuery === 'undefined') {
 
       if (!data && /destroy|hide/.test(option)) return
       if (!data) $this.data('bs.popover', (data = new Popover(this, options)))
-      if (typeof option == 'string') data()
+      if (typeof option == 'string') data[option]()
     })
   }
 
@@ -1921,7 +1921,7 @@ if (typeof jQuery === 'undefined') {
   }
 
   ScrollSpy.prototype.getScrollHeight = function () {
-    return this.$scrollElement.scrollHeight, document.documentElement.scrollHeight)
+    return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
   }
 
   ScrollSpy.prototype.refresh = function () {
@@ -1933,7 +1933,7 @@ if (typeof jQuery === 'undefined') {
     this.targets      = []
     this.scrollHeight = this.getScrollHeight()
 
-    if (!$.isWindow(this.$scrollElement)) {
+    if (!$.isWindow(this.$scrollElement[0])) {
       offsetMethod = 'position'
       offsetBase   = this.$scrollElement.scrollTop()
     }
@@ -1948,12 +1948,12 @@ if (typeof jQuery === 'undefined') {
         return ($href
           && $href.length
           && $href.is(':visible')
-          && ) || null
+          && [[$href[offsetMethod]().top + offsetBase, href]]) || null
       })
-      .sort(function (a, b) { return a })
+      .sort(function (a, b) { return a[0] - b[0] })
       .each(function () {
-        that.offsets.push(this)
-        that.targets.push(this)
+        that.offsets.push(this[0])
+        that.targets.push(this[1])
       })
   }
 
@@ -1971,19 +1971,19 @@ if (typeof jQuery === 'undefined') {
     }
 
     if (scrollTop >= maxScroll) {
-      return activeTarget != (i = targets) && this.activate(i)
+      return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
     }
 
-    if (activeTarget && scrollTop < offsets) {
+    if (activeTarget && scrollTop < offsets[0]) {
       this.activeTarget = null
       return this.clear()
     }
 
     for (i = offsets.length; i--;) {
-      activeTarget != targets
-        && scrollTop >= offsets
-        && (offsets)
-        && this.activate(targets)
+      activeTarget != targets[i]
+        && scrollTop >= offsets[i]
+        && (offsets[i + 1] === undefined || scrollTop < offsets[i + 1])
+        && this.activate(targets[i])
     }
   }
 
@@ -1993,8 +1993,8 @@ if (typeof jQuery === 'undefined') {
     this.clear()
 
     var selector = this.selector +
-      ',' +
-      this.selector + ''
+      '[data-target="' + target + '"],' +
+      this.selector + '[href="' + target + '"]'
 
     var active = $(selector)
       .parents('li')
@@ -2026,7 +2026,7 @@ if (typeof jQuery === 'undefined') {
       var options = typeof option == 'object' && option
 
       if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
-      if (typeof option == 'string') data()
+      if (typeof option == 'string') data[option]()
     })
   }
 
@@ -2049,7 +2049,7 @@ if (typeof jQuery === 'undefined') {
   // ==================
 
   $(window).on('load.bs.scrollspy.data-api', function () {
-    $('').each(function () {
+    $('[data-spy="scroll"]').each(function () {
       var $spy = $(this)
       Plugin.call($spy, $spy.data())
     })
@@ -2089,17 +2089,17 @@ if (typeof jQuery === 'undefined') {
 
     if (!selector) {
       selector = $this.attr('href')
-      selector = selector && selector.replace(/.*(?=#*$)/, '') // strip for ie7
+      selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
     }
 
     if ($this.parent('li').hasClass('active')) return
 
     var $previous = $ul.find('.active:last a')
     var hideEvent = $.Event('hide.bs.tab', {
-      relatedTarget: $this
+      relatedTarget: $this[0]
     })
     var showEvent = $.Event('show.bs.tab', {
-      relatedTarget: $previous
+      relatedTarget: $previous[0]
     })
 
     $previous.trigger(hideEvent)
@@ -2113,11 +2113,11 @@ if (typeof jQuery === 'undefined') {
     this.activate($target, $target.parent(), function () {
       $previous.trigger({
         type: 'hidden.bs.tab',
-        relatedTarget: $this
+        relatedTarget: $this[0]
       })
       $this.trigger({
         type: 'shown.bs.tab',
-        relatedTarget: $previous
+        relatedTarget: $previous[0]
       })
     })
   }
@@ -2134,16 +2134,16 @@ if (typeof jQuery === 'undefined') {
         .find('> .dropdown-menu > .active')
           .removeClass('active')
         .end()
-        .find('')
+        .find('[data-toggle="tab"]')
           .attr('aria-expanded', false)
 
       element
         .addClass('active')
-        .find('')
+        .find('[data-toggle="tab"]')
           .attr('aria-expanded', true)
 
       if (transition) {
-        element.offsetWidth // reflow for transition
+        element[0].offsetWidth // reflow for transition
         element.addClass('in')
       } else {
         element.removeClass('fade')
@@ -2154,7 +2154,7 @@ if (typeof jQuery === 'undefined') {
           .closest('li.dropdown')
             .addClass('active')
           .end()
-          .find('')
+          .find('[data-toggle="tab"]')
             .attr('aria-expanded', true)
       }
 
@@ -2180,7 +2180,7 @@ if (typeof jQuery === 'undefined') {
       var data  = $this.data('bs.tab')
 
       if (!data) $this.data('bs.tab', (data = new Tab(this)))
-      if (typeof option == 'string') data()
+      if (typeof option == 'string') data[option]()
     })
   }
 
@@ -2208,8 +2208,8 @@ if (typeof jQuery === 'undefined') {
   }
 
   $(document)
-    .on('click.bs.tab.data-api', '', clickHandler)
-    .on('click.bs.tab.data-api', '', clickHandler)
+    .on('click.bs.tab.data-api', '[data-toggle="tab"]', clickHandler)
+    .on('click.bs.tab.data-api', '[data-toggle="pill"]', clickHandler)
 
 }(jQuery);
 
@@ -2338,7 +2338,7 @@ if (typeof jQuery === 'undefined') {
       var options = typeof option == 'object' && option
 
       if (!data) $this.data('bs.affix', (data = new Affix(this, options)))
-      if (typeof option == 'string') data()
+      if (typeof option == 'string') data[option]()
     })
   }
 
@@ -2361,7 +2361,7 @@ if (typeof jQuery === 'undefined') {
   // ==============
 
   $(window).on('load', function () {
-    $('').each(function () {
+    $('[data-spy="affix"]').each(function () {
       var $spy = $(this)
       var data = $spy.data()
 
