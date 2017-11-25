@@ -23,7 +23,7 @@ namespace mainweb.Controllers
         }
 
         // GET: Dictionary
-        public async Task<IActionResult> Index(char l='A', DictionaryEntry.Direction dir=DictionaryEntry.Direction.ENGRUS)
+        public async Task<IActionResult> Index(char l = 'A', DictionaryEntry.Direction dir = DictionaryEntry.Direction.ENGRUS)
         {
             if (l > 'Z')
                 dir = DictionaryEntry.Direction.RUSENG;
@@ -101,7 +101,7 @@ namespace mainweb.Controllers
         public async Task<IActionResult> Create([Bind("Entry")]BulkDictionaryEntry model)
         {
             await CheckAdmin();
-           
+
             if (model.Entry != null)
             {
                 try
@@ -131,7 +131,7 @@ namespace mainweb.Controllers
 
             await AddTranslation(word, translations);
             //add reverse
-            foreach(string s in translations)
+            foreach (string s in translations)
                 await AddTranslation(s, new string[] { word });
         }
 
@@ -257,6 +257,30 @@ namespace mainweb.Controllers
         private bool DictionaryEntryExists(int id)
         {
             return _context.Dictionary.Any(e => e.Id == id);
+        }
+        [HttpGet,ActionName("Translate")]
+        public async Task<string> Translate(string word)
+        {
+            string res = "";
+            res = await GetTranslation(word);
+
+            return res;
+        }
+
+        private async Task<string> GetTranslation(string word)
+        {
+            string w = NormalizeWord(word);
+            DictionaryEntry de = await _context.Dictionary.FirstOrDefaultAsync(d => d.Text == w);
+
+            if (de == null)
+                return "";
+            string res = "";
+            await _context.Entry(de).Collection(d => d.Translatins).LoadAsync();
+            foreach(Translation t in de.Translatins)
+            {
+                res += t.Text + "\n";
+            }
+            return res;
         }
     }
 }

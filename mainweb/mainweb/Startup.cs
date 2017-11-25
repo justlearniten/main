@@ -88,7 +88,8 @@ namespace mainweb
                     .AddScript("~/lib/remarkable.min.js")
                     .AddScript("~/lib/react-bootstrap/react-bootstrap.js")
                     .AddScript("~/js/react/excercises.jsx")
-                    .AddScript("~/js/react/confirm.jsx"); ;
+                    .AddScript("~/js/react/confirm.jsx")
+                    .AddScript("~/js/react/translation.jsx"); 
 
                 // If you use an external build too (for example, Babel, Webpack,
                 // Browserify or Gulp), you can improve performance by disabling
