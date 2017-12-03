@@ -1,4 +1,6 @@
 ﻿var Popover = ReactBootstrap.Popover;
+var OverlayTrigger = ReactBootstrap.OverlayTrigger;
+var Button = ReactBootstrap.Button;
 var TranslationDlg = React.createClass({
     render: function () {
         return (
@@ -6,8 +8,7 @@ var TranslationDlg = React.createClass({
                 <Popover id="Translation"
                     title={this.props.word}
                     placement="bottom"
-                    positionLeft={this.props.left}
-                    positionTop ={this.props.top}
+                    positionTop={32} 
                 >
                     {this.props.translation}
                 </Popover>
@@ -15,55 +16,50 @@ var TranslationDlg = React.createClass({
     }
 });
 
-function showTranslation(selectedText, selectionCoords) {
-     
-   
-    var show = selectedText !== "";
+function showTranslation(selectedText) {
+    hideTranslation();
+ 
+    var show = selectedText.trim() !== "";
     if (show) {
         word = selectedText.toUpperCase();
 
         var xhr = new XMLHttpRequest();
         var res = null;
         xhr.open('get', '/Dictionary/Translate?word=' + word, false);
-        //xhr.setRequestHeader("Accept", 'application/json');
+       
         xhr.onload = function () {
             if (xhr.status != 200)
                 return null;
+
             translation = xhr.response;
+            const popoverBottom = (
+                <Popover id="popover-positioned-bottom" title={word}>
+                    {translation}
+                </Popover>
+            );
+
             if (translation) {
-                var anchor = document.getElementById('popupDiv');
-                ReactDOM.render(
-                    <TranslationDlg
-                        show={show}
-                        word={word}
-                        left={selectionCoords.x}
-                        top={selectionCoords.y}
-                        translation={translation}
-                    />,
+                var anchor = document.getElementById('anchor');
+ 
+                var t = ReactDOM.render(
+                    <OverlayTrigger trigger="click" placement="bottom" overlay={popoverBottom}>
+                      <span>&#8203;</span>
+                    </OverlayTrigger>,
                     anchor
                 );
+
+                t.setState({ show: true });
             }
-            else
-                hideTranslation();
         }.bind(this);
         xhr.onerror = function () {
-            hideTranslation();
-            return null;
+             return null;
         }
         xhr.send();
         return res;
     }
-    else {
-        hideTranslation();
-    }
 }
 
 function hideTranslation() {
-    var anchor = document.getElementById('popupDiv');
-    ReactDOM.render(
-        <TranslationDlg
-            show={false}
-        />,
-        anchor
-    );
+    var anchor = document.getElementById('anchor');
+    ReactDOM.unmountComponentAtNode(anchor);
 }
