@@ -17,3 +17,5 @@
 4. https://reactjs.net/getting-started/aspnetcore.html
 
 5. https://stackoverflow.com/questions/37935524/how-to-use-npm-with-asp-net-core
+
+range.startContainer.parentElement

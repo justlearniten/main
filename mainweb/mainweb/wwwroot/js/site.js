@@ -54,10 +54,10 @@ function repositionAnchor() {
            range = sel.getRangeAt(0).cloneRange();
  
            var span = document.getElementById('anchor');
-                var spanParent = span.parentNode;
-                spanParent.removeChild(span);
-                spanParent.normalize();
-                range.insertNode(span);
+           var spanParent = span.parentNode;
+           spanParent.removeChild(span);
+           spanParent.normalize();
+           range.insertNode(span);
         }
     }
 }
