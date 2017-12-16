@@ -1,0 +1,2 @@
+﻿1. Translation fails if selection is in translation window
+2. Translation fail on large selections

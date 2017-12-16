@@ -19,7 +19,6 @@ var selectionEndTimeout = null;
 
 // bind selection change event to my function
 document.onselectionchange = userSelectionChanged;
-
 function userSelectionChanged() {
     // wait 500 ms after the last selection change event
     if (selectionEndTimeout) {
@@ -42,10 +41,12 @@ function getSelectionText() {
 $(window).bind('selectionEnd', function () {
     // reset selection timeout
     selectionEndTimeout = null;
+    document.onselectionchange = undefined;
     // get user selection
     var selectedText = getSelectionText();
     repositionAnchor();
     showTranslation(selectedText);
+    document.onselectionchange = userSelectionChanged;
 });
 function repositionAnchor() {
     if (window.getSelection) {
