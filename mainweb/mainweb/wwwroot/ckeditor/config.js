@@ -35,8 +35,23 @@ CKEDITOR.editorConfig = function( config ) {
     config.removeDialogTabs = 'image:advanced;link:advanced';
 
     //plugins
-    config.extraPlugins = 'justify,button,panel,panelbutton,floatpanel,colorbutton,train,exercise';
+    config.extraPlugins = 'justify,button,panel,panelbutton,floatpanel,colorbutton,train,exercise,overhang';
     config.contentsCss = '/css/lessons.css';
+    
 
     config.allowedContent = true;
+    config.autoParagraph = false;
+    CKEDITOR.dtd.$removeEmpty.span = 0;
 };
+/*
+CKEDITOR.on('instanceReady', function (ev) {
+    ev.editor.dataProcessor.writer.setRules('table',
+        {
+            indent: false,
+            breakBeforeOpen: false,
+            breakAfterOpen: false,
+            breakBeforeClose: false,
+            breakAfterClose: false
+        });
+});
+*/

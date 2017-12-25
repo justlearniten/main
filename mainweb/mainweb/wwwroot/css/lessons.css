@@ -1,4 +1,4 @@
-﻿.lesson-title {
+.lesson-title {
     font-weight: bold;
     color: #008080;
 }
@@ -53,7 +53,7 @@ td.second-row{
 }
 
 .red-double-underline{
-    text-decoration: underline;
+    text-decoration: underline !important;
     text-decoration-color: #ff0000 !important;
     border-bottom: 1px solid #ff0000;
 }
@@ -63,8 +63,8 @@ td.second-row{
     border-bottom: 1px solid #000000;
 }
 td {
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-top: 0;
+    padding-bottom: 0;
     padding-left: 4px;
 }
 .note {
@@ -88,4 +88,32 @@ td {
     -o-transform: rotate(-4deg);
     -webkit-transform: rotate(-4deg);
     -moz-transform: rotate(-4deg);
+}
+
+.overhang {
+    display: inline-table !important;
+    vertical-align: bottom !important;
+}
+  
+    
+.overhang > span {
+        display: table-row !important;
+}
+
+.overhang > .upper {
+        font-style: italic;
+        font-size:  x-small;
+        text-align:center;
+}
+
+.red-underline > .overhang > .lower,
+.red-double-underline > .overhang > .lower {
+    text-decoration: underline !important;
+    text-decoration-color: #ff0000 !important;
+}
+
+.black-double-underline > .overhang > .lower,
+.black-underline > .overhang > .lower {
+    text-decoration: underline;
+    text-decoration-color: #000 !important;
 }
