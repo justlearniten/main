@@ -17,6 +17,7 @@ namespace mainweb.Models
         public String Title { get; set; }
         [Display(Name = "Название файла")]
         public String FilePath { get; set; }
+        public String TrainsPath { get; set; }
         [Display(Name ="Группа")]
         public virtual LessonGroup LessonGroup { get; set; }
     }

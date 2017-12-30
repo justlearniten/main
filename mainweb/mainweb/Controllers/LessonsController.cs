@@ -11,6 +11,7 @@ using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using HtmlAgilityPack;
 
 namespace mainweb.Controllers
 {
@@ -161,12 +162,16 @@ namespace mainweb.Controllers
                     //if (lessonGroup == null)
                     //    return NotFound();
                     lesson.LessonGroup = lessonGroup;
-                    _context.Update(lesson);
+                    
                     var fullFilePath = FullNameForFile(lesson.FilePath);
 
                     System.IO.File.WriteAllText(fullFilePath, lessonEdit.Content);
+                    SaveTrains(lesson, lessonEdit.Content);
 
+                    _context.Update(lesson);
                     await _context.SaveChangesAsync();
+
+                    
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -183,6 +188,25 @@ namespace mainweb.Controllers
             }
             return View(lessonEdit);
         }
+
+        private void SaveTrains(Lesson lesson, string content)
+        {
+            if(String.IsNullOrEmpty(lesson.TrainsPath))
+                lesson.TrainsPath = CreateRandomFileName(".html");
+            String fullPath = FullNameForFile(lesson.TrainsPath);
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(content);
+            var nodes = doc.DocumentNode.Descendants("table")
+                .Where(x => x.Attributes["class"].Value == "train")
+                .ToList();
+            String res = "";
+            foreach(var n in nodes)
+            {
+                res += n.OuterHtml +"<hr>";
+            }
+            System.IO.File.WriteAllText(fullPath, res);
+        }
+
         [Authorize(Roles = "Administrator")]
         // GET: Lessons/Delete/5
         public async Task<IActionResult> Delete(int? id)
