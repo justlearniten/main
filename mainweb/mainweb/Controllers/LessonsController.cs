@@ -197,7 +197,7 @@ namespace mainweb.Controllers
             HtmlDocument doc = new HtmlDocument();
             doc.LoadHtml(content);
             var nodes = doc.DocumentNode.Descendants("table")
-                .Where(x => x.Attributes["class"].Value == "train")
+                .Where(x => x.Attributes["class"]?.Value == "train")
                 .ToList();
             String res = "";
             foreach(var n in nodes)
