@@ -9,9 +9,10 @@ using mainweb.Models;
 namespace mainweb.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180108010435_trainer3")]
+    partial class trainer3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -77,13 +78,9 @@ namespace mainweb.Data.Migrations
 
                     b.Property<int?>("ExcerciseItemId");
 
-                    b.Property<int?>("TrainerCarId");
-
                     b.HasKey("CorrectResponseId");
 
                     b.HasIndex("ExcerciseItemId");
-
-                    b.HasIndex("TrainerCarId");
 
                     b.ToTable("CorrectResponse");
                 });
@@ -205,35 +202,6 @@ namespace mainweb.Data.Migrations
                     b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Test");
-                });
-
-            modelBuilder.Entity("mainweb.Models.Trainer", b =>
-                {
-                    b.Property<int>("TrainerId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Original")
-                        .IsRequired();
-
-                    b.HasKey("TrainerId");
-
-                    b.ToTable("Trainer");
-                });
-
-            modelBuilder.Entity("mainweb.Models.TrainerCar", b =>
-                {
-                    b.Property<int>("TrainerCarId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("HasWhheels");
-
-                    b.Property<int?>("TrainerId");
-
-                    b.HasKey("TrainerCarId");
-
-                    b.HasIndex("TrainerId");
-
-                    b.ToTable("TrainerCar");
                 });
 
             modelBuilder.Entity("mainweb.Models.Translation", b =>
@@ -365,10 +333,6 @@ namespace mainweb.Data.Migrations
                     b.HasOne("mainweb.Models.ExcerciseItem")
                         .WithMany("CorrectResponses")
                         .HasForeignKey("ExcerciseItemId");
-
-                    b.HasOne("mainweb.Models.TrainerCar")
-                        .WithMany("CorrectResponses")
-                        .HasForeignKey("TrainerCarId");
                 });
 
             modelBuilder.Entity("mainweb.Models.ExcerciseItem", b =>
@@ -390,13 +354,6 @@ namespace mainweb.Data.Migrations
                     b.HasOne("mainweb.Models.ApplicationUser")
                         .WithMany("TestsTaken")
                         .HasForeignKey("ApplicationUserId");
-                });
-
-            modelBuilder.Entity("mainweb.Models.TrainerCar", b =>
-                {
-                    b.HasOne("mainweb.Models.Trainer")
-                        .WithMany("Cars")
-                        .HasForeignKey("TrainerId");
                 });
 
             modelBuilder.Entity("mainweb.Models.Translation", b =>

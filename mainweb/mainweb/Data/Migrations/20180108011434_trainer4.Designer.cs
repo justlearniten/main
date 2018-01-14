@@ -9,9 +9,10 @@ using mainweb.Models;
 namespace mainweb.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180108011434_trainer4")]
+    partial class trainer4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -212,9 +213,6 @@ namespace mainweb.Data.Migrations
                     b.Property<int>("TrainerId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Original")
-                        .IsRequired();
-
                     b.HasKey("TrainerId");
 
                     b.ToTable("Trainer");
@@ -224,8 +222,6 @@ namespace mainweb.Data.Migrations
                 {
                     b.Property<int>("TrainerCarId")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("HasWhheels");
 
                     b.Property<int?>("TrainerId");
 

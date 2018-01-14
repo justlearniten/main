@@ -89,7 +89,8 @@ namespace mainweb
                     .AddScript("~/lib/react-bootstrap/react-bootstrap.js")
                     .AddScript("~/js/react/excercises.jsx")
                     .AddScript("~/js/react/confirm.jsx")
-                    .AddScript("~/js/react/translation.jsx"); 
+                    .AddScript("~/js/react/translation.jsx")
+                    .AddScript("~/js/react/trainer.jsx"); 
 
                 // If you use an external build too (for example, Babel, Webpack,
                 // Browserify or Gulp), you can improve performance by disabling
