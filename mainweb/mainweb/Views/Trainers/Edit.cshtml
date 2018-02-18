@@ -3,5 +3,6 @@
 @{
     ViewData["Title"] = "Редактирование тренажера";
 }
-
+<script src="~/ckeditor/ckeditor.js"></script>
+<script src="~/ckeditor/styles.js"></script>
 @Html.React("Trainer", new { trainer = Model })

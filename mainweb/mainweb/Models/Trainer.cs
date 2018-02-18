@@ -22,9 +22,15 @@ namespace mainweb.Models
         [Required]
         Style Style { get; set; }
         public bool HasWhheels { get; set; }
-        public virtual ICollection<CorrectResponse> CorrectResponses { get; set; }
+        public virtual ICollection<TrainerCorrectResponse> CorrectResponses { get; set; }
     }
-   
+    public class TrainerCorrectResponse
+    {
+        public int TrainerCorrectResponseId { get; set; }
+        [Display(Name = "Правильный ответ")]
+        [Required]
+        public string Answer { get; set; }
+    }
     public enum Style
     {
         Normal,

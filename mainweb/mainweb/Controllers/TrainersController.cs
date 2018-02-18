@@ -78,6 +78,9 @@ namespace mainweb.Controllers
             {
                 return NotFound();
             }
+            await _context.Entry(trainer).Collection(t => t.Cars).LoadAsync();
+            foreach (var tc in trainer.Cars)
+                await _context.Entry(tc).Collection(c => c.CorrectResponses).LoadAsync();
             return View(trainer);
         }
 
