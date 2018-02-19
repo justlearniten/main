@@ -20,6 +20,7 @@ namespace mainweb.Models
         public String TrainsPath { get; set; }
         [Display(Name ="Группа")]
         public virtual LessonGroup LessonGroup { get; set; }
+        public int? LessonGroupId { get; set; }
     }
     public class LessonGroup
     {

@@ -59,6 +59,48 @@ namespace mainweb.Controllers
                 return NotFound();
             }
             model.Lesson = lesson;
+            //get previous and next lesson Id
+            var prevLesson = await _context.Lessons
+                .Where(l => l.LessonGroupId == lesson.LessonGroupId && l.LessonId < lesson.LessonId)
+                .OrderByDescending(l=>l.LessonId)
+                .FirstOrDefaultAsync();
+            if(prevLesson==null && lesson.LessonGroupId != null)
+            {
+                var prevGroup = await _context.LessonGroups
+                    .Where(lg => lg.LessonGroupId < lesson.LessonGroupId)
+                    .OrderByDescending(lg => lg.LessonGroupId)
+                    .FirstOrDefaultAsync();
+                int? prevGroupId = null;
+                if (prevGroup != null)
+                    prevGroupId = prevGroup.LessonGroupId;
+
+                prevLesson = await _context.Lessons
+                        .Where(l => l.LessonGroupId == prevGroupId)
+                        .OrderByDescending(l=>l.LessonId)
+                        .FirstOrDefaultAsync();
+            }
+            ViewData["PrevLessionId"] = prevLesson?.LessonId;
+            ////////////////////////////////////////////////////////////
+            var nextLesson = await _context.Lessons
+                .Where(l => l.LessonGroupId == lesson.LessonGroupId && l.LessonId > lesson.LessonId)
+                .OrderBy(l=>l.LessonId)
+                .FirstOrDefaultAsync();
+            if (nextLesson == null)
+            {
+                var nextGroup = await _context.LessonGroups
+                    .Where(lg => lg.LessonGroupId > (lesson.LessonGroupId??0))
+                    .OrderBy(lg => lg.LessonGroupId)
+                    .FirstOrDefaultAsync();
+
+                if (nextGroup != null)
+                    nextLesson = await _context.Lessons
+                        .Where(l => l.LessonGroupId == nextGroup.LessonGroupId)
+                        .OrderBy(l => l.LessonId)
+                        .FirstOrDefaultAsync();
+
+            }
+            ViewData["NextLessionId"] = nextLesson?.LessonId;
+
             return View(model);
         }
 

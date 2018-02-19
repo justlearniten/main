@@ -45,5 +45,20 @@
     {
         @*Include the static file*@
         @Html.Raw(File.ReadAllText("wwwroot/lessons/" + Model.Lesson.FilePath))
+        <hr />
+        <div>
+            <span style="float:left;">
+                @if (ViewData["PrevLessionId"] != null)
+                {
+                    <a asp-action="Index" asp-route-id="@ViewData["PrevLessionId"]"><i class="fas fa-arrow-left"></i> Предыдущий урок</a>
+                }
+            </span>
+            <span style="float:right;">
+                @if (ViewData["NextLessionId"] != null)
+                {
+                    <a asp-action="Index" asp-route-id="@ViewData["NextLessionId"]">Следующий урок <i class="fas fa-arrow-right"></i></a>
+                }
+            </span>
+        </div>
     }
 }
