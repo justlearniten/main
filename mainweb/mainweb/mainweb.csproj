@@ -57,5 +57,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\pdfs\" />
+  </ItemGroup>
 
 </Project>

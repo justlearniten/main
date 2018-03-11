@@ -89,4 +89,7 @@ textarea {
         display: none;
     }
 }
+.no-max-width{
+    max-width:none;
+}
 

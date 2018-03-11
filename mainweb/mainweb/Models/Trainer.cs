@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -18,10 +20,9 @@ namespace mainweb.Models
     public class TrainerCar
     {
         public int TrainerCarId { get; set; }
-        [Display(Name = "Стиль")]
-        [Required]
-        Style Style { get; set; }
-        public bool HasWhheels { get; set; }
+
+        public Style Style { get; set; }
+        public bool HasWheels { get; set; }
         public virtual ICollection<TrainerCorrectResponse> CorrectResponses { get; set; }
     }
     public class TrainerCorrectResponse
@@ -31,6 +32,7 @@ namespace mainweb.Models
         [Required]
         public string Answer { get; set; }
     }
+
     public enum Style
     {
         Normal,

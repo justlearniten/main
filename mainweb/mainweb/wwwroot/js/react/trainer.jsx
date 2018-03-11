@@ -1,49 +1,97 @@
 ﻿var Modal = ReactBootstrap.Modal;
 var Button = ReactBootstrap.Button;
 var FormGroup = ReactBootstrap.FormGroup;
+var FormControl = ReactBootstrap.FormControl;
+var Checkbox = ReactBootstrap.Checkbox;
+var Radio = ReactBootstrap.Radio;
+var Form = ReactBootstrap.Form;
+function makeid() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
+    for (var i = 0; i < 5; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
 var TrainerCorrectAnswer = React.createClass({
     getInitialState: function () {
-        return this.props.answer;
+        return null;
     },
     render: function () {
-        console.log("Answer state");
-        console.log(this.state);
+        console.log(this.props);
         return (
-            <div>
-                {this.state.answer}
-            </div>
+            <Form inline>
+                <FormControl className={"no-max-width"}
+                    type="text"
+                    id={this.props.correctAnswer.trainerCorrectResponseId.toString()}
+                    value={this.props.correctAnswer.answer}
+                    placeholder="Введите ответ"
+                    onChange={this.props.onAnswerEdit}
+                />
+                <Button bsStyle="danger" onClick={e => this.props.deleteAnswer(this.props.correctAnswer.trainerCorrectResponseId)}>Удалить</Button>
+            </Form>
             );
     }
 });
 //////////////////////////////////////////////////////////////
 var TrainerCar = React.createClass({
-    getInitialState: function () {
-        console.log("props of trainer car");
-        console.log(this.props);
-        return this.props.car;
+    onAddAnswer(e) {
+        this.props.addCorrectResponse(this.props.car.trainerCarId);
     },
     render: function () {
-        console.log("rendering car");
-        console.log(this.state);
-        var answers = this.state.correctResponses.map((a) =>
-            <TrainerCorrectAnswer answer={a}/>
+        var answers = this.props.car.correctResponses.map((a) =>
+            <TrainerCorrectAnswer
+                deleteAnswer={this.props.deleteAnswer}
+                correctAnswer={a}
+                onAnswerEdit={this.props.onAnswerEdit}
+                key={a.trainerCorrectResponseId} />
         );
         return (
             <div className="form-horizontal form-group col-md-12 well">
                 <div className="col-md-8">
                     {answers}
+                    <hr/>
+                    <Button onClick={this.onAddAnswer}>Добавить ответ</Button>
                 </div>
                 <div className="col-md-4">
                     <div className="col-md-12">
-                        <label><input type="checkbox" checked={this.state.hasWheels} />&nbsp;Колесики</label>
+                        <Checkbox id={this.props.car.trainerCarId.toString()}
+                            checked={this.props.hasWheels} onChange={this.props.onChangeWheels} >
+                       &nbsp;Колесики
+                        </Checkbox>
                     </div>
                     <div className="col-md-12">
-                        <label><input type="radio" value="normal" />&nbsp;Без подчеркивания</label>
-                        <label><input type="radio" value="blackSingle" />&nbsp;<span className="black-underline">Одинарное черное</span></label>
-                        <label><input type="radio" value="blackDouble" />&nbsp;<span className="black-double-underline">Двойное черное</span></label>
-                        <label><input type="radio" value="redSingle" />&nbsp;<span className="red-underline">Одинарное красное</span></label>
-                        <label><input type="radio" value="redDouble" />&nbsp;<span className="red-double-underline">Двойное красное</span></label>
+                        {this.props.car.style == 0 &&
+                            <Radio name={"carStyle"} checked onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString()+"_"+"0"}>&nbsp;Без подчеркивания</Radio>
+                        }
+                        {this.props.car.style != 0 &&
+                            <Radio name={"carStyle"} onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"0"}>&nbsp;Без подчеркивания</Radio>
+                        }
+                        {this.props.car.style == 1 &&
+                            <Radio name={"carStyle"} checked onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"1"}>Одинарное черное</Radio>
+                        }
+                        {this.props.car.style != 1 &&
+                            <Radio name={"carStyle"} onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"1"}>Одинарное черное</Radio>
+                        }
+                        {this.props.car.style == 3 &&
+                            <Radio name={"carStyle"} checked onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"3"}>Двойное черное</Radio>
+                        }
+                        {this.props.car.style != 3 &&
+                            <Radio name={"carStyle"} onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"3"}>Двойное черное</Radio>
+                        }
+                        {this.props.car.style == 2 &&
+                            <Radio className={"red-underline"} name={"carStyle"} checked onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"2"}>Одинарное красное</Radio>
+                        }
+                        {this.props.car.style != 2 &&
+                            <Radio className={"red-underline"} name={"carStyle"} onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"2"}>Одинарное красное</Radio>
+                        }
+                        {this.props.car.style == 4 &&
+                            <Radio name={"carStyle"} checked onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"4"}>Двойное красное</Radio>
+                        }
+                        {this.props.car.style != 4 &&
+                            <Radio name={"carStyle"} onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"4"}>Двойное красное</Radio>
+                        }
                     </div>
                 </div>
                 
@@ -54,6 +102,7 @@ var TrainerCar = React.createClass({
 
 /////////////////////////////////////////////////////////////////////////////////
 var Trainer = React.createClass({
+
     getInitialState: function () {
         return {
             trainer: this.props.trainer
@@ -69,15 +118,101 @@ var Trainer = React.createClass({
             let data = CKEDITOR.instances.editor.getData();
             this.setState({ original: data });
         }.bind(this));
+
+
+
+    },
+    onAnswerEdit(e) {
+
+        var trainerCorrectResponseId = e.target.id;
+        var value = e.target.value;
+        var state = Object.assign({}, this.state);
+        for (var i = 0; i < state.trainer.cars.length; i++)
+        {
+            var car = state.trainer.cars[i];
+            for (var j = 0; j < car.correctResponses.length; j++) {
+                var correctResponse = car.correctResponses[j];
+                if (correctResponse.trainerCorrectResponseId == trainerCorrectResponseId) {
+                    correctResponse.answer = value;
+                    this.setState(state);
+                    return;
+                }
+            }
+
+        }
+
+    },
+    onChangeWheels(e) {
+        var trainerCarId = parseInt(e.target.id);
+        var newVal = e.target.checked;
+        var state = Object.assign({}, this.state);
+        for (var i = 0; i < state.trainer.cars.length; i++) {
+            var car = state.trainer.cars[i];
+            if (car.trainerCarId == trainerCarId) {
+                car.hasWheels = newVal;
+                this.setState(state);
+                return;
+            }
+        }
+        
+    },
+    onStyleChange(e) {
+        var parts = e.target.value.split("_");
+        var trainerCarId = parseInt(parts[0]);
+        var style = parseInt(parts[1]);
+        var trainerCorrectResponseId = parseInt(e.target.id);
+        var value = e.target.value;
+        var state = Object.assign({}, this.state);
+        for (var i = 0; i < state.trainer.cars.length; i++) {
+            var car = state.trainer.cars[i];
+            if (car.trainerCarId == trainerCarId) {
+                car.style = style;
+                this.setState(state);
+                return;
+            }
+        }
+    },
+    addCorrectResponse(trainerCarId) {
+        var state = Object.assign({}, this.state);
+        for (var i = 0; i < state.trainer.cars.length; i++) {
+            var car = state.trainer.cars[i];
+            if (car.trainerCarId == trainerCarId) {
+                console.log(car);
+                car.correctResponses.push({
+                    trainerCorrectResponseId: makeid(),
+                    answer: ""
+                });
+                this.setState(state);
+                return;
+            }
+        }
+    },
+    deleteAnswer(trainerCorrectResponseId) {
+        var state = Object.assign({}, this.state);
+        for (var i = 0; i < state.trainer.cars.length; i++) {
+            var car = state.trainer.cars[i];
+            for (var j = 0; j < car.correctResponses.length;j++) {
+                var correectResponse = car.correctResponses[j];
+                if (correectResponse.trainerCorrectResponseId == trainerCorrectResponseId) {
+                    car.correctResponses.splice(j,1);
+                    this.setState(state);
+                    return;
+                }
+            }
+        }
     },
     render: function () {
-        console.log("rendering trainer");
-        console.log(this.state.trainer);
         var cars = null;
-        this.state.trainer.cars;
         if (this.state.trainer.cars!=null)
             cars = this.state.trainer.cars.map((c) =>
-                <TrainerCar car = {c} />
+                <TrainerCar car={c}
+                    onAnswerEdit={this.onAnswerEdit}
+                    onChangeWheels={this.onChangeWheels}
+                    key={c.trainerCarId}
+                    onStyleChange={this.onStyleChange}
+                    addCorrectResponse={this.addCorrectResponse}
+                    deleteAnswer={this.deleteAnswer}
+                />
             );
         return (
             <div>

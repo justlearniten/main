@@ -21,6 +21,7 @@ namespace mainweb.Controllers
         }
         public async Task<IActionResult> Index()
         {
+
             
             String content = "";
             var UngrouppedLessons = await _context.Lessons.Where(l => l.LessonGroup == null).ToListAsync();
@@ -44,7 +45,7 @@ namespace mainweb.Controllers
                     content +=  c ;
                 }
             }
-            ViewData["content"] = content; 
+            ViewData["content"] = content;
             return View();
         }
         private string FullNameForFile(string fileName)
