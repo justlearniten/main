@@ -3,5 +3,21 @@
     ViewData["Title"] = "Справочник";
 }
 
-@Html.Raw(ViewData["content"])
-  
+@if (ViewData["file_path"] != null)
+{
+<div style="width:100%;" id="full_height">
+    <object style="width:100%; height:100%;" data="@ViewData["file_path"]" type="application/pdf">
+        Скачать<a href="@ViewData["file_path"]" download="">@ViewData["file_title"]</a>
+    </object>
+</div>
+}else
+{ 
+@foreach (Reference r in (IEnumerable<Reference>)ViewData["refs"])
+{
+    <div>
+        <a class="col-md-8" asp-route-id="@r.ReferenceId">@Html.DisplayFor(modelItem => r.Title)</a>
+       
+    </div>
+}
+
+}

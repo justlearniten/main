@@ -9,9 +9,10 @@ using mainweb.Models;
 namespace mainweb.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180311204141_addin_reference_model")]
+    partial class addin_reference_model
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -179,21 +180,6 @@ namespace mainweb.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProgressViewModel");
-                });
-
-            modelBuilder.Entity("mainweb.Models.Reference", b =>
-                {
-                    b.Property<int>("ReferenceId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("FilePath");
-
-                    b.Property<string>("Title")
-                        .IsRequired();
-
-                    b.HasKey("ReferenceId");
-
-                    b.ToTable("Reference");
                 });
 
             modelBuilder.Entity("mainweb.Models.Test", b =>

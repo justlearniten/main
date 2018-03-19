@@ -230,7 +230,14 @@ namespace mainweb.Controllers
             }
             return View(lessonEdit);
         }
-
+        bool IsTrain(HtmlNode n)
+        {
+            var val = n.Attributes["class"]?.Value;
+            if (val == null)
+                return false;
+            return val.Contains("train");
+                
+        }
         private void SaveTrains(Lesson lesson, string content)
         {
             if(String.IsNullOrEmpty(lesson.TrainsPath))
@@ -239,7 +246,7 @@ namespace mainweb.Controllers
             HtmlDocument doc = new HtmlDocument();
             doc.LoadHtml(content);
             var nodes = doc.DocumentNode.Descendants("table")
-                .Where(x => x.Attributes["class"]?.Value == "train")
+                .Where(x =>IsTrain(x))
                 .ToList();
             String res = "";
             foreach(var n in nodes)

@@ -18,26 +18,77 @@
     text-align: center;
     font-weight: bold;
 }
+/* different styles of train car*/
+.style-indefinite .train-car {
+    background: #92d050 !important;
+}
+.style-indefinite .train-arrow {
+    color: #92d050 !important;
+}
+.style-indefinite .train-wheels:before {
+    content: url(/images/wheels-indefinite.png);
+}
+
+.style-continuous .train-car {
+    background: #00b050 !important;
+}
+.style-continuous .train-arrow {
+    color: #00b050 !important;
+}
+.style-continuous .train-wheels:before {
+    content: url(/images/wheels-continuous.png);
+}
+
+
+.style-perfect .train-car {
+    background: #548235 !important;
+}
+.style-perfect .train-arrow {
+    color: #548235 !important;
+}
+.style-perfect .train-wheels:before {
+    content: url(/images/wheels-perfect.png);
+}
+
+.style-perfect-continuous .train-car {
+    background: #a9d18e !important;
+}
+.style-perfect-continuous .train-arrow {
+    color: #a9d18e !important;
+}
+.style-perfect-continuous .train-wheels:before {
+    content: url(/images/wheels-perfect-continuous.png);
+}
+
+.train-car > p {
+    margin: 4px;
+}
+
+.train-arrow {
+    text-align: center;
+}
+
+.train-arrow:before {
+        content: "\27a1";
+        font-size: xx-large;
+        font-weight: 800;
+}
+
 .train-car {
     background-clip: padding-box;
     border-radius: 10px;
     padding: 10px;
-    background: #00b050;
+    
     vertical-align: middle;
     text-align: center;
     -moz-box-shadow: 5px 5px 7px rgba(33,33,33,1);
     -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
     box-shadow: 5px 5px 7px rgba(33,33,33,.7);
 }
-.train-car > p {
-    margin: 4px;
-}
-.train-arrow {
-    text-align:center;
-}
-td.second-row{
-    text-align:center;
-    font-weight:bold;
+
+td.second-row {
+    text-align: center;
+    font-weight: bold;
 }
 .redspan{
     background-color: red;

@@ -19,33 +19,20 @@ namespace mainweb.Controllers
             _context = context;
             _env = env;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
 
-            
-            String content = "";
-            var UngrouppedLessons = await _context.Lessons.Where(l => l.LessonGroup == null).ToListAsync();
-            var LessonGroups = await _context.LessonGroups.Include(lg => lg.Lessons).ToListAsync();
-            foreach(var l in UngrouppedLessons)
+            if (id == null)
             {
-                if (String.IsNullOrEmpty(l.TrainsPath))
-                    continue;
-                string filePath = FullNameForFile(l.TrainsPath);
-                String c = System.IO.File.ReadAllText(filePath);
-                content +=  c ;
+                var refs = await _context.Reference.ToListAsync();
+                ViewData["refs"] = refs;
             }
-            foreach (var g in LessonGroups)
+            else
             {
-                foreach (var l in g.Lessons)
-                {
-                    if (String.IsNullOrEmpty(l.TrainsPath))
-                        continue;
-                    string filePath = FullNameForFile(l.TrainsPath);
-                    String c = System.IO.File.ReadAllText(filePath);
-                    content +=  c ;
-                }
+                var r = await _context.Reference.FindAsync(id);
+                ViewData["file_path"] = r.FilePath;
+                ViewData["file_title"] = r.Title;
             }
-            ViewData["content"] = content;
             return View();
         }
         private string FullNameForFile(string fileName)

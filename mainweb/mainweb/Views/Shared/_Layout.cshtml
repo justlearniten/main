@@ -30,8 +30,9 @@
     <script src="@Url.Content("~/js/react/confirm.jsx")"></script>
     <script src="@Url.Content("~/js/react/translation.jsx")"></script>
     <script src="@Url.Content("~/js/react/trainer.jsx")"></script>
+
 </head>
-<body>
+<body onload="onBodyLoad()" onresize="onBodyResize()">
     <div id="excerciseDiv" style="position:absolute;align-self:center;"></div>
     <div id="confirmDiv" style="position:absolute;align-self:center;"></div>
     <div id="okDiv" style="position:absolute;align-self:center;"></div>

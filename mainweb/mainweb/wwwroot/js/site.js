@@ -63,3 +63,22 @@ function repositionAnchor() {
     }
 }
 //////////////////////////////////////////////////////////////////////////////////////
+function onBodyLoad() {
+    resizeMain();
+}
+
+function onBodyResize() {
+    resizeMain();
+}
+
+function resizeMain() {
+    var windowHeight = $(window).height();
+
+    var fullHeight = windowHeight  - 50  - 30;
+                                 //navbar  2*padding
+        var el = $("#full_height");
+    if (el) {
+        el.height(fullHeight);
+    }
+
+}

@@ -35,6 +35,13 @@ CKEDITOR.dialog.add('trainDialog', function (editor) {
                         type: 'checkbox',
                         id: 'tail',
                         label:'Добавить хвост'
+                    },
+                    {
+                        type: 'select',
+                        id: 'style',
+                        label: 'Выберите стиль',
+                        items: [['Indefinite', 'style-indefinite'], ['Continuous', 'style-continuous'], ['Perfect', 'style-perfect'], ['Perfect Continuous', 'style-perfect-continuous']],
+                        'default': 'style-indefinite'                      
                     }
                 ]
             }
@@ -43,8 +50,9 @@ CKEDITOR.dialog.add('trainDialog', function (editor) {
         //OK handler
         onOk: function () {
             var dialog = this;
+            var trainStyle = dialog.getValueOf('main', 'style');
             var train = editor.document.createElement('table');
-            train.setAttribute('class', 'train cke_show_border');
+            train.setAttribute('class', 'train cke_show_border ' + trainStyle);
             train.setAttribute('align', 'center');
             var row = editor.document.createElement('tr');
             var row2 = editor.document.createElement('tr');
@@ -67,9 +75,9 @@ CKEDITOR.dialog.add('trainDialog', function (editor) {
                 if (bTail || i < n - 1) {
                     var link = editor.document.createElement('td');
                     link.setAttribute('class', 'train-arrow');
-                    var img = editor.document.createElement('img');
-                    img.setAttribute('src', '/images/arrow-right.png');
-                    link.append(img);
+                    //var img = editor.document.createElement('img');
+                    //img.setAttribute('src', '/images/arrow-right.png');
+                    //link.append(img);
                     row.append(link);
                     //second row
                     txtTd = editor.document.createElement('td');
@@ -81,6 +89,7 @@ CKEDITOR.dialog.add('trainDialog', function (editor) {
             
             if (bTail) {
                 var wheelsTd = editor.document.createElement('td');
+                wheelsTd.setAttribute('class', 'train-wheels');
                 var wheelsImg = editor.document.createElement('img');
                 wheelsImg.setAttribute('src', '/images/wheels.png');
                 wheelsTd.append(wheelsImg);
@@ -102,6 +111,9 @@ CKEDITOR.dialog.add('trainDialog', function (editor) {
             train.append(row2);
 
             editor.insertElement(train);
+        },
+        onCancel: function() {
+
         }
     };
 });

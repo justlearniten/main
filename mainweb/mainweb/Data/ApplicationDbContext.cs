@@ -37,6 +37,7 @@ namespace mainweb.Data
         public DbSet<DictionaryEntry> Dictionary { get; set; }
         public DbSet<Translation> Translations { get; set; }
         public DbSet<mainweb.Models.Trainer> Trainer { get; set; }
+        public DbSet<Reference> Reference { get; set; }
         
     }
 }
