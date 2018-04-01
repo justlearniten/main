@@ -5,21 +5,23 @@ var FormControl = ReactBootstrap.FormControl;
 var Checkbox = ReactBootstrap.Checkbox;
 var Radio = ReactBootstrap.Radio;
 var Form = ReactBootstrap.Form;
+
+var lastId = 2000000000;
 function makeid() {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    return ++lastId;
+    //var text = "a";
+    //var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    for (var i = 0; i < 5; i++)
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    //for (var i = 0; i < 5; i++)
+    //    text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-    return text;
+    //return text;
 }
 var TrainerCorrectAnswer = React.createClass({
     getInitialState: function () {
         return null;
     },
     render: function () {
-        console.log(this.props);
         return (
             <Form inline>
                 <FormControl className={"no-max-width"}
@@ -47,6 +49,7 @@ var TrainerCar = React.createClass({
                 onAnswerEdit={this.props.onAnswerEdit}
                 key={a.trainerCorrectResponseId} />
         );
+        var radio_name = "carstyle_" + this.props.car.trainerCarId;
         return (
             <div className="form-horizontal form-group col-md-12 well">
                 <div className="col-md-8">
@@ -63,34 +66,34 @@ var TrainerCar = React.createClass({
                     </div>
                     <div className="col-md-12">
                         {this.props.car.style == 0 &&
-                            <Radio name={"carStyle"} checked onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString()+"_"+"0"}>&nbsp;Без подчеркивания</Radio>
+                            <Radio name={radio_name} checked onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString()+"_"+"0"}>&nbsp;Без подчеркивания</Radio>
                         }
                         {this.props.car.style != 0 &&
-                            <Radio name={"carStyle"} onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"0"}>&nbsp;Без подчеркивания</Radio>
+                            <Radio name={radio_name} onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"0"}>&nbsp;Без подчеркивания</Radio>
                         }
                         {this.props.car.style == 1 &&
-                            <Radio name={"carStyle"} checked onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"1"}>Одинарное черное</Radio>
+                            <Radio name={radio_name} checked onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"1"}>Одинарное черное</Radio>
                         }
                         {this.props.car.style != 1 &&
-                            <Radio name={"carStyle"} onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"1"}>Одинарное черное</Radio>
+                            <Radio name={radio_name} onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"1"}>Одинарное черное</Radio>
                         }
                         {this.props.car.style == 3 &&
-                            <Radio name={"carStyle"} checked onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"3"}>Двойное черное</Radio>
+                            <Radio name={radio_name} checked onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"3"}>Двойное черное</Radio>
                         }
                         {this.props.car.style != 3 &&
-                            <Radio name={"carStyle"} onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"3"}>Двойное черное</Radio>
+                            <Radio name={radio_name} onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"3"}>Двойное черное</Radio>
                         }
                         {this.props.car.style == 2 &&
-                            <Radio className={"red-underline"} name={"carStyle"} checked onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"2"}>Одинарное красное</Radio>
+                            <Radio className={"red-underline"} name={radio_name} checked onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"2"}>Одинарное красное</Radio>
                         }
                         {this.props.car.style != 2 &&
-                            <Radio className={"red-underline"} name={"carStyle"} onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"2"}>Одинарное красное</Radio>
+                            <Radio className={"red-underline"} name={radio_name} onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"2"}>Одинарное красное</Radio>
                         }
                         {this.props.car.style == 4 &&
-                            <Radio name={"carStyle"} checked onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"4"}>Двойное красное</Radio>
+                            <Radio name={radio_name} checked onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"4"}>Двойное красное</Radio>
                         }
                         {this.props.car.style != 4 &&
-                            <Radio name={"carStyle"} onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"4"}>Двойное красное</Radio>
+                            <Radio name={radio_name} onChange={this.props.onStyleChange} value={this.props.car.trainerCarId.toString() + "_" +"4"}>Двойное красное</Radio>
                         }
                     </div>
                 </div>
@@ -160,8 +163,7 @@ var Trainer = React.createClass({
         var parts = e.target.value.split("_");
         var trainerCarId = parseInt(parts[0]);
         var style = parseInt(parts[1]);
-        var trainerCorrectResponseId = parseInt(e.target.id);
-        var value = e.target.value;
+
         var state = Object.assign({}, this.state);
         for (var i = 0; i < state.trainer.cars.length; i++) {
             var car = state.trainer.cars[i];
@@ -177,7 +179,6 @@ var Trainer = React.createClass({
         for (var i = 0; i < state.trainer.cars.length; i++) {
             var car = state.trainer.cars[i];
             if (car.trainerCarId == trainerCarId) {
-                console.log(car);
                 car.correctResponses.push({
                     trainerCorrectResponseId: makeid(),
                     answer: ""
@@ -201,6 +202,23 @@ var Trainer = React.createClass({
             }
         }
     },
+    addTrain() {
+        var state = Object.assign({}, this.state);
+
+        var car = {
+            trainerCarId: makeid(),
+            style: 0,
+            hasWheels: false,
+            correctResponses: [
+                {
+                    trainerCorrectResponseId: makeid(),
+                    answer: ""
+                }
+            ]
+        };
+        state.trainer.cars.push(car);
+        this.setState(state);
+    },
     render: function () {
         var cars = null;
         if (this.state.trainer.cars!=null)
@@ -219,7 +237,7 @@ var Trainer = React.createClass({
                 <Button>Сохранить</Button>
                 <textarea name="editor" cols="100" rows="6" defaultValue={"apta"}></textarea>
                 {cars}
-                <Button>Добавить вагончик</Button>
+                <Button onClick={this.addTrain} > Добавить вагончик</Button>
             </div>
             );
     }
