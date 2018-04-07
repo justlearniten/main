@@ -42,7 +42,8 @@ var TrainerCar = React.createClass({
         this.props.addCorrectResponse(this.props.car.trainerCarId);
     },
     render: function () {
-        var answers = this.props.car.correctResponses.map((a) =>
+        var answers = null;
+        answers = this.props.car.correctResponses.map((a) =>
             <TrainerCorrectAnswer
                 deleteAnswer={this.props.deleteAnswer}
                 correctAnswer={a}
@@ -107,19 +108,21 @@ var TrainerCar = React.createClass({
 var Trainer = React.createClass({
 
     getInitialState: function () {
-        return {
+        return  {
             trainer: this.props.trainer
         };
       
     },
     componentDidMount: function () {
-        /* let configuration = {
+        let configuration = {
              toolbar: "Basic"
-         };*/
+         };
         CKEDITOR.replace("editor");//, configuration);
         CKEDITOR.instances.editor.on('change', function () {
             let data = CKEDITOR.instances.editor.getData();
-            this.setState({ original: data });
+            var state = Object.assign({}, this.state);
+            state.trainer.original = data;
+            this.setState(state);
         }.bind(this));
 
 
@@ -219,6 +222,26 @@ var Trainer = React.createClass({
         state.trainer.cars.push(car);
         this.setState(state);
     },
+    onSave(e) {
+        e.preventDefault();
+      
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('post', this.state.trainer.trainerId, true);
+        xhr.setRequestHeader("Content-Type", 'application/json');
+
+        xhr.onload = function () {
+            if (xhr.status != 200)
+                return xhr.onerror();
+            var newState = JSON.parse(xhr.response);
+            this.setState({ trainer: newState });
+        }.bind(this);
+        xhr.onerror = function () {
+            alert("Ошибка  при сохранении!");
+        }
+        xhr.send(JSON.stringify(this.state.trainer));
+
+    },
     render: function () {
         var cars = null;
         if (this.state.trainer.cars!=null)
@@ -234,8 +257,10 @@ var Trainer = React.createClass({
             );
         return (
             <div>
-                <Button>Сохранить</Button>
-                <textarea name="editor" cols="100" rows="6" defaultValue={"apta"}></textarea>
+                <Button onClick={this.onSave} >Сохранить</Button>
+                <textarea name="editor" cols="100" rows="6" defaultValue={this.state.trainer.original}>
+                    
+                </textarea>
                 {cars}
                 <Button onClick={this.addTrain} > Добавить вагончик</Button>
             </div>

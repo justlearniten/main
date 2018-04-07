@@ -90,7 +90,8 @@ namespace mainweb
                     .AddScript("~/js/react/excercises.jsx")
                     .AddScript("~/js/react/confirm.jsx")
                     .AddScript("~/js/react/translation.jsx")
-                    .AddScript("~/js/react/trainer.jsx"); 
+                    .AddScript("~/js/react/trainer.jsx")
+                    .DisableServerSideRendering(); 
 
                 // If you use an external build too (for example, Babel, Webpack,
                 // Browserify or Gulp), you can improve performance by disabling

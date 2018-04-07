@@ -85,15 +85,16 @@ function translateOnline(text) {
 
         if (translation) {
             var anchor = document.getElementById('anchor');
+            if (anchor) {
+                var t = ReactDOM.render(
+                    <OverlayTrigger trigger="click" placement="bottom" overlay={popoverBottom}>
+                        <span>&#8203;</span>
+                    </OverlayTrigger>,
+                    anchor
+                );
 
-            var t = ReactDOM.render(
-                <OverlayTrigger trigger="click" placement="bottom" overlay={popoverBottom}>
-                    <span>&#8203;</span>
-                </OverlayTrigger>,
-                anchor
-            );
-
-            t.setState({ show: true });
+                t.setState({ show: true });
+            }
         }
         
     }.bind(this);
@@ -105,5 +106,6 @@ function translateOnline(text) {
 }
 function hideTranslation() {
     var anchor = document.getElementById('anchor');
-    ReactDOM.unmountComponentAtNode(anchor);
+    if(anchor)
+        ReactDOM.unmountComponentAtNode(anchor);
 }
