@@ -1,4 +1,5 @@
 ﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,6 +87,11 @@
                 <a asp-controller="Excercises" asp-action="Index" asp-route-id="" class="btn btn-menu">Упражнения</a>
                 <a asp-controller="Dictionary" asp-action="Index" asp-route-id="" class="btn btn-menu">Словарь</a>
                 <a asp-controller="Reference"  asp-action="Index" asp-route-id="" class="btn btn-menu">Справочник</a>
+                @if (User.IsInRole("Administrator"))
+                {
+                  <a asp-controller="Trainers" asp-action="Index" asp-route-id="" class="btn btn-menu">Тренажеры</a>
+
+                }
                 @* @await Html.PartialAsync("../Lesson/_LessonListPartial")*@
                 @*  @await Component.InvokeAsync("LessonListComponent")*@
 
@@ -94,7 +100,7 @@
         </div>
         <hr />
         <footer>
-            <p align="center">Copyright &copy; 2017 - Just Learn It</p>
+            <p align="center">Copyright if; 2017 - Just Learn It</p>
             <p align="center"><a href="http://translate.yandex.com/" target="_blank">Powered by Yandex.Translate</a></p>
         </footer>
     </div>
