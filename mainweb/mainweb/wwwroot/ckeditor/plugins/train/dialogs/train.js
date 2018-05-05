@@ -90,9 +90,9 @@ CKEDITOR.dialog.add('trainDialog', function (editor) {
             if (bTail) {
                 var wheelsTd = editor.document.createElement('td');
                 wheelsTd.setAttribute('class', 'train-wheels');
-                var wheelsImg = editor.document.createElement('img');
-                wheelsImg.setAttribute('src', '/images/wheels.png');
-                wheelsTd.append(wheelsImg);
+                //var wheelsImg = editor.document.createElement('img');
+                //wheelsImg.setAttribute('src', '/images/wheels.png');
+                //wheelsTd.append(wheelsImg);
                 row.append(wheelsTd);
                 var wheelsText = editor.document.createElement('td');
                 //wheelsText.setText(' ');

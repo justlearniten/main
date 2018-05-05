@@ -34,5 +34,9 @@ namespace mainweb.Controllers
         {
             return View();
         }
+        public IActionResult Start()
+        {
+            return View();
+        }
     }
 }

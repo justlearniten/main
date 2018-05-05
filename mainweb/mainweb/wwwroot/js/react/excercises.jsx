@@ -109,7 +109,7 @@ var Excercise = React.createClass({
             if (xhr.status != 200)
                 return xhr.onerror();
             var newState = JSON.parse(xhr.response);
-            console.log(newState);
+
             this.setState(newState);
         }.bind(this);
         xhr.onerror = function () {
@@ -127,7 +127,7 @@ var Excercise = React.createClass({
             if (xhr.status != 200)
                 return xhr.onerror();
             var newItem = JSON.parse(xhr.response);
-            console.log(newItem);
+
             this.setState({ excerciseItems: this.state.excerciseItems.concat([newItem]) });
         }.bind(this);
         xhr.onerror = function () {
@@ -136,7 +136,7 @@ var Excercise = React.createClass({
         xhr.send(JSON.stringify(this.state.excerciseId));
     },
     onEditQuestion: function (itemId, newQuestion) {
-        console.log(newQuestion);
+
         var newItems = this.state.excerciseItems.slice(0);
         for (var i = 0; i < newItems.length; i++) {
             if (newItems[i].excerciseItemId == itemId) {
@@ -172,7 +172,7 @@ var Excercise = React.createClass({
             if (xhr.status != 200)
                 return xhr.onerror();
             var newAnswer = JSON.parse(xhr.response);
-            console.log(newAnswer);
+
             var newExcerciseItems = JSON.parse(JSON.stringify(this.state.excerciseItems));
             for (var i = 0; i < newExcerciseItems.length; i++) {
                 if (newExcerciseItems[i].excerciseItemId == excerciseItemId)
@@ -187,7 +187,7 @@ var Excercise = React.createClass({
     },
     onDeleteAnswer: function (excerciseItemId, correctResponseId) {
         var data = { excerciseItemId: excerciseItemId, correctResponseId: correctResponseId, excerciseId: this.state.excerciseId };
-        console.log(data);
+
         var xhr = new XMLHttpRequest();
 
         xhr.open('post', '/Excercises/DeleteAnswer', true);
@@ -196,7 +196,7 @@ var Excercise = React.createClass({
             if (xhr.status != 200)
                 return xhr.onerror();
             var newItems = JSON.parse(xhr.response);
-            console.log(newItems);
+
             
             this.setState({ excerciseItems: newItems });
         }.bind(this);
@@ -348,7 +348,7 @@ var ExcerciseDlg = React.createClass({
             if (xhr.status != 200)
                 return xhr.onerror();
             var res = JSON.parse(xhr.response);
-            console.log(res);
+
             this.setState({ show: false });
             var msg = "Вы набрали " + res.points + " баллов из " + res.maxPoints + " возможных";
             showOk("Упраженение проверено", msg);
@@ -440,7 +440,7 @@ function getExcercise(excerciseId) {
 }
 
 function showExcercise(excerciseId){
-    console.log(excerciseId);
+
 
     //var excercise = getExcercise(excerciseId);
     

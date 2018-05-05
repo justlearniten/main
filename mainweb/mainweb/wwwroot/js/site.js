@@ -84,3 +84,21 @@ function resizeMain() {
     }
 
 }
+
+function trainerChange(e) {
+    var txt = e.value;
+    while (e && e.getAttribute("class").indexOf("trainer-car") < 0)
+        e = e.parentElement;
+    var answers = e.getAttribute("answers");
+    console.log(answers);
+    if (answers) {
+        txt = txt.trim().toLowerCase().replace(/\s\s+/g, ' ');//remove double spaces
+        txt = txt + "%$";//see also controller
+        var correct = answers.indexOf(txt) >= 0;
+
+        var cl = e.getAttribute("class");
+        cl = cl.replace("incorrect", "").replace("correct","");//remove corrct and incorrect classes
+        cl = cl + " "+(correct? "correct" : "incorrect");
+        e.setAttribute("class", cl);
+    }
+}

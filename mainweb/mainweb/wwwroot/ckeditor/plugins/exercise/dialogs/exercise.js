@@ -9,10 +9,9 @@ function load() {
         if (xhr.status != 200)
             return xhr.onerror();
         exerciseList = JSON.parse(xhr.response);
-        console.log(exerciseList);
     }.bind(this);
     xhr.onerror = function () {
-        alert("Ошибка  при сохранении!");
+        alert("Ошибка  загрузки упражнений!");
     }
     xhr.send(JSON.stringify(this.state));
 }
@@ -53,7 +52,7 @@ CKEDITOR.dialog.add('exerciseDialog', function (editor) {
                 if (exerciseId === exerciseList[i][1])
                     exerciseTitle = exerciseList[i][0];
             var exerciseLink = "<a href='javascript:showExcercise(" + exerciseId + ")'>" + exerciseTitle + "</a>";
-            console.log(exerciseLink);
+
             var a = CKEDITOR.dom.element.createFromHtml(exerciseLink);
             editor.insertElement(a);
         }

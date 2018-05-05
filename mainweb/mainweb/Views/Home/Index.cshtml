@@ -1,27 +1,87 @@
-﻿@{
-    ViewData["Title"] = "Главная";
+﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+
+<!DOCTYPE html>
+@{
+    Layout = "";
 }
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Just Learn It - @ViewData["Title"]</title>
 
- <div class="col-md-3">
-    <img src="~/images/woman-man.jpg" class="img-responsive img-rounded" />
-</div>
- <p>
-    Жизнь- это движение, особенно современная.
- </p>
- <p>
-    Довольно сложно представить ее обездвиженной, но даже если и так, нам все равно потребуется глагол.
-    Глагол - это ядро предложения, именно с его помощью мы выражаем действие, движение, и если в русском языке основная функция глагола - показать время совершения действия- настоящее, прошедшее и будущее, то в английском языке, глагол не только называет время, но и выражает либо регулярность, либо длительность, либо завершенность действия, что в русском языке обычно достигается с помощью наречий.
-</p>
-<p>
-    Изучение английского языка людьми, чьим родным языком является русский, очень часто останавливается из-за неспособности разобраться с тем, какое время, когда использовать. Именно поэтому мы решили сконцентрироваться на изучении, в первую очередь, глагола, не забывая, конечно, и о других частях речи.
-</p>
-<p>
-    Разобравшись в системе времен английского языка, человек начинает понимать, что он может строить предложения и, соответственно, общаться на английском языке.
-</p>
-<p>
-    <b>
-    Желаем удачи!
-    </b>
-</p>
-   
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/lessons.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    <link href="http://fonts.googleapis.com/css?family=Bad+Script:regular" rel="stylesheet" type="text/css">
+    <script src="https://use.fontawesome.com/63ff996139.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    @Html.Raw(JavaScriptSnippet.FullScript)
+    <script src="@Url.Content("~/lib/react-bootstrap/react-bootstrap.js")"></script>
+    <script src="@Url.Content("~/js/react/excercises.jsx")"></script>
+    <script src="@Url.Content("~/js/react/confirm.jsx")"></script>
+    <script src="@Url.Content("~/js/react/translation.jsx")"></script>
+    <script src="@Url.Content("~/js/react/trainer.jsx")"></script>
 
+</head>
+<body style="margin:0;overflow:hidden;padding:0;background-image:url('/images/architecture-buildings-business-771881-bottom-1px.jpg');background-size:100%;font-size:large;font-family:sans-serif;font-style:italic;color:bisque;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+
+    <a style=" color:bisque;"
+       asp-controller="Home" asp-action="Start" asp-route-id="">
+
+        <img style="width:100%;" id="background" src="~/images/architecture-buildings-business-771881.jpg" />
+
+        <div class="container" style="position:fixed;top:20%;text-align:center;width:100%;">
+            <div id="carousel" class="carousel slide" data-ride="carousel">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" style="height:10em;">
+                    <div class="item active">
+                        Зачем мне учить английский?<br />
+                        Пусть они учат русский!
+                    </div>
+
+                    <div class="item">
+                        Зачем мне ездить за границу?<br />
+                        Пусть они ездят к нам!
+                    </div>
+
+                    <div class="item">
+                        Зачем мне открывать мир?<br />
+                        Пусть они открывают его!
+                    </div>
+                </div>
+                <!-- Indicators -->
+                <!--
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel" data-slide-to="1"></li>
+                    <li data-target="#carousel" data-slide-to="2"></li>
+                </ol>
+                    -->
+            </div>
+        </div>
+
+
+        <div style="position:fixed;bottom:20px;width:100%;text-align:center;">
+
+            Ты тоже считаешь иначе?<br />
+            Тогда присоединяйся к нам и просто изучай английский, просто путешествуй за границу, просто открывай мир!<br />
+            Just learn it!
+
+        </div>
+    </a>
+</body>
+</html>

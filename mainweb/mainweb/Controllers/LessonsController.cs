@@ -244,7 +244,8 @@ namespace mainweb.Controllers
                 lesson.TrainsPath = CreateRandomFileName(".html");
             String fullPath = FullNameForFile(lesson.TrainsPath);
             HtmlDocument doc = new HtmlDocument();
-            doc.LoadHtml(content);
+            if(content!=null)
+                doc.LoadHtml(content);
             var nodes = doc.DocumentNode.Descendants("table")
                 .Where(x =>IsTrain(x))
                 .ToList();

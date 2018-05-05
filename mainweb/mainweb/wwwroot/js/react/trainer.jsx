@@ -5,6 +5,8 @@ var FormControl = ReactBootstrap.FormControl;
 var Checkbox = ReactBootstrap.Checkbox;
 var Radio = ReactBootstrap.Radio;
 var Form = ReactBootstrap.Form;
+var Row = ReactBootstrap.Row;
+var Col = ReactBootstrap.Col;
 
 var lastId = 2000000000;
 function makeid() {
@@ -242,6 +244,9 @@ var Trainer = React.createClass({
         xhr.send(JSON.stringify(this.state.trainer));
 
     },
+    backToList(e) {
+        window.location.href = '/trainers';
+    },
     render: function () {
         var cars = null;
         if (this.state.trainer.cars!=null)
@@ -257,7 +262,14 @@ var Trainer = React.createClass({
             );
         return (
             <div>
-                <Button onClick={this.onSave} >Сохранить</Button>
+                <Row>
+                <Col md={6}>
+                        <Button onClick={this.onSave} >Сохранить</Button>
+                </Col>
+                <Col md={6}>
+                        <Button className="pull-right" onClick={this.backToList} >Назад</Button>
+                </Col>
+                </Row>
                 <textarea name="editor" cols="100" rows="6" defaultValue={this.state.trainer.original}>
                     
                 </textarea>

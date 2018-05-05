@@ -8,10 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using mainweb.Data;
 using mainweb.Models;
 using Microsoft.AspNetCore.Authorization;
+using HtmlAgilityPack;
 
 namespace mainweb.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize]
     public class TrainersController : Controller
     {
         const int NEW_ID = 2000000000;
@@ -30,6 +31,7 @@ namespace mainweb.Controllers
         }
 
         // GET: Trainers/Details/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -48,6 +50,7 @@ namespace mainweb.Controllers
         }
 
         // GET: Trainers/Create
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Create()
         {
             var trainer = new Trainer() {
@@ -75,6 +78,7 @@ namespace mainweb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Create(Trainer trainer)
         {
             if (ModelState.IsValid)
@@ -87,6 +91,7 @@ namespace mainweb.Controllers
         }
 
         // GET: Trainers/Edit/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -110,7 +115,7 @@ namespace mainweb.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        
+        [Authorize(Roles = "Administrator")]
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [FromBody]  Trainer trainer)
         {
@@ -175,9 +180,8 @@ namespace mainweb.Controllers
             await _context.SaveChangesAsync();
             return Json(dbTrainer);
 
-            return NotFound();
         }
-
+        [Authorize(Roles = "Administrator")]
         // GET: Trainers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -199,6 +203,7 @@ namespace mainweb.Controllers
         // POST: Trainers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var trainer = await _context.Trainer.SingleOrDefaultAsync(m => m.TrainerId == id);
@@ -220,6 +225,88 @@ namespace mainweb.Controllers
         private bool TrainerExists(int id)
         {
             return _context.Trainer.Any(e => e.TrainerId == id);
+        }
+
+        [Authorize]
+        public IActionResult List()
+        {
+            IList<String[]> res = new List<String[]>();
+            foreach (var t in _context.Trainer)
+            {
+                HtmlDocument doc = new HtmlDocument();
+                doc.LoadHtml(t.Original);
+                
+                var node = doc.DocumentNode;
+                String title = node.InnerText;
+                res.Add(new String[]
+                {
+                    title,
+                    t.TrainerId.ToString()
+                });
+            }
+            return Json(res.ToArray());
+        }
+
+        // GET: Excercises/Details/5
+        public async Task<IActionResult> code(int id)
+        {
+            if (id == 0)
+            {
+                return NotFound();
+            }
+
+            var trainer = await _context.Trainer
+                .SingleOrDefaultAsync(m => m.TrainerId == id);
+            if (trainer == null)
+            {
+                return NotFound();
+            }
+            await _context.Entry(trainer).Collection(t => t.Cars).LoadAsync();
+            int carCount = trainer.Cars.Count;
+            String res = "<div class=\"trainer\">";
+           
+            res += "<table>";
+            res += "<tr><td colspan="+ (2*carCount-1) +">"+trainer.Original+"</td></tr>";
+            var row1 = "<tr>";
+            var row2 = "<tr>";
+
+            for (int i = 0; i < carCount; i++)
+            {
+                var car = trainer.Cars.ElementAt(i);
+                var answers = "";
+                await _context.Entry(car).Collection(c => c.CorrectResponses).LoadAsync();
+                foreach (var cr in car.CorrectResponses) {
+                    var an = cr.Answer.Trim().Replace("\\s+", " ").ToLower(); ;
+                    answers += an + "%$";
+                }
+                row1 += "<td class=\"trainer-car correct\" answers=\"" +answers +"\"  >";
+                var styleClass = car.Style.ToString().ToLower();
+                row1 += "<div class=\"trainer-input-wrapper-" + styleClass + "\">";
+                row1 += "<input class=\"trainer-input-" + styleClass + "\" oninput=\"trainerChange(this);\" />";
+                row1 += "</div";
+
+                row1 += "</td>";
+                if (car.HasWheels)
+                    row2 += "<td class=\"wheels\"></td>";
+                else
+                    row2 += "<td></td>";
+                if (i != carCount - 1)
+                {
+                    row1 += "<td class=\"trainer-arrow\"></td>";
+                    row2 += "<td></td>";
+                }
+
+            }
+
+            row1 += "</tr>";
+            row2 += "</tr>";
+            res += row1;
+            res += row2;
+            res += "</table>";
+            res += "<div>";
+            return Ok(res);
+                
+           
         }
     }
 }

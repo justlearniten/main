@@ -7,7 +7,7 @@
 <h2>Тренажеры</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Создать</a>
 </p>
 <table class="table">
 
@@ -15,8 +15,8 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.TrainerId">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.TrainerId">Delete</a> |
+                <a asp-action="Edit" asp-route-id="@item.TrainerId">Редактировать</a> |
+                <a asp-action="Delete" asp-route-id="@item.TrainerId">Удалить</a> |
 
                 @Html.Raw(@item.Original)
             </td>

@@ -168,3 +168,78 @@ td {
     text-decoration: underline;
     text-decoration-color: #000 !important;
 }
+.trainer{
+    text-align:center;
+}
+.trainer-car {
+    background-clip: padding-box;
+    border-radius: 10px;
+    padding: 10px;
+    vertical-align: middle;
+    text-align: center;
+    -moz-box-shadow: 5px 5px 7px rgba(33,33,33,1);
+    -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+}
+
+.correct {
+        background: #92d050 !important;
+}
+
+.incorrect {
+    background: #ed5b25 !important;
+}
+
+.trainer-arrow {
+    text-align: center;
+    color: #92d050;
+}
+
+.trainer-arrow:before {
+        content: "\27a1";
+        font-size: xx-large;
+        font-weight: 800;
+}
+
+.wheels{
+    text-align:center;
+    padding:5px;
+}
+.wheels:before {
+    content: url(/images/wheels-indefinite.png);
+    align-content:  center;
+}
+input.trainer-input-normal {
+    min-width: 50px !important;
+    max-width:120px;
+    border-bottom: none !important;
+}
+input.trainer-input-blacksingle,
+input.trainer-input-blackdouble {
+    min-width: 50px !important;
+    max-width: 120px;
+    border-bottom: solid black 1px !important;
+}
+input.trainer-input-redsingle,
+input.trainer-input-reddouble {
+    /* min-width: 50px !important; */
+    /* max-width: 120px; */
+    border-bottom: solid red 1px !important;
+}
+
+.trainer-input-wrapper-normal,
+.trainer-input-wrapper-blacksingle, 
+.trainer-input-wrapper-redsinlge{
+    padding:2px;
+}
+
+.trainer-input-wrapper-blackdouble {
+    border-bottom: solid black 1px !important;
+    padding-bottom: 2px;
+}
+.trainer-input-wrapper-reddouble {
+    border-bottom: solid red 1px !important;
+    padding-bottom: 2px;
+}
+
+
