@@ -27,7 +27,7 @@ namespace mainweb.Controllers
         // GET: Trainers
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Trainer.ToListAsync());
+            return View(await _context.Trainer.OrderByDescending(t=>t.TrainerId).ToListAsync());
         }
 
         // GET: Trainers/Details/5
@@ -231,7 +231,7 @@ namespace mainweb.Controllers
         public IActionResult List()
         {
             IList<String[]> res = new List<String[]>();
-            foreach (var t in _context.Trainer)
+            foreach (var t in _context.Trainer.OrderByDescending(t => t.TrainerId))
             {
                 HtmlDocument doc = new HtmlDocument();
                 doc.LoadHtml(t.Original);

@@ -16,6 +16,8 @@ using Microsoft.AspNetCore.Http;
 using React.AspNet;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace mainweb
 {
@@ -59,6 +61,11 @@ namespace mainweb
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+
+            //services.Configure<MvcOptions>(options =>
+            //{
+            //    options.Filters.Add(new RequireHttpsAttribute());
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -107,6 +114,12 @@ namespace mainweb
             app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
+            app.UseGoogleAuthentication(new GoogleOptions()
+            {
+                ClientId = "780616142923-k612vl80tro2thrnle7e2f0vf8bkiatj.apps.googleusercontent.com",
+                ClientSecret = "rd8gY0xA3Fff3KsUgr4R3w8x"
+            });
+
 
             app.UseMvc(routes =>
             {
@@ -114,6 +127,12 @@ namespace mainweb
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            var rewriteOptions = new RewriteOptions()
+                .AddRedirectToHttps();
+            app.UseRewriter(rewriteOptions);
+
+            
         }
     }
 }

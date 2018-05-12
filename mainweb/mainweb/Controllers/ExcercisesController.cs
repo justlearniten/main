@@ -39,7 +39,7 @@ namespace mainweb.Controllers
         public IActionResult List()
         {
             IList<String[]> res = new List<String[]>();
-            foreach (var e in _context.Excercise)
+            foreach (var e in _context.Excercise.OrderByDescending(e=>e.ExcerciseId))
             {
                 res.Add(new String[]
                 {
