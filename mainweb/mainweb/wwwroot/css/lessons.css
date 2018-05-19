@@ -211,7 +211,7 @@ td {
 }
 input.trainer-input-normal {
     min-width: 50px !important;
-    max-width:120px;
+    max-width:120px; 
     border-bottom: none !important;
 }
 input.trainer-input-blacksingle,
@@ -222,8 +222,8 @@ input.trainer-input-blackdouble {
 }
 input.trainer-input-redsingle,
 input.trainer-input-reddouble {
-    /* min-width: 50px !important; */
-    /* max-width: 120px; */
+    min-width: 50px !important;
+    max-width: 120px;
     border-bottom: solid red 1px !important;
 }
 

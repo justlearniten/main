@@ -128,9 +128,9 @@ namespace mainweb
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            var rewriteOptions = new RewriteOptions()
-                .AddRedirectToHttps();
-            app.UseRewriter(rewriteOptions);
+           // var rewriteOptions = new RewriteOptions()
+           //     .AddRedirectToHttps();
+           // app.UseRewriter(rewriteOptions);
 
             
         }

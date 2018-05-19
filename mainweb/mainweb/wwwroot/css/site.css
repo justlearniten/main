@@ -44,7 +44,7 @@ body, .panel {
 input,
 select,
 textarea {
-    max-width: 120px;
+   /* max-width: 120px;*/
 }
 
 /* Carousel */

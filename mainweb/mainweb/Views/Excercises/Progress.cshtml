@@ -15,7 +15,7 @@
     prct = 0.0F;
         <tr>
             @{i++;}
-            <td style="white-space: nowrap;width: 10px;">
+            <td style="white-space: nowrap;width:40%;">
                 @i.
                 @if (item.TimeTaken != default(DateTime))
                 {
@@ -33,16 +33,9 @@
                 }
                 @outStr
             </td>
-            <td>
-                @{ var w = String.Format("{0,3:F0}%", prct);}
-
-                    
-                    <div>
-                        <a href="javascript:showExcercise(@item.Id)">@item.ExcerciseName</a>
-                    </div>
-                   
+            <td style="width:60%;">
+                <a href="javascript:showExcercise(@item.Id)">@item.ExcerciseName</a>
             </td>
-            
         </tr>
 }
 
@@ -51,8 +44,7 @@
         var totalPrct = (float)totalEarned / totalAvailable;
         outStr = String.Format("ИТОГО:  {0,3:P0}   ({1} из {2}) ", totalPrct, totalEarned, totalAvailable);
         <tr>
-            <td><strong>@outStr</strong></td>
-            <td></td>
+            <td colspan="2"><strong>@outStr</strong></td>
         </tr>
     }
 </table>

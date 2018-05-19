@@ -21,6 +21,7 @@ namespace mainweb.Models
         [Display(Name ="Группа")]
         public virtual LessonGroup LessonGroup { get; set; }
         public int? LessonGroupId { get; set; }
+        public bool AdminOnly { get; set; }
     }
     public class LessonGroup
     {

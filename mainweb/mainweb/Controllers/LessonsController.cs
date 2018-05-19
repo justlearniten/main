@@ -38,22 +38,28 @@ namespace mainweb.Controllers
         // GET: Lessons
         public async Task<IActionResult> Index(int? id)
         {
-            ViewData["IsAdmin"] = false;
+            bool isAdmin = false;
+            
             var user = await _userManager.GetUserAsync(User);
             if (user != null)
             {
                 var roles = await _userManager.GetRolesAsync(user);
-                ViewData["IsAdmin"] = roles.Contains("Administrator");
+                isAdmin = roles.Contains("Administrator");
             }
             LessonsViewModel model = new LessonsViewModel();
+            ViewData["IsAdmin"] = isAdmin;
             if (id == null)//load all
             {
-                model.UngrouppedLessons = await _context.Lessons.Where(l => l.LessonGroup == null).ToListAsync();
+                model.UngrouppedLessons = await _context.Lessons
+                    .Where(l => l.LessonGroup == null && ((isAdmin && l.AdminOnly)||!l.AdminOnly))
+                    .ToListAsync();
                 model.Groups = await _context.LessonGroups.Include(lg => lg.Lessons).ToListAsync();
+                foreach (var g in model.Groups)
+                    g.Lessons = g.Lessons.Where(l => ((isAdmin && l.AdminOnly) || !l.AdminOnly)).ToList();
                 return View(model);
             }
             var lesson = await _context.Lessons
-               .SingleOrDefaultAsync(m => m.LessonId == id);
+               .SingleOrDefaultAsync(m => m.LessonId == id && ((isAdmin && m.AdminOnly) || !m.AdminOnly));
             if (lesson == null)
             {
                 return NotFound();
@@ -61,7 +67,7 @@ namespace mainweb.Controllers
             model.Lesson = lesson;
             //get previous and next lesson Id
             var prevLesson = await _context.Lessons
-                .Where(l => l.LessonGroupId == lesson.LessonGroupId && l.LessonId < lesson.LessonId)
+                .Where(l => l.LessonGroupId == lesson.LessonGroupId && l.LessonId < lesson.LessonId && ((isAdmin && l.AdminOnly) || !l.AdminOnly))
                 .OrderByDescending(l=>l.LessonId)
                 .FirstOrDefaultAsync();
             if(prevLesson==null && lesson.LessonGroupId != null)
@@ -75,26 +81,26 @@ namespace mainweb.Controllers
                     prevGroupId = prevGroup.LessonGroupId;
 
                 prevLesson = await _context.Lessons
-                        .Where(l => l.LessonGroupId == prevGroupId)
+                        .Where(l => l.LessonGroupId == prevGroupId && ((isAdmin && l.AdminOnly) || !l.AdminOnly))
                         .OrderByDescending(l=>l.LessonId)
                         .FirstOrDefaultAsync();
             }
             ViewData["PrevLessionId"] = prevLesson?.LessonId;
             ////////////////////////////////////////////////////////////
             var nextLesson = await _context.Lessons
-                .Where(l => l.LessonGroupId == lesson.LessonGroupId && l.LessonId > lesson.LessonId)
+                .Where(l => l.LessonGroupId == lesson.LessonGroupId && l.LessonId > lesson.LessonId && ((isAdmin && l.AdminOnly) || !l.AdminOnly))
                 .OrderBy(l=>l.LessonId)
                 .FirstOrDefaultAsync();
             if (nextLesson == null)
             {
                 var nextGroup = await _context.LessonGroups
-                    .Where(lg => lg.LessonGroupId > (lesson.LessonGroupId??0))
+                    .Where(lg => lg.LessonGroupId > (lesson.LessonGroupId??0) )
                     .OrderBy(lg => lg.LessonGroupId)
                     .FirstOrDefaultAsync();
 
                 if (nextGroup != null)
                     nextLesson = await _context.Lessons
-                        .Where(l => l.LessonGroupId == nextGroup.LessonGroupId)
+                        .Where(l => l.LessonGroupId == nextGroup.LessonGroupId && ((isAdmin && l.AdminOnly) || !l.AdminOnly))
                         .OrderBy(l => l.LessonId)
                         .FirstOrDefaultAsync();
 
