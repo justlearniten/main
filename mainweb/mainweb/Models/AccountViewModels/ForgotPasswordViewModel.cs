@@ -10,6 +10,7 @@ namespace mainweb.Models.AccountViewModels
     {
         [Required]
         [EmailAddress]
+        [Display(Name = "Почта (email)")]
         public string Email { get; set; }
     }
 }

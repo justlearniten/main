@@ -25,7 +25,7 @@ var ExcerciseItem = React.createClass({
     render: function () {
         var answers = this.props.item.correctResponses.map((r) =>
             <div className="col-md-12" key={r.correctResponseId}>
-                <input className="form-control col-md-12 col-md-offset-2"
+                <input className="col-md-7 col-md-offset-2 form-control" bsStyle="width:58%;"
                 type="text"
                 placeholder="Введите вариант"
                 defaultValue={r.answer}
@@ -86,7 +86,7 @@ var ExcerciseItemsList = React.createClass({
         return (
             <div>
                 {items}
-                <input type="submit" className="btn btn-default"
+                <input type="submit" className="btn btn-default col-md-3"
                     onClick={this.onAddItem}
                     value="Добавить вопрос" />
             </div>     
@@ -240,7 +240,7 @@ var Excercise = React.createClass({
                         <input className="form-control col-md-8" 
                             value={this.state.excerciseName}
                             onChange={this.onNameChange} />
-                        <input type="submit" value="Save" className="btn btn-default col-md-1 col-md-offset-1"
+                        <input type="submit" value="Сохранить" className="btn btn-default col-md-2"
                             onClick={this.onSave} />
                     </div>
                 </div>
@@ -254,6 +254,8 @@ var Excercise = React.createClass({
                     onDeleteAnswer={this.onDeleteAnswer}
                     onDeleteItem={this.onDeleteItem}
                 />
+                <input type="submit" value="Сохранить" className="btn btn-default col-md-3 col-md-offset-1"
+                    onClick={this.onSave} />
              </div>
             );
     }
