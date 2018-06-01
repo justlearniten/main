@@ -25,7 +25,7 @@ var ExcerciseItem = React.createClass({
     render: function () {
         var answers = this.props.item.correctResponses.map((r) =>
             <div className="col-md-12" key={r.correctResponseId}>
-                <input className="col-md-7 col-md-offset-2 form-control" bsStyle="width:58%;"
+                <input className="form-control col-md-7 col-md-offset-2 width58" 
                 type="text"
                 placeholder="Введите вариант"
                 defaultValue={r.answer}
@@ -237,10 +237,10 @@ var Excercise = React.createClass({
                 <div className="form-group">
                     <label className="col-md-2 control-label">Название</label>
                     <div className="col-md-10">
-                        <input className="form-control col-md-8" 
+                        <input className="col-md-8 form-control width58" 
                             value={this.state.excerciseName}
                             onChange={this.onNameChange} />
-                        <input type="submit" value="Сохранить" className="btn btn-default col-md-2"
+                        <input type="submit" value="Сохранить" className="btn btn-default col-md-2 col-md-offset-1"
                             onClick={this.onSave} />
                     </div>
                 </div>

@@ -83,7 +83,7 @@ namespace mainweb.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Ошибка входа.");
                     return View(model);
                 }
             }

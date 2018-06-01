@@ -35,45 +35,35 @@
     <script src="@Url.Content("~/js/react/confirm.jsx")"></script>
     <script src="@Url.Content("~/js/react/translation.jsx")"></script>
     <script src="@Url.Content("~/js/react/trainer.jsx")"></script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
 
 </head>
-<body style="margin:0;overflow:hidden;padding:0;background-image:url('/images/architecture-buildings-business-771881-bottom-1px.jpg');background-size:100%;font-size:large;font-family:sans-serif;font-style:italic;color:bisque;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+<body style="margin:0;overflow:hidden;padding:0;background-image:url('/images/architecture-buildings-business-771881-bottom-1px.jpg');background-size:100%;font-size:large;font-family:sans-serif;font-style:italic;color:bisque;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;"
+      onload="startDrum()">
 
     <a style=" color:bisque;"
        asp-controller="Home" asp-action="Start" asp-route-id="">
 
-        <img style="width:100%;" id="background" src="~/images/architecture-buildings-business-771881.jpg" />
-
-        <div class="container" style="position:fixed;top:20%;text-align:center;width:100%;">
-            <div id="carousel" class="carousel slide" data-ride="carousel">
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" style="height:10em;">
-                    <div class="item active">
-                        Зачем мне учить английский?<br />
+    <div class="drum_scene">
+        <div class="roll_drum">
+            <div class="roll_item">
+                <br /><br /><br />Зачем мне учить английский?<br />
                         Пусть они учат русский!
-                    </div>
-
-                    <div class="item">
-                        Зачем мне ездить за границу?<br />
+            </div>
+            <div class="roll_item">
+                <br /><br /><br />Зачем мне ездить за границу?<br />
                         Пусть они ездят к нам!
-                    </div>
-
-                    <div class="item">
-                        Зачем мне открывать мир?<br />
+            </div>
+            <div class="roll_item">
+                <br /><br /><br />Зачем мне открывать мир?<br />
                         Пусть они открывают его!
-                    </div>
-                </div>
-                <!-- Indicators -->
-                <!--
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel" data-slide-to="1"></li>
-                    <li data-target="#carousel" data-slide-to="2"></li>
-                </ol>
-                    -->
             </div>
         </div>
+    </div>
 
+
+
+        <img style="width:100%;" id="background" src="~/images/architecture-buildings-business-771881.jpg" />
 
         <div style="position:fixed;bottom:20px;width:100%;text-align:center;">
 

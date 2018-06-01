@@ -18,6 +18,9 @@ using Microsoft.Extensions.FileProviders;
 using System.IO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Rewrite;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using mainweb.IdentityExtensions;
 
 namespace mainweb
 {
@@ -65,7 +68,8 @@ namespace mainweb
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
-         
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                   .AddErrorDescriber<CustomIdentityErrorDescriber>();
 
             //services.Configure<MvcOptions>(options =>
             //{
@@ -115,6 +119,15 @@ namespace mainweb
             });
 
             app.UseStaticFiles();
+
+            RequestLocalizationOptions localizationOptions = new RequestLocalizationOptions
+            {
+                SupportedCultures = new List<CultureInfo> { new CultureInfo ("ru-RU") },
+                SupportedUICultures = new List<CultureInfo> { new CultureInfo("ru-RU") },
+                DefaultRequestCulture = new RequestCulture("ru-RU")
+            };
+            app.UseRequestLocalization(localizationOptions);
+
 
             app.UseIdentity();
 

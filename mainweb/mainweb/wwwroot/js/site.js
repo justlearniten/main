@@ -102,3 +102,18 @@ function trainerChange(e) {
         e.setAttribute("class", cl);
     }
 }
+
+////////////////////////////
+var angle = 0;
+var drum = null;
+function startDrum() {
+    console.log("hello");
+    
+    drum = document.querySelector('.roll_drum');
+    if (drum)
+        setInterval(rotateDrum, 3000);
+}
+function rotateDrum() {
+    angle += 120;
+    drum.style.transform = 'rotateX(' + angle + 'deg)';
+}
